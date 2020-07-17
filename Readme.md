@@ -1,5 +1,18 @@
-# Vulnerable Neighborhood Explorer
+# Vulnerable Neighborhood Explorer (VNE)
 This is currently under development as of 7/17/2020
+#### GEOSNAP needs to be installed to run VNE.
+geosnap development is hosted on [github](https://github.com/spatialucr/geosnap)
+To get started with the development version,
+clone this repository or download it manually then `cd` into the directory and run the
+following commands:
+
+```bash
+conda env create -f environment.yml
+conda activate geosnap 
+python setup.py develop
+```
+This will download the appropriate dependencies and install geosnap in its own conda environment.
+After the installation above is done run VNE in the geosnap environment. 
 
 ### How to run:
 - python vulnerablePOP4.py
