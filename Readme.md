@@ -215,6 +215,46 @@ After the installation above is done run VNE in the geosnap environment.
 		'Zscore_Means_across_Clusters': True,
 		'Zscore_Means_of_Each_Cluster': True,
 		'Number_of_Barcharts_for_Subject_Clusters': 2,
+- #### Miami
+		'title': "Vulnerable Neighborhood to COVID-19, Miami",
+		'subject': "COVID-19",
+        'filename_suffix': "Miami_kmeans_C5", 
+		'inputCSV': "ACS_2018_5year__zipcode_Miami_byZipcode_normalized.csv",   
+		'shapefile': "Miami4.shp", 		
+		'diseaseInputCSV': "COVID_Florida_20200717.csv", 
+        #'rate1': 'Confirmed (%) = _count/_tested',		# Formula to compute rate1 in subjectCSV such as confirmed rate1. 	
+		#'rate2': 'Death (%) = _deaths/_cases',			# Formula to compute rate2 in subjectCSV such as death rate2.        
+		'subjectNormalization': '(/10k pop) = all * 10000.0 / Population',  # demoninator, per number of pop. 
+		'years': [2018],        
+		'method': "kmeans",  # Aspatial Clustering: affinity_propagation, gaussian_mixture, hdbscan, kmeans, spectral, ward
+                             # Spatial Clustering: azp, max_p, skater, spenc, ward_spatial   
+		'nClusters': 5,      # This option should be commented out for affinity_propagation and hdbscan
+		'label': "variable",
+		'variables': [	
+            "Median monthly housing costs",
+            "% below poverty",				
+            "% unemployed",			
+            "% with 4year college degree",
+            "% manufacturing",
+            "% service industry",
+            "% structures more than 30 years old",
+            "% households moved <10 years ago",
+            "% multiunit structures",
+            "% owner occupied housing",
+            "% vacant housing",
+            "% > 60 years old",			
+            "% < 18 years old",
+            "% white",
+            "% Asian",
+            "% Hispanic",			
+            "% black",			
+            "% foreign born",
+					 ],	
+		'Distribution_INC1': True,                   #density chart: INC changes as the map extent changes 
+		'Zscore_Means_across_Clusters': True,
+		'Zscore_Means_of_Each_Cluster': True,
+		'Number_of_Barcharts_for_Subject_Clusters': 2,
+
 - #### US
 		'title': "Vulnerable Neighborhood to COVID-19, US",
 		'subject': "COVID-19",
