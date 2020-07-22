@@ -1383,7 +1383,8 @@ def Clustering_log():
 def vne_run(job_id=None, base_output_path=None):
 	started_datetime = datetime.now()
 	print('VulnerablePOP start at %s' % (started_datetime.strftime('%Y-%m-%d %H:%M:%S')))
-	
+	cwd_old = os.getcwd()
+	os.chdir(os.path.dirname(os.path.abspath(__file__)))
 	#sample = "downloads/LTDB_Std_All_Sample.zip"
 	#full = "downloads/LTDB_Std_All_fullcount.zip"
 	#store_ltdb(sample=sample, fullcount=full)
@@ -1636,4 +1637,5 @@ def vne_run(job_id=None, base_output_path=None):
 	hours, remainder = divmod(total_seconds,60*60)
 	minutes, seconds = divmod(remainder,60)	
 	print('VulnerablePOP ended at %s    Elapsed %02d:%02d:%02d' % (ended_datetime.strftime('%Y-%m-%d %H:%M:%S'), hours, minutes, seconds))
-	
+	os.chdir(cwd_old)
+
