@@ -1380,7 +1380,7 @@ def Clustering_log():
 	webbrowser.open(url)
 
 
-def my_main_run(job_id=None, base_output_path=None):
+def vne_run(job_id=None, base_output_path=None):
 	started_datetime = datetime.now()
 	print('VulnerablePOP start at %s' % (started_datetime.strftime('%Y-%m-%d %H:%M:%S')))
 	

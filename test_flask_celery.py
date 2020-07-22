@@ -13,7 +13,7 @@
 ## start flask
 # FLASK_APP=test_flask_celery.py flask run
 
-from VulnerablePOP4_celery import my_main_run
+from VulnerablePOP4_celery import vne_run
 import uuid
 from flask import jsonify
 from celery import Celery
@@ -58,18 +58,18 @@ def add_together(a, b):
 
 
 @celery.task()
-def su_task(job_id, base_output_path):
-    my_main_run(job_id=job_id, base_output_path=base_output_path)
+def vne_task(job_id, base_output_path):
+    vne_run(job_id=job_id, base_output_path=base_output_path)
     return "OK"
 
 base_output_path="/tmp"
 
-@flask_app.route('/su')
+@flask_app.route('/vne')
 def submit_job_su():
     job_id = str(uuid.uuid4())
-    job_id = "su_" + job_id
+    job_id = "vne_" + job_id
 
-    t = su_task.apply_async(
+    t = vne_task.apply_async(
         task_id=job_id,
         countdown=1,
         kwargs={'job_id': job_id,
@@ -85,7 +85,7 @@ def job_status():
         try:
             if job_id:
                 resp_dict = {"job_id": job_id}
-                result = su_task.AsyncResult(job_id)
+                result = vne_task.AsyncResult(job_id)
                 job_status = result.state.lower()
                 resp_dict["status"] = job_status
                 return jsonify(resp_dict)
