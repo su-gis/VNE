@@ -69,19 +69,11 @@ def write_LOG(param):
 
 
 def write_INDEX_html(param):
-	job_id = param.get("job_id")
-	base_output_path = param.get("base_output_path")
-	if 'job_id' is not None:
-		# for webservice -- Drew 07/22/2020
-		job_id = param["job_id"]
-		if base_output_path is None:
-			base_output_path = "./"
-		job_path = os.path.join(base_output_path, job_id)
-		if not os.path.exists(job_path):
-			os.makedirs(job_path)
+
+	job_path = param.get("job_path")
+	if os.path.exists(str(job_path)):
 		oDir = job_path
 	else:
-		# original
 		# Create a new folder where GEO_CONFIG.js GEO_JSON.js VARIABLES.js will be saved
 		oDir = 'NAM_' + param['filename_suffix']
 
@@ -238,8 +230,15 @@ def write_GEO_CONFIG_js(param):
 	contents = contents.replace('var Map_width  = "400px";', Map_width)
 	contents = contents.replace('var Map_height = "400px";', Map_height)
 
+	job_path = param.get("job_path")
+	if os.path.exists(str(job_path)):
+		oDir = job_path
+	else:
+		# Create a new folder where GEO_CONFIG.js GEO_JSON.js VARIABLES.js will be saved
+		oDir = 'NAM_' + param['filename_suffix']
+
 	#Write output including the replacement above
-	filename_GEO_CONFIG = "NAM_" + param['filename_suffix'] + "/data/GEO_CONFIG_"+param['filename_suffix']+".js"
+	filename_GEO_CONFIG = oDir + "/data/GEO_CONFIG_"+param['filename_suffix']+".js"
 	ofile = open(filename_GEO_CONFIG, 'w')
 	ofile.write(contents)
 	ofile.close()
@@ -296,9 +295,15 @@ def write_ALL_METROS_GEO_CONFIG_js(param):
 
 
 def write_GEO_JSON_js(community, param):
-	
+
+	job_path = param.get("job_path")
+	if os.path.exists(str(job_path)):
+		oDir = job_path
+	else:
+		# Create a new folder where GEO_CONFIG.js GEO_JSON.js VARIABLES.js will be saved
+		oDir = 'NAM_' + param['filename_suffix']
 	# open GEO_JSON.js write heading for geojson format
-	filename_GEO_JSON = "NAM_" + param['filename_suffix'] + "/data/GEO_JSON_"+param['filename_suffix']+".js"
+	filename_GEO_JSON = oDir + "/data/GEO_JSON_"+param['filename_suffix']+".js"
 	ofile = open(filename_GEO_JSON, 'w')
 	ofile.write('var GEO_JSON =\n')
 	ofile.write('{"type":"FeatureCollection", "features": [\n')
@@ -652,10 +657,15 @@ def write_GEO_VARIABLES_js(community, param):
 		print("df_disease:   " + df_disease.geoid)        
 		df_disease = df_disease.set_index(geoid)
 
-	
-	
+	job_path = param.get("job_path")
+	if os.path.exists(str(job_path)):
+		oDir = job_path
+	else:
+		# Create a new folder where GEO_CONFIG.js GEO_JSON.js VARIABLES.js will be saved
+		oDir = 'NAM_' + param['filename_suffix']
+
 	# write df_pivot to GEO_VARIABLES.js
-	filename_GEO_VARIABLES = "NAM_" + param['filename_suffix'] + "/data/GEO_VARIABLES_"+param['filename_suffix']+".js"
+	filename_GEO_VARIABLES = oDir + "/data/GEO_VARIABLES_"+param['filename_suffix']+".js"
 	ofile = open(filename_GEO_VARIABLES, 'w')
 	ofile.write('var GEO_VARIABLES =\n')
 	ofile.write('[\n')
@@ -1608,8 +1618,15 @@ def my_main_run(job_id=None, base_output_path=None):
 	}
 
 
-	param3['job_id'] = job_id
-	param3['base_output_path'] = base_output_path
+	if job_id is not None:
+		# for webservice -- Drew 07/22/2020
+		if base_output_path is None:
+			base_output_path = "./"
+		job_path = os.path.join(base_output_path, job_id)
+		if not os.path.exists(os.path.join(job_path, "data")):
+			os.makedirs(os.path.join(job_path, "data"))
+		param3["job_path"] = job_path
+
 	Clustering_viz(param3)
 	#Clustering_log()
 	
