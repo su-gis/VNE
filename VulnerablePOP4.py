@@ -69,8 +69,14 @@ def write_LOG(param):
 
 
 def write_INDEX_html(param):
-	#Create a new folder where GEO_CONFIG.js GEO_JSON.js VARIABLES.js will be saved
-	oDir = 'NAM_' + param['filename_suffix']
+
+	job_path = param.get("job_path")
+	if os.path.exists(str(job_path)):
+		oDir = job_path
+	else:
+		# Create a new folder where GEO_CONFIG.js GEO_JSON.js VARIABLES.js will be saved
+		oDir = 'NAM_' + param['filename_suffix']
+
 	path = Path(oDir + '/data')
 	path.mkdir(parents=True, exist_ok=True)
 	
@@ -224,8 +230,15 @@ def write_GEO_CONFIG_js(param):
 	contents = contents.replace('var Map_width  = "400px";', Map_width)
 	contents = contents.replace('var Map_height = "400px";', Map_height)
 
+	job_path = param.get("job_path")
+	if os.path.exists(str(job_path)):
+		oDir = job_path
+	else:
+		# Create a new folder where GEO_CONFIG.js GEO_JSON.js VARIABLES.js will be saved
+		oDir = 'NAM_' + param['filename_suffix']
+
 	#Write output including the replacement above
-	filename_GEO_CONFIG = "NAM_" + param['filename_suffix'] + "/data/GEO_CONFIG_"+param['filename_suffix']+".js"
+	filename_GEO_CONFIG = oDir + "/data/GEO_CONFIG_"+param['filename_suffix']+".js"
 	ofile = open(filename_GEO_CONFIG, 'w')
 	ofile.write(contents)
 	ofile.close()
@@ -282,9 +295,15 @@ def write_ALL_METROS_GEO_CONFIG_js(param):
 
 
 def write_GEO_JSON_js(community, param):
-	
+
+	job_path = param.get("job_path")
+	if os.path.exists(str(job_path)):
+		oDir = job_path
+	else:
+		# Create a new folder where GEO_CONFIG.js GEO_JSON.js VARIABLES.js will be saved
+		oDir = 'NAM_' + param['filename_suffix']
 	# open GEO_JSON.js write heading for geojson format
-	filename_GEO_JSON = "NAM_" + param['filename_suffix'] + "/data/GEO_JSON_"+param['filename_suffix']+".js"
+	filename_GEO_JSON = oDir + "/data/GEO_JSON_"+param['filename_suffix']+".js"
 	ofile = open(filename_GEO_JSON, 'w')
 	ofile.write('var GEO_JSON =\n')
 	ofile.write('{"type":"FeatureCollection", "features": [\n')
@@ -638,10 +657,15 @@ def write_GEO_VARIABLES_js(community, param):
 		print("df_disease:   " + df_disease.geoid)        
 		df_disease = df_disease.set_index(geoid)
 
-	
-	
+	job_path = param.get("job_path")
+	if os.path.exists(str(job_path)):
+		oDir = job_path
+	else:
+		# Create a new folder where GEO_CONFIG.js GEO_JSON.js VARIABLES.js will be saved
+		oDir = 'NAM_' + param['filename_suffix']
+
 	# write df_pivot to GEO_VARIABLES.js
-	filename_GEO_VARIABLES = "NAM_" + param['filename_suffix'] + "/data/GEO_VARIABLES_"+param['filename_suffix']+".js"
+	filename_GEO_VARIABLES = oDir + "/data/GEO_VARIABLES_"+param['filename_suffix']+".js"
 	ofile = open(filename_GEO_VARIABLES, 'w')
 	ofile.write('var GEO_VARIABLES =\n')
 	ofile.write('[\n')
@@ -1354,12 +1378,13 @@ def Clustering_log():
 	fname =urllib.parse.quote(filename_LOG)
 	url = 'file:' + os.path.join(local_dir, fname)
 	webbrowser.open(url)
-	
 
-if __name__ == '__main__':
+
+def vne_run(job_id=None, base_output_path=None):
 	started_datetime = datetime.now()
 	print('VulnerablePOP start at %s' % (started_datetime.strftime('%Y-%m-%d %H:%M:%S')))
-	
+	cwd_old = os.getcwd()
+	os.chdir(os.path.dirname(os.path.abspath(__file__)))
 	#sample = "downloads/LTDB_Std_All_Sample.zip"
 	#full = "downloads/LTDB_Std_All_fullcount.zip"
 	#store_ltdb(sample=sample, fullcount=full)
@@ -1593,7 +1618,16 @@ if __name__ == '__main__':
 		'Zscore_Means_of_Each_Cluster': True, 
 	}
 
-	
+
+	if job_id is not None:
+		# for webservice -- Drew 07/22/2020
+		if base_output_path is None:
+			base_output_path = "./"
+		job_path = os.path.join(base_output_path, job_id)
+		if not os.path.exists(os.path.join(job_path, "data")):
+			os.makedirs(os.path.join(job_path, "data"))
+		param3["job_path"] = job_path
+
 	Clustering_viz(param3)
 	#Clustering_log()
 	
@@ -1603,4 +1637,7 @@ if __name__ == '__main__':
 	hours, remainder = divmod(total_seconds,60*60)
 	minutes, seconds = divmod(remainder,60)	
 	print('VulnerablePOP ended at %s    Elapsed %02d:%02d:%02d' % (ended_datetime.strftime('%Y-%m-%d %H:%M:%S'), hours, minutes, seconds))
-	
+	os.chdir(cwd_old)
+
+if __name__ == '__main__':
+	vne_run()
