@@ -57,7 +57,7 @@ After the installation above is done run VNE in the geosnap environment.
 		'Distribution_INC1': True,                   #density chart: INC changes as the map extent changes 
 		'Zscore_Means_across_Clusters': True,
 		'Zscore_Means_of_Each_Cluster': True,
-		'Number_of_Barcharts_for_Subject_Clusters': 2,
+		'Number_of_Barcharts_for_Subject_Clusters': 3,
 
 - ##### New York City
 		'title': "Vulnerable Neighborhood to COVID-19, NYC",
@@ -97,7 +97,7 @@ After the installation above is done run VNE in the geosnap environment.
 		'Distribution_INC1': True,                   #density chart: INC changes as the map extent changes 					 
 		'Zscore_Means_across_Clusters': True,
 		'Zscore_Means_of_Each_Cluster': True,
-		'Number_of_Barcharts_for_Subject_Clusters': 2,
+		'Number_of_Barcharts_for_Subject_Clusters': 5,
 - ##### Phoenix
 		'title': "Vulnerable Neighborhood to COVID-19, Phoenix",
 		'subject': "COVID-19",
@@ -217,7 +217,7 @@ After the installation above is done run VNE in the geosnap environment.
 		'Distribution_INC1': True,                   #density chart: INC changes as the map extent changes 
 		'Zscore_Means_across_Clusters': True,
 		'Zscore_Means_of_Each_Cluster': True,
-		'Number_of_Barcharts_for_Subject_Clusters': 2,
+		'Number_of_Barcharts_for_Subject_Clusters': 3,
 - ##### Illinois
 		'title': "Vulnerable Neighborhood to COVID-19, Illinois",
 		'subject': "COVID-19",
@@ -256,7 +256,7 @@ After the installation above is done run VNE in the geosnap environment.
 		'Distribution_INC1': True,                   #density chart: INC changes as the map extent changes 
 		'Zscore_Means_across_Clusters': True,
 		'Zscore_Means_of_Each_Cluster': True,
-		'Number_of_Barcharts_for_Subject_Clusters': 2,
+		'Number_of_Barcharts_for_Subject_Clusters': 3,
 
 - #### US
 		'title': "Vulnerable Neighborhood to COVID-19, US",
