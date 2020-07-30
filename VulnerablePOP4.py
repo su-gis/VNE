@@ -1380,7 +1380,8 @@ def Clustering_log():
 	webbrowser.open(url)
 
 
-def vne_run(job_id=None, base_output_path=None):
+def vne_run(param):
+	print(param)
 	started_datetime = datetime.now()
 	print('VulnerablePOP start at %s' % (started_datetime.strftime('%Y-%m-%d %H:%M:%S')))
 	cwd_old = os.getcwd()
@@ -1389,246 +1390,20 @@ def vne_run(job_id=None, base_output_path=None):
 	#full = "downloads/LTDB_Std_All_fullcount.zip"
 	#store_ltdb(sample=sample, fullcount=full)
 	#store_census()
-	
-	param1 = {
-		'title': "Neighborhood Analysis: Kmeans, 1980~2010, 4 variables",
-		'filename_suffix': "All",
-		'allMetros': True,
-		'years': [1980, 1990, 2000, 2010],
-		'method': "ward_spatial",
-		'nClusters': 8,
-		'variables': [
-					  "p_nonhisp_white_persons", 
-					  "p_nonhisp_black_persons", 
-					  "p_hispanic_persons", 
-					  "p_native_persons", 
-					  "p_asian_persons",
-					 ],
-	}
-	
-	param2 = {
-		'title': "Neighborhood Analysis: kmeans, Chicago",
-		'filename_suffix': "Chicago_kmeans_4years_Sequence6_Cluster5_v2",				 # "Albertville"
-		#'filename_suffix': "Albertville",				 # "Albertville"
-		#'database': "ltdb",
-		'inputCSV': "Illinois_2010.csv",
-		#'state_fips': "17",
-		#'msa_fips': "16980",						 # "10700" LA:31080 SD:41740
-		#'msa_fips': "10700",						 # "10700"
-		#'county_fips': "06037",                         # LA county: 06037, LA Orange county: 06059,  Chicago:1701
-		'years': [2010],           # Available years: 1970, 1980, 1990, 2000 and 2010
-		'method': "kmeans",   # Aspatial Clustering: affinity_propagation, gaussian_mixture, hdbscan, kmeans, spectral, ward
-                                # Spatial Clustering: azp, max_p, skater, spenc, ward_spatial   
-		'nClusters': 6,                              # This option should be commented out for affinity_propagation and hdbscan
-		'variables': [
-            "p_nonhisp_white_persons",
-            "p_nonhisp_black_persons",
-            "p_hispanic_persons",
-            "p_asian_persons",
-            "p_foreign_born_pop",
-            "p_edu_college_greater",
-            "p_unemployment_rate",
-            #"p_employed_professional",
-            "p_employed_manufacturing",
-            "p_poverty_rate",
-            "p_vacant_housing_units",
-            "p_owner_occupied_units",
-            "p_housing_units_multiunit_structures",
-            "median_home_value",
-            "p_structures_30_old",
-            "p_household_recent_move",
-            "p_persons_under_18",
-            "p_persons_over_60",
-					 ],
-		#'Sequence': True,
-		#'seq_clusters': 5,
-		#'dist_type': 'tran',						 # hamming, arbitrary
-		'Sequence': {'seq_clusters': 2, 'dist_type': 'tran'},
-		#'Sequence': False,
-		# optional visualization below.
-		'Index_of_neighborhood_change': True,        #choropleth map: Maps representing index of neighborhood Change
-		'Maps_of_neighborhood': True,                #choropleth map: Maps representing clustering result		
-		'Distribution_INC1': True,                   #density chart: INC changes as the map extent changes 
-		#'Distribution_INC2_different_period': True,  #density chart: INC changes by different years
-		#'Distribution_INC2_different_cluster': True, #density chart: INC changes by different clusters
-		'Temporal_change_in_neighborhoods': True,    #stacked chart: Temporal Change in Neighborhoods over years		
-		'Parallel_Categories_Diagram_in_neighborhoods': True,
-		'Chord_Diagram_in_neighborhoods': True,
-		'Zscore_Means_across_Clusters': True,
-		'Zscore_Means_of_Each_Cluster': True, 
-	}
-	
-	param3 = {
-		'title': "Vulnerable Neighborhood to COVID-19, US",
-		'subject': "COVID-19",
-        'filename_suffix': "US_kmeans_C5", 
-		'inputCSV': "ACS_2018_5year__County_US_byCounty_normalized2.csv",   
-		'shapefile': "counties_mainland_US.shp", 		
-		'diseaseInputCSV': "COVID_us_counties.csv", 
-        #'rate1': 'Confirmed (%) = _count/_tested',		# Formula to compute rate1 in subjectCSV such as confirmed rate1. 	
-		'rate2': 'Death (%) = _deaths/_cases',			# Formula to compute rate2 in subjectCSV such as death rate2.        
-		'subjectNormalization': '(/10k pop) = all * 10000.0 / Population',  # demoninator, per number of pop. 
-		'years': [2018],        
-		'method': "kmeans",  # Aspatial Clustering: affinity_propagation, gaussian_mixture, hdbscan, kmeans, spectral, ward
-                             # Spatial Clustering: azp, max_p, skater, spenc, ward_spatial   
-		'nClusters': 5,      # This option should be commented out for affinity_propagation and hdbscan
-		'label': "variable",
-		'variables': [	
-            "Median monthly housing costs",
-            "% below poverty",				
-            "% unemployed",			
-            "% with 4year college degree",
-            "% manufacturing",
-            "% service industry",
-            "% structures more than 30 years old",
-            "% households moved <10 years ago",
-            "% multiunit structures",
-            "% owner occupied housing",
-            "% vacant housing",
-            "% > 60 years old",			
-            "% < 18 years old",
-            "% white",
-            "% Asian",
-            "% Hispanic",			
-            "% black",			
-            "% foreign born",
-					 ],	
-		'Distribution_INC1': True,                   #density chart: INC changes as the map extent changes 
-		'Zscore_Means_across_Clusters': True,
-		'Zscore_Means_of_Each_Cluster': True,
-		'Number_of_Barcharts_for_Subject_Clusters': 2,
-	}	
 
-	'''
-	param3 = {
-		'title': "Vulnerable Neighborhood to COVID-19",
-		'subject': "COVID-19",
-        'filename_suffix': "1_Miami_kmeans_C5",				
-		#'inputCSV': "ACS_2018_5year__zipcode_Cook_byZipcode_normalized.csv",
-	    #'inputCSV': "ACS_2018_5year__zipcode_NYC_byZipcode_normalized.csv",   		
-		'inputCSV': "ACS_2018_5year__zipcode_AZ_Maricopa_byZipcode_normalized.csv",   		
-		#'inputCSV': "ACS_2018_5year__zipcode_extended_Chicago_byZipcode_normalized.csv",
-		#'inputCSV': "ACS_2018_5year__zipcode_IL_byZipcode_normalized.csv",		
-		#'inputCSV': "ACS_2018_5year__County_US_byCounty_normalized2.csv",    
-		#'shapefile': "zipcode_Cook_County.shp",
-		#'shapefile': "zipcode_NYC.shp",		
-		'shapefile': "AZ_maricopa.shp",		
-		#'shapefile': "Chicago_extended.shp",
-		#'shapefile': "zipcode_IL.shp",			
-		#'shapefile': "counties_mainland_US.shp", 
-		#'diseaseInputCSV': "COVID_20200710_zipcode_Cook.csv",
-		#'diseaseInputCSV': "COVID_NYC_20200711_revised.csv",		
-		'diseaseInputCSV': "COVID_20200715_Arizona.csv",		
-		#'diseaseInputCSV': "COVID_20200710_zipcode_extended_Chicago.csv",		
-		#'diseaseInputCSV': "COVID_IL_20200711.csv",
-		#'diseaseInputCSV': "COVID_us_counties.csv",    		
-
-        'rate1': 'Confirmed (%) = _count/_tested',		# Formula to compute rate1 in subjectCSV such as confirmed rate1. 
-        #'rate1': 'Confirmed (%) = _cases/_tested',		# Formula to compute rate1 in subjectCSV such as confirmed rate1.		
-		#'rate2': 'Death (%) = _deaths/_cases',			# Formula to compute rate2 in subjectCSV such as death rate2.        
-		'subjectNormalization': '(/10k pop) = all * 10000.0 / Population',  # demoninator, per number of pop. 
-
-		#'countbyClusterCSV': "Zip_IL_C7_kmeans.csv",
-		'years': [2018],           # Available years: 1970, 1980, 1990, 2000 and 2010
-		'method': "kmeans",   # Aspatial Clustering: affinity_propagation, gaussian_mixture, hdbscan, kmeans, spectral, ward
-                                # Spatial Clustering: azp, max_p, skater, spenc, ward_spatial   
-		'nClusters': 5,                              # This option should be commented out for affinity_propagation and hdbscan
-		'label': "variable",
-		'variables': [
-		    #"Median household income",		
-            "Median monthly housing costs",
-            "% below poverty",				
-            "% unemployed",			
-            #"% health insurance",
-			#"% public transportation",
-            "% with 4year college degree",
-            "% manufacturing",
-            "% service industry",
-            "% structures more than 30 years old",
-            "% households moved <10 years ago",
-            "% multiunit structures",
-            "% owner occupied housing",
-            "% vacant housing",
-            "% > 60 years old",			
-            "% < 18 years old",
-            "% white",
-            "% Asian",
-            "% Hispanic",			
-            "% black",			
-            "% foreign born",
-			#"% Without health insurance",
-					 ],
-		'Index_of_neighborhood_change': True,        #choropleth map: Maps representing index of neighborhood Change
-		'Maps_of_neighborhood': True,                #choropleth map: Maps representing clustering result		
-		'Distribution_INC1': True,                   #density chart: INC changes as the map extent changes 
-		#'Distribution_INC2_different_period': True,  #density chart: INC changes by different years
-		#'Distribution_INC2_different_cluster': True, #density chart: INC changes by different clusters
-		#'Temporal_change_in_neighborhoods': True,    #stacked chart: Temporal Change in Neighborhoods over years
-		'Parallel_Categories_Diagram_in_neighborhoods': True,
-		'Chord_Diagram_in_neighborhoods': True,
-		'Zscore_Means_across_Clusters': True,
-		'Zscore_Means_of_Each_Cluster': True,
-		'Number_of_Barcharts_for_Subject_Clusters': 5,
-	}
-	'''
-	param = {
-		'title': "Neighborhood Analysis: Gaussian_Mixture Clustering, San Diego",
-		'filename_suffix': "SD_1_neighborhood_2", 				 # "Albertville"
-		#'filename_suffix': "Albertville",				 # "Albertville"
-		#'database': "ltdb",
-		#'state_fips': "17",
-		'msa_fips': "41740",						 # "10700" LA:31080 SD:41740
-		#'msa_fips': "10700",						 # "10700"
-		#'county_fips': "06037",                         # LA county: 06037, LA Orange county: 06059,  Chicago:1701
-		'years': [1980, 1990, 2000, 2010],           # Available years: 1970, 1980, 1990, 2000 and 2010
-		'method': "kmeans",   # Aspatial Clustering: affinity_propagation, gaussian_mixture, hdbscan, kmeans, spectral, ward
-                                # Spatial Clustering: azp, max_p, skater, spenc, ward_spatial   
-		'nClusters': 6,                              # This option should be commented out for affinity_propagation and hdbscan
-		'variables': [
-            "p_nonhisp_white_persons",
-            "p_nonhisp_black_persons",
-            "p_hispanic_persons",
-            "p_asian_persons",
-            "p_foreign_born_pop",
-            "p_edu_college_greater",
-            "p_unemployment_rate",
-            #"p_employed_professional",
-            "p_employed_manufacturing",
-            "p_poverty_rate",
-            "p_vacant_housing_units",
-            "p_owner_occupied_units",
-            "p_housing_units_multiunit_structures",
-            "median_home_value",
-            "p_structures_30_old",
-            "p_household_recent_move",
-            "p_persons_under_18",
-            "p_persons_over_60",
-					 ],
-						 # hamming, arbitrary
-		'Sequence': {'seq_clusters': 2, 'dist_type': 'tran'},
-		# optional visualization below.
-		'Index_of_neighborhood_change': True,        #choropleth map: Maps representing index of neighborhood Change
-		'Maps_of_neighborhood': True,                #choropleth map: Maps representing clustering result		
-		'Distribution_INC1': True,                   #density chart: INC changes as the map extent changes 
-		#'Distribution_INC2_different_cluster': True, #density chart: INC changes by different clusters
-		'Temporal_change_in_neighborhoods': True,    #stacked chart: Temporal Change in Neighborhoods over years		
-		'Parallel_Categories_Diagram_in_neighborhoods': True,
-		'Chord_Diagram_in_neighborhoods': True,
-		'Zscore_Means_across_Clusters': True,
-		'Zscore_Means_of_Each_Cluster': True, 
-	}
-
-
+	# for webservice -- Drew 07/28/2020
+	job_id = param.get("job_id")
+	base_output_path = param.get("base_output_path")
+	if base_output_path is None:
+		base_output_path = "./"
 	if job_id is not None:
-		# for webservice -- Drew 07/22/2020
-		if base_output_path is None:
-			base_output_path = "./"
+		base_output_path = os.path.abspath(base_output_path)
 		job_path = os.path.join(base_output_path, job_id)
 		if not os.path.exists(os.path.join(job_path, "data")):
 			os.makedirs(os.path.join(job_path, "data"))
-		param3["job_path"] = job_path
+		param["job_path"] = job_path
 
-	Clustering_viz(param3)
+	Clustering_viz(param)
 	#Clustering_log()
 	
 	ended_datetime = datetime.now()
@@ -1640,4 +1415,92 @@ def vne_run(job_id=None, base_output_path=None):
 	os.chdir(cwd_old)
 
 if __name__ == '__main__':
-	vne_run()
+
+	param_us = {
+		'title': "Vulnerable Neighborhood to COVID-19, US",
+		'subject': "COVID-19",
+		'filename_suffix': "US_kmeans_C5",
+		'inputCSV': "ACS_2018_5year__County_US_byCounty_normalized2.csv",
+		'shapefile': "counties_mainland_US.shp",
+		'diseaseInputCSV': "COVID_us_counties.csv",
+		# 'rate1': 'Confirmed (%) = _count/_tested',		# Formula to compute rate1 in subjectCSV such as confirmed rate1.
+		'rate2': 'Death (%) = _deaths/_cases',  # Formula to compute rate2 in subjectCSV such as death rate2.
+		'subjectNormalization': '(/10k pop) = all * 10000.0 / Population',  # demoninator, per number of pop.
+		'years': [2018],
+		'method': "kmeans",
+		# Aspatial Clustering: affinity_propagation, gaussian_mixture, hdbscan, kmeans, spectral, ward
+		# Spatial Clustering: azp, max_p, skater, spenc, ward_spatial
+		'nClusters': 5,  # This option should be commented out for affinity_propagation and hdbscan
+		'label': "variable",
+		'variables': [
+			"Median monthly housing costs",
+			"% below poverty",
+			"% unemployed",
+			"% with 4year college degree",
+			"% manufacturing",
+			"% service industry",
+			"% structures more than 30 years old",
+			"% households moved <10 years ago",
+			"% multiunit structures",
+			"% owner occupied housing",
+			"% vacant housing",
+			"% > 60 years old",
+			"% < 18 years old",
+			"% white",
+			"% Asian",
+			"% Hispanic",
+			"% black",
+			"% foreign born",
+		],
+		'Distribution_INC1': True,  # density chart: INC changes as the map extent changes
+		'Zscore_Means_across_Clusters': True,
+		'Zscore_Means_of_Each_Cluster': True,
+		'Number_of_Barcharts_for_Subject_Clusters': 2,
+	}
+
+	param_chicago = {
+		'title': "Vulnerable Neighborhood to COVID-19, Chicago",
+		'subject': "COVID-19",
+		'filename_suffix': "Chicago_kmeans_C5",
+		'inputCSV': "ACS_2018_5year__zipcode_Cook_byZipcode_normalized.csv",
+		'shapefile': "zipcode_Cook_County.shp",
+		'diseaseInputCSV': "COVID_20200710_zipcode_Cook.csv",
+		'rate1': 'Confirmed (%) = _count/_tested',		# Formula to compute rate1 in subjectCSV such as confirmed rate1. 
+		#'rate1': 'Confirmed (%) = _cases/_tested',		# Formula to compute rate1 in subjectCSV such as confirmed rate1.	
+		#'rate2': 'Death (%) = _deaths/_cases',			# Formula to compute rate2 in subjectCSV such as death rate2.        
+		'subjectNormalization': '(/10k pop) = all * 10000.0 / Population',  # demoninator, per number of pop. 
+		'years': [2018],        
+		'method': "kmeans",  # Aspatial Clustering: affinity_propagation, gaussian_mixture, hdbscan, kmeans, spectral, ward
+		# Spatial Clustering: azp, max_p, skater, spenc, ward_spatial   
+		'nClusters': 5,      # This option should be commented out for affinity_propagation and hdbscan
+		'label': "variable",
+		'variables': [
+			"Median monthly housing costs",
+			"% below poverty",
+			"% unemployed",
+			"% with 4year college degree",
+			"% manufacturing",
+			"% service industry",
+			"% structures more than 30 years old",
+			"% households moved <10 years ago",
+			"% multiunit structures",
+			"% owner occupied housing",
+			"% vacant housing",
+			"% > 60 years old",
+			"% < 18 years old",
+			"% white",
+			"% Asian",
+			"% Hispanic",
+			"% black",
+			"% foreign born",
+		],
+		'Distribution_INC1': True,                   #density chart: INC changes as the map extent changes 
+		'Zscore_Means_across_Clusters': True,
+		'Zscore_Means_of_Each_Cluster': True,
+		'Number_of_Barcharts_for_Subject_Clusters': 3,
+	}
+        
+
+	#vne_run(param=param_chicago)
+	
+	vne_run(param=param_us)
