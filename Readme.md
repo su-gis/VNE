@@ -262,7 +262,7 @@ After the installation above is done run VNE in the geosnap environment.
 		'title': "Vulnerable Neighborhood to COVID-19, US",
 		'subject': "COVID-19",
         'filename_suffix': "US_kmeans_C5", 
-		'inputCSV': "ACS_2018_5year__County_US_byCounty_normalized2.csv",   
+		'inputCSV': "ACS_2018_5year__County_US_byCounty_normalized.csv",   
 		'shapefile': "counties_mainland_US.shp", 		
 		'diseaseInputCSV': "COVID_us_counties.csv", 
         #'rate1': 'Confirmed (%) = _count/_tested',		# Formula to compute rate1 in subjectCSV such as confirmed rate1. 	
