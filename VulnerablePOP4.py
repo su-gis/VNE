@@ -1514,46 +1514,45 @@ if __name__ == '__main__':
     #store_census()
        
     param = {
-		'title': "Vulnerable Neighborhood to COVID-19, NYC",
-		'subject': "COVID-19",
-		'filename_suffix': "New_York_kmeans_C5",
-		'inputCSV': "ACS_2018_5year__zipcode_NYC_byZipcode_normalized.csv",
-		'shapefile': "zipcode_NYC.shp",
-		'diseaseInputCSV': "COVID_NYC_20200711_revised.csv",
-		'rate1': 'Confirmed rate = _count/_tested',		# Formula to compute rate1 in subjectCSV such as confirmed rate1. 
-		'rate2': 'Case fatality rate = _deaths/_count',			# Formula to compute rate2 in subjectCSV such as death rate2.        
-		'subjectNormalization': '(/10k pop) = all * 10000.0 / Population',  # demoninator, per number of pop. 
-        'subjectNormalizationCSV': "Decision_Normalization_NYC.csv",            # divisor instead of population from CSV file		
-		'years': [2018],        
-		'method': "kmeans",  # Aspatial Clustering: affinity_propagation, gaussian_mixture, hdbscan, kmeans, spectral, ward
-							# Spatial Clustering: azp, max_p, skater, spenc, ward_spatial   
-		'nClusters': 5,      # This option should be commented out for affinity_propagation and hdbscan
-		'label': "short_name",
-		'variables': [	
-			"Median monthly housing costs",
-			"% below poverty",				
-			"% unemployed",			
-			"% with 4year college degree",
-			"% manufacturing",
-			"% service industry",
-			"% structures more than 30 years old",
-			"% households moved <10 years ago",
-			"% multiunit structures",
-			"% owner occupied housing",
-			"% vacant housing",
-			"% > 60 years old",			
-			"% < 18 years old",
-			"% white",
-			"% Asian",
-			"% Hispanic",			
-			"% black",			
-			"% foreign born",
-					],
+        'title': "Vulnerable Neighborhood to COVID-19, Chicago",
+        'subject': "COVID-19",
+        'filename_suffix': "Chicago_extended_kmeans_C5",
+        'inputCSV': "ACS_2018_5year__zipcode_extended_Chicago_byZipcode_normalized.csv",
+        'shapefile': "Chicago_extended.shp",
+        'diseaseInputCSV': "COVID_IL_20200711.csv",
+        'rate1': 'Confirmed (%) = _count/_tested',		# Formula to compute rate1 in subjectCSV such as confirmed rate1. 
+        'subjectNormalization': '(/10k pop) = all * 10000.0 / Population',  # denominator, per number of pop. 		
+		'subjectNormalizationCSV': "Decision_Normalization_Chicago.csv",            # divisor instead of population from CSV file	
+        'years': [2018],        
+        'method': "kmeans",  # Aspatial Clustering: affinity_propagation, gaussian_mixture, hdbscan, kmeans, spectral, ward
+                             # Spatial Clustering: azp, max_p, skater, spenc, ward_spatial   
+        'nClusters': 5,     # This option should be commented out for affinity_propagation and hdbscan
+        'label': "short_name",
+        'variables': [	
+            "Median monthly housing costs",
+            "% below poverty",				
+            "% unemployed",			
+            "% with 4year college degree",
+            "% manufacturing",
+            "% service industry",
+            "% structures more than 30 years old",
+            "% households moved <10 years ago",
+            "% multiunit structures",
+            "% owner occupied housing",
+            "% vacant housing",
+            "% > 60 years old",			
+            "% < 18 years old",
+            "% white",
+            "% Asian",
+            "% Hispanic",			
+            "% black",			
+            "% foreign born",
+                    ],	
         'Distribution_INC1': True,                   #density chart: INC changes as the map extent changes 
         'Zscore_Means_across_Clusters': True,
         'Zscore_Means_of_Each_Cluster': True,
         'Number_of_Barcharts_for_Subject_Clusters': 1,
-        'Number_of_BoxPlots_for_Subject_Clusters': 0,	
+        'Number_of_BoxPlots_for_Subject_Clusters': 0,
     }
 
     Clustering_viz(param)
