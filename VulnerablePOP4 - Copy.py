@@ -69,17 +69,11 @@ def write_LOG(param):
 
 
 def write_INDEX_html(param):
-
-    job_path = param.get("job_path")
-    if os.path.exists(str(job_path)):
-        oDir = job_path
-    else:
-        #Create a new folder where GEO_CONFIG.js GEO_JSON.js VARIABLES.js will be saved
-        oDir = 'VNE_' + param['filename_suffix']
-    
+    #Create a new folder where GEO_CONFIG.js GEO_JSON.js VARIABLES.js will be saved
+    oDir = 'VNE_' + param['filename_suffix']
     path = Path(oDir + '/data')
     path.mkdir(parents=True, exist_ok=True)
-
+    
     contents = []
     #open Neighborhood_Analysis_Mapper.html (the excutable file for the visualization)
     ifile = open("template/Neighborhood_Analysis_Mapper.html", "r", encoding="utf-8")
@@ -176,7 +170,7 @@ def write_GEO_CONFIG_js(param):
     Map_height = "300px"
     if (NumOfMaps <= 6):
         Map_width = "300px"
-        Map_height = "300px"
+        Map_height = "300px"	
     if (NumOfMaps <= 5):
         Map_width = "350px"
         Map_height = "350px"
@@ -189,9 +183,9 @@ def write_GEO_CONFIG_js(param):
     if (NumOfMaps <= 2):
         Map_width = "450px"
         Map_height = "450px"
-    if (NumOfMaps ==1):
+    if (NumOfMaps ==	1):
         Map_width = "800px"
-        Map_height = "800px"
+        Map_height = "800px"	
     # replace newly computed "NumOfMaps", "InitialLayers", "Map_width", "Map_height" in CONFIG.js. See the example replacement below
     '''
         'years': [1980, 1990, 2000, 2010]            ->    'var InitialLayers = ["INC", "1980", "1990", "2000", "2010"];'
@@ -233,16 +227,9 @@ def write_GEO_CONFIG_js(param):
     contents = contents.replace("var BoxPlot_of_Subject_Clusters = 0;", Number_of_BoxPlots_for_Subject_Clusters)
     contents = contents.replace('var Map_width  = "400px";', Map_width)
     contents = contents.replace('var Map_height = "400px";', Map_height)
-
-    job_path = param.get("job_path")
-    if os.path.exists(str(job_path)):
-        oDir = job_path
-    else:
-        # Create a new folder where GEO_CONFIG.js GEO_JSON.js VARIABLES.js will be saved
-        oDir = 'VNE_' + param['filename_suffix']
- 
+    
     #Write output including the replacement above
-    filename_GEO_CONFIG = oDir + "/data/GEO_CONFIG_"+param['filename_suffix']+".js"
+    filename_GEO_CONFIG = "VNE_" + param['filename_suffix'] + "/data/GEO_CONFIG_"+param['filename_suffix']+".js"
     ofile = open(filename_GEO_CONFIG, 'w')
     ofile.write(contents)
     ofile.close()
@@ -299,17 +286,9 @@ def write_ALL_METROS_GEO_CONFIG_js(param):
 
 
 def write_GEO_JSON_js(community, param):
- 
-    job_path = param.get("job_path")
-    if os.path.exists(str(job_path)):
-        oDir = job_path
-    else:
-        # Create a new folder where GEO_CONFIG.js GEO_JSON.js VARIABLES.js will be saved
-        oDir = 'VNE_' + param['filename_suffix']
-
+    
     # open GEO_JSON.js write heading for geojson format
-    #filename_GEO_JSON = "VNE_" + param['filename_suffix'] + "/data/GEO_JSON_"+param['filename_suffix']+".js"
-    filename_GEO_JSON = oDir + "/data/GEO_JSON_"+param['filename_suffix']+".js"    
+    filename_GEO_JSON = "VNE_" + param['filename_suffix'] + "/data/GEO_JSON_"+param['filename_suffix']+".js"
     ofile = open(filename_GEO_JSON, 'w')
     ofile.write('var GEO_JSON =\n')
     ofile.write('{"type":"FeatureCollection", "features": [\n')
@@ -472,7 +451,7 @@ def write_GEO_VARIABLES_js(community, param):
     if ('subjectNormalization' in param and 'subjectNormalizationCSV' in param):
         df_normalization = pd.read_csv(param['subjectNormalizationCSV'])
         #print(df_normalization)
-
+	
         denominator = df_normalization.columns[0]
         divisor = df_normalization.columns[1]
         
@@ -506,9 +485,9 @@ def write_GEO_VARIABLES_js(community, param):
     seqClusters = 5
     distType    = 'tran'
     #if ('Sequence' in param and type(param['Sequence']) is dict and 'seq_clusters' in param['Sequence']): 
-    #seqClusters = param['Sequence']['seq_clusters']
+    #	seqClusters = param['Sequence']['seq_clusters']
     #if ('Sequence' in param and type(param['Sequence']) is dict and 'dist_type' in param['Sequence']): 
-    #distType = param['Sequence']['dist_type']
+    #	distType = param['Sequence']['dist_type']
     
     if ('Sequence' in param and type(param['Sequence']) is dict):
         if ('seq_clusters' in param['Sequence']): seqClusters = param['Sequence']['seq_clusters']
@@ -682,8 +661,16 @@ def write_GEO_VARIABLES_js(community, param):
             row = c
             clusterChange[p] = row
         #print(clusterChange)
-
-
+    
+    
+    #for c in range(nGeneratedClusters):
+    #	print("Cluster", c, zScore[c])
+    #for v, variable in enumerate(variables):
+    #	scores = []
+    #	for c in range(nGeneratedClusters): 
+    #		scores.append(zScore[c][v])
+    #	print(variable, scores)
+        
     df_disease = None
     if ('diseaseInputCSV' in param):
         df_disease = pd.read_csv(param['diseaseInputCSV'], dtype={'geoid':str})
@@ -1037,7 +1024,21 @@ def write_ALL_METROS_VARIABLES_js(metros, param):
     if ('Sequence' in param and type(param['Sequence']) is dict):
         if ('seq_clusters' in param['Sequence']): seqClusters = param['Sequence']['seq_clusters']
         if ('dist_type' in param['Sequence']): distType = param['Sequence']['dist_type']
-
+    
+    #msas = data_store.msa_definitions
+    #for column in msas.columns:
+    #	print(column)
+    #print(msas)
+    
+    #community = Community.from_ltdb(years=years, msa_fips="10220")
+    #community = Community.from_ltdb(years=years)
+    #community.gdf = community.gdf[['geoid', 'year']]
+    #print(community.gdf)
+    #print(variables)
+    #print(variables.append(['geoid', 'year']))
+    #print(variables)
+    #return
+    
     # Initial call to print 0% progress
     printProgressBar(0, len(metros.index), prefix = 'Progress:', suffix = 'Complete', length = 50)
     
@@ -1503,40 +1504,6 @@ def Clustering_log():
     webbrowser.open(url)
 
 
-def vne_run(param):
-	print(param)
-	started_datetime = datetime.now()
-	print('VulnerablePOP start at %s' % (started_datetime.strftime('%Y-%m-%d %H:%M:%S')))
-	cwd_old = os.getcwd()
-	os.chdir(os.path.dirname(os.path.abspath(__file__)))
-	#sample = "downloads/LTDB_Std_All_Sample.zip"
-	#full = "downloads/LTDB_Std_All_fullcount.zip"
-	#store_ltdb(sample=sample, fullcount=full)
-	#store_census()
-
-	# for webservice -- Drew 07/28/2020
-	job_id = param.get("job_id")
-	base_output_path = param.get("base_output_path")
-	if base_output_path is None:
-		base_output_path = "./"
-	if job_id is not None:
-		base_output_path = os.path.abspath(base_output_path)
-		job_path = os.path.join(base_output_path, job_id)
-		if not os.path.exists(os.path.join(job_path, "data")):
-			os.makedirs(os.path.join(job_path, "data"))
-		param["job_path"] = job_path
-
-	Clustering_viz(param)
-	#Clustering_log()
-	
-	ended_datetime = datetime.now()
-	elapsed = ended_datetime - started_datetime
-	total_seconds = int(elapsed.total_seconds())
-	hours, remainder = divmod(total_seconds,60*60)
-	minutes, seconds = divmod(remainder,60)	
-	print('VulnerablePOP ended at %s    Elapsed %02d:%02d:%02d' % (ended_datetime.strftime('%Y-%m-%d %H:%M:%S'), hours, minutes, seconds))
-	os.chdir(cwd_old)
-
 if __name__ == '__main__':
     started_datetime = datetime.now()
     print('VulnerablePOP start at %s' % (started_datetime.strftime('%Y-%m-%d %H:%M:%S')))
@@ -1545,68 +1512,26 @@ if __name__ == '__main__':
     #full = "downloads/LTDB_Std_All_fullcount.zip"
     #store_ltdb(sample=sample, fullcount=full)
     #store_census()
-    param_NYC = {
-    'title': "Vulnerable Neighborhood to COVID-19, NYC",
-    'subject': "COVID-19",
-    'filename_suffix': "New_York_kmeans_C5",
-    'inputCSV': "ACS_2018_5year__zipcode_NYC_byZipcode_normalized.csv",
-    'shapefile': "zipcode_NYC.shp",
-    'diseaseInputCSV': "COVID_NYC_20200711_revised.csv",
-    'rate1': 'Confirmed rate = _count/_tested',		# Formula to compute rate1 in subjectCSV such as confirmed rate1. 
-    'rate2': 'Case fatality rate = _deaths/_count',			# Formula to compute rate2 in subjectCSV such as death rate2.        
-    'subjectNormalization': '(/10k pop) = all * 10000.0 / Population',  # demoninator, per number of pop. 
-    'subjectNormalizationCSV': "Decision_Normalization_NYC.csv",            # divisor instead of population from CSV file		
-    'years': [2018],        
-    'method': "kmeans",  # Aspatial Clustering: affinity_propagation, gaussian_mixture, hdbscan, kmeans, spectral, ward
-                          # Spatial Clustering: azp, max_p, skater, spenc, ward_spatial   
-    'nClusters': 5,      # This option should be commented out for affinity_propagation and hdbscan
-    'label': "short_name",
-    'variables': [	
-        "Median monthly housing costs",
-        "% below poverty",                
-        "% unemployed",            
-        "% with 4year college degree",
-        "% manufacturing",
-        "% service industry",
-        "% structures more than 30 years old",
-        "% households moved <10 years ago",
-        "% multiunit structures",
-        "% owner occupied housing",
-        "% vacant housing",
-        "% > 60 years old",            
-        "% < 18 years old",
-        "% white",
-        "% Asian",
-        "% Hispanic",            
-        "% black",            
-        "% foreign born",
-                ],
-    'Distribution_INC1': True,                   #density chart: INC changes as the map extent changes 
-    'Zscore_Means_across_Clusters': True,
-    'Zscore_Means_of_Each_Cluster': True,
-    'Number_of_Barcharts_for_Subject_Clusters': 1,
-    'Number_of_BoxPlots_for_Subject_Clusters': 0,
-    }
-
-    param_extended_Chicago = {
+       
+    param = {
         'title': "Vulnerable Neighborhood to COVID-19, Chicago",
         'subject': "COVID-19",
         'filename_suffix': "Chicago_extended_kmeans_C5",
         'inputCSV': "ACS_2018_5year__zipcode_extended_Chicago_byZipcode_normalized.csv",
         'shapefile': "Chicago_extended.shp",
         'diseaseInputCSV': "COVID_IL_20200711.csv",
-        'rate1': 'Confirmed (%) = _count/_tested',        # Formula to compute rate1 in subjectCSV such as confirmed rate1. 
-        'subjectNormalization': '(/10k pop) = all * 10000.0 / Population',  # denominator, per number of pop.         
-        'subjectNormalizationCSV': "Decision_Normalization_Chicago.csv",            # divisor instead of population from CSV file    
+        'rate1': 'Confirmed (%) = _count/_tested',		# Formula to compute rate1 in subjectCSV such as confirmed rate1. 
+        'subjectNormalization': '(/10k pop) = all * 10000.0 / Population',  # denominator, per number of pop. 		
+		'subjectNormalizationCSV': "Decision_Normalization_Chicago.csv",            # divisor instead of population from CSV file	
         'years': [2018],        
         'method': "kmeans",  # Aspatial Clustering: affinity_propagation, gaussian_mixture, hdbscan, kmeans, spectral, ward
                              # Spatial Clustering: azp, max_p, skater, spenc, ward_spatial   
         'nClusters': 5,     # This option should be commented out for affinity_propagation and hdbscan
         'label': "short_name",
-        'variables': [    
+        'variables': [	
             "Median monthly housing costs",
-            "% below poverty",                
-            "% unemployed",            
+            "% below poverty",				
+            "% unemployed",			
             "% with 4year college degree",
             "% manufacturing",
             "% service industry",
@@ -1615,14 +1540,14 @@ if __name__ == '__main__':
             "% multiunit structures",
             "% owner occupied housing",
             "% vacant housing",
-            "% > 60 years old",            
+            "% > 60 years old",			
             "% < 18 years old",
             "% white",
             "% Asian",
-            "% Hispanic",            
-            "% black",            
+            "% Hispanic",			
+            "% black",			
             "% foreign born",
-                    ],    
+                    ],	
         'Distribution_INC1': True,                   #density chart: INC changes as the map extent changes 
         'Zscore_Means_across_Clusters': True,
         'Zscore_Means_of_Each_Cluster': True,
@@ -1630,7 +1555,7 @@ if __name__ == '__main__':
         'Number_of_BoxPlots_for_Subject_Clusters': 0,
     }
 
-    vne_run(param=param_NYC)
+    Clustering_viz(param)
 
     ended_datetime = datetime.now()
     elapsed = ended_datetime - started_datetime
