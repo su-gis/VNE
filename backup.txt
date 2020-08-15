@@ -691,17 +691,10 @@ def write_GEO_VARIABLES_js(community, param):
         #print("df_disease:   " + df_disease.geoid)        
         df_disease = df_disease.set_index(geoid)
     
-    job_path = param.get("job_path")
-    if os.path.exists(str(job_path)):
-        oDir = job_path
-    else:
-        # Create a new folder where GEO_CONFIG.js GEO_JSON.js VARIABLES.js will be saved
-        oDir = 'VNE_' + param['filename_suffix']
+    
     
     # write df_pivot to GEO_VARIABLES.js
-    #filename_GEO_VARIABLES = "VNE_" + param['filename_suffix'] + "/data/GEO_VARIABLES_"+param['filename_suffix']+".js"
-    filename_GEO_VARIABLES = oDir + "/data/GEO_VARIABLES_"+param['filename_suffix']+".js"
-
+    filename_GEO_VARIABLES = "VNE_" + param['filename_suffix'] + "/data/GEO_VARIABLES_"+param['filename_suffix']+".js"
     geoVariablesList = []
     ofile = open(filename_GEO_VARIABLES, 'w')
     ofile.write('var GEO_VARIABLES =\n')
@@ -1552,51 +1545,6 @@ if __name__ == '__main__':
     #full = "downloads/LTDB_Std_All_fullcount.zip"
     #store_ltdb(sample=sample, fullcount=full)
     #store_census()
-
-
-    param_Chicago = {
-    'title': "Vulnerable Neighborhood to COVID-19, NYC",
-    'subject': "COVID-19",
-    'filename_suffix': "New_York_kmeans_C5",
-    'inputCSV': "ACS_2018_5year__zipcode_NYC_byZipcode_normalized.csv",
-    'shapefile': "zipcode_NYC.shp",
-    'diseaseInputCSV': "COVID_NYC_20200711_revised.csv",
-    'rate1': 'Confirmed rate = _count/_tested',		# Formula to compute rate1 in subjectCSV such as confirmed rate1. 
-    'rate2': 'Case fatality rate = _deaths/_count',			# Formula to compute rate2 in subjectCSV such as death rate2.        
-    'subjectNormalization': '(/10k pop) = all * 10000.0 / Population',  # demoninator, per number of pop. 
-    'subjectNormalizationCSV': "Decision_Normalization_NYC.csv",            # divisor instead of population from CSV file		
-    'years': [2018],        
-    'method': "kmeans",  # Aspatial Clustering: affinity_propagation, gaussian_mixture, hdbscan, kmeans, spectral, ward
-                          # Spatial Clustering: azp, max_p, skater, spenc, ward_spatial   
-    'nClusters': 5,      # This option should be commented out for affinity_propagation and hdbscan
-    'label': "short_name",
-    'variables': [	
-        "Median monthly housing costs",
-        "% below poverty",                
-        "% unemployed",            
-        "% with 4year college degree",
-        "% manufacturing",
-        "% service industry",
-        "% structures more than 30 years old",
-        "% households moved <10 years ago",
-        "% multiunit structures",
-        "% owner occupied housing",
-        "% vacant housing",
-        "% > 60 years old",            
-        "% < 18 years old",
-        "% white",
-        "% Asian",
-        "% Hispanic",            
-        "% black",            
-        "% foreign born",
-                ],
-    'Distribution_INC1': True,                   #density chart: INC changes as the map extent changes 
-    'Zscore_Means_across_Clusters': True,
-    'Zscore_Means_of_Each_Cluster': True,
-    'Number_of_Barcharts_for_Subject_Clusters': 1,
-    'Number_of_BoxPlots_for_Subject_Clusters': 0,
-    }
-
     param_NYC = {
     'title': "Vulnerable Neighborhood to COVID-19, NYC",
     'subject': "COVID-19",
