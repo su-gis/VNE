@@ -1847,7 +1847,7 @@ if __name__ == '__main__':
         'Number_of_BoxPlots_for_Subject_Clusters': 0,
     }
     #param_NYC, param_Chicago, param_Phoenix, param_Miami, param_extended_Chicago, param_Illinois, param_US, 
-    vne_run(param=param_US)
+    vne_run(param=param_NYC)
 
     ended_datetime = datetime.now()
     elapsed = ended_datetime - started_datetime
