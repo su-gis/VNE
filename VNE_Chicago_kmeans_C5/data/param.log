@@ -1,4 +1,4 @@
-2020-08-14 16:50:18
+2020-08-16 23:08:55
   {'Distribution_INC1': True,
    'Number_of_Barcharts_for_Subject_Clusters': 1,
    'Number_of_BoxPlots_for_Subject_Clusters': 0,
@@ -7,7 +7,7 @@
    'diseaseInputCSV': 'COVID_IL_20200711.csv',
    'filename_suffix': 'Chicago_kmeans_C5',
    'inputCSV': 'ACS_2018_5year__zipcode_Cook_byZipcode_normalized.csv',
-   'label': 'short_name',
+   'label': 'variable',
    'method': 'kmeans',
    'nClusters': 5,
    'rate1': 'Confirmed (%) = _count/_tested',

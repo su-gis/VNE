@@ -1,7 +1,8 @@
 // Define the number of maps and some configuration parameters that you want to visualize.
 
 var SubjectName = "COVID-19";
-//var InitialLayers = [" total_count (/10k pop)", "2018"];
+var InitialLayers = [" total_count (/10k pop)", "2018"];
+var InitialCharts = [" total_count (/10k pop)"];
 //var InitialCharts = [" race_White_count (/10k pop)", " race_Asian_count (/10k pop)", " race_Hispanic_count (/10k pop)", " race_Black_count (/10k pop)"];
 //var ClusterLabels = {"C0": "C0 White Rich Owner", "C1": "C1 White Hispanic Aging Suburban", "C2": "C2 Asian Elite Renter", "C3": "C3 Hispanic Laborer", "C4": "C4 Black Poor"};
 var ClusterLabels = {}
@@ -27,8 +28,8 @@ var BoxPlot_of_Subject_Clusters = 0;                        //Number of subject 
 
 var Num_Of_Decimal_Places = 2;                             // default = 2
 
-var Map_width  = "550px";                                  // min 350px
-var Map_height = "550px";                                  // min 300px
+var Map_width  = "500px";                                  // min 350px
+var Map_height = "400px";                                  // min 300px
 
 
 /////////////////////////////////////////////////////////////////

@@ -1,4 +1,4 @@
-2020-08-14 16:48:16
+2020-08-16 23:17:00
   {'Distribution_INC1': True,
    'Number_of_Barcharts_for_Subject_Clusters': 1,
    'Number_of_BoxPlots_for_Subject_Clusters': 0,
@@ -14,7 +14,7 @@
    'shapefile': 'zipcode_IL.shp',
    'subject': 'COVID-19',
    'subjectNormalization': '(/10k pop) = all * 10000.0 / Population',
-   'subjectNormalizationCSV': 'Decision_Normalization_Chicago.csv',
+   'subjectNormalizationCSV': 'Decision_Normalization.csv',
    'title': 'Vulnerable Neighborhood to COVID-19, Illinois',
    'variables': ['Median monthly housing costs',
                  '% below poverty',

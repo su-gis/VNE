@@ -28,7 +28,7 @@ import csv
 
 
 # Print iterations progress
-def printProgressBar (iteration, total, prefix = '', suffix = '', decimals = 1, length = 100, fill = 'â–ˆ', printEnd = "\r"):
+def printProgressBar (iteration, total, prefix = '', suffix = '', decimals = 1, length = 100, fill = '█', printEnd = "\r"):
     """
     Call in a loop to create terminal progress bar
     @params:
@@ -649,6 +649,7 @@ def write_GEO_VARIABLES_js(community, param):
         if (p != -1): position_wAHb.append(p)
     #print("position_wAHb:", position_wAHb)
     zScore_wAHb = None
+    clusterChange = None
     if (len(position_wAHb) == len(variables_wAHb)):        # if all 4 variables are found in the variables
         zScore_wAHb = [[None for v in range(len(variables_wAHb))] for c in range(nGeneratedClusters)]
         #print(zScore_wAHb)
@@ -681,7 +682,7 @@ def write_GEO_VARIABLES_js(community, param):
             row = clusterChange[p]
             row = c
             clusterChange[p] = row
-        #print(clusterChange)
+        print("clusterChange:", clusterChange)
 
 
     df_disease = None
@@ -691,17 +692,10 @@ def write_GEO_VARIABLES_js(community, param):
         #print("df_disease:   " + df_disease.geoid)        
         df_disease = df_disease.set_index(geoid)
     
-    job_path = param.get("job_path")
-    if os.path.exists(str(job_path)):
-        oDir = job_path
-    else:
-        # Create a new folder where GEO_CONFIG.js GEO_JSON.js VARIABLES.js will be saved
-        oDir = 'VNE_' + param['filename_suffix']
+    
     
     # write df_pivot to GEO_VARIABLES.js
-    #filename_GEO_VARIABLES = "VNE_" + param['filename_suffix'] + "/data/GEO_VARIABLES_"+param['filename_suffix']+".js"
-    filename_GEO_VARIABLES = oDir + "/data/GEO_VARIABLES_"+param['filename_suffix']+".js"
-
+    filename_GEO_VARIABLES = "VNE_" + param['filename_suffix'] + "/data/GEO_VARIABLES_"+param['filename_suffix']+".js"
     geoVariablesList = []
     ofile = open(filename_GEO_VARIABLES, 'w')
     ofile.write('var GEO_VARIABLES =\n')
@@ -800,12 +794,13 @@ def write_GEO_VARIABLES_js(community, param):
     #print(df_geoVariables)
     #print(df_geoVariables[years])
     # convert values of df_geoVariables[years] using clusterChange dictionary
-    for year in years:
-        changedClusters = []
-        for l, row in df_geoVariables.iterrows():
-            changedClusters.append(clusterChange[row[year]])
-        df_geoVariables[year] = changedClusters
-    #print(df_geoVariables)
+    if (zScore_wAHb is not None):
+        for year in years:
+            changedClusters = []
+            for l, row in df_geoVariables.iterrows():
+                changedClusters.append(clusterChange[row[year]])
+            df_geoVariables[year] = changedClusters
+        #print(df_geoVariables)
     filename_GEO_VARIABLES_CSV = "VNE_" + param['filename_suffix'] + "/data/CSV_VARIABLES_"+param['filename_suffix']+".csv"
     df_geoVariables.to_csv(filename_GEO_VARIABLES_CSV, index=False)
     
@@ -835,12 +830,13 @@ def write_GEO_VARIABLES_js(community, param):
     #print(geoZscoresList)
     df_geoZscores = pd.DataFrame(geoZscoresList[1:], columns=geoZscoresList[0])
     #print(df_geoZscores)
-    changedClusters = []
-    for l, row in df_geoZscores.iterrows():
-        changedClusters.append("C"+str(clusterChange[int(row['Cluster'][1:])]))
-    df_geoZscores['Cluster'] = changedClusters
-    #print(df_geoZscores)
-    df_geoZscores = df_geoZscores.sort_values(df_geoZscores.columns[0])
+    if (zScore_wAHb is not None):
+        changedClusters = []
+        for l, row in df_geoZscores.iterrows():
+            changedClusters.append("C"+str(clusterChange[int(row['Cluster'][1:])]))
+        df_geoZscores['Cluster'] = changedClusters
+        #print(df_geoZscores)
+        df_geoZscores = df_geoZscores.sort_values(df_geoZscores.columns[0])
     #print(df_geoZscores)
     filename_GEO_ZSCORES_CSV = "VNE_" + param['filename_suffix'] + "/data/CSV_ZSCORES_"+param['filename_suffix']+".csv"
     df_geoZscores.to_csv(filename_GEO_ZSCORES_CSV, index=False)
@@ -1007,15 +1003,16 @@ def write_GEO_VARIABLES_js(community, param):
             #print(geoClusterList)
             df_geoCluster = pd.DataFrame(geoClusterList[1:], columns=geoClusterList[0])
             #print(df_geoCluster)
-            changedClusters = []
-            for column in df_geoCluster.columns:
-                if (isinstance(column, str)): column = "C" + str(clusterChange[int(column[1:])])
-                else: column = str(column)
-                changedClusters.append(column)
-            #print(changedClusters)
-            df_geoCluster.columns = changedClusters
-            df_geoCluster = df_geoCluster.reindex(sorted(df_geoCluster.columns), axis=1)
-            #print(df_geoCluster)
+            if (zScore_wAHb is not None):
+                changedClusters = []
+                for column in df_geoCluster.columns:
+                    if (isinstance(column, str)): column = "C" + str(clusterChange[int(column[1:])])
+                    else: column = str(column)
+                    changedClusters.append(column)
+                #print(changedClusters)
+                df_geoCluster.columns = changedClusters
+                df_geoCluster = df_geoCluster.reindex(sorted(df_geoCluster.columns), axis=1)
+                #print(df_geoCluster)
             filename_GEO_ZSCORES_CSV = "VNE_" + param['filename_suffix'] + "/data/CSV_CLUSTER_"+param['filename_suffix']+"_"+str(year)+".csv"
             df_geoCluster.to_csv(filename_GEO_ZSCORES_CSV, index=False)
         ofile.write('}\n')
@@ -1553,50 +1550,6 @@ if __name__ == '__main__':
     #store_ltdb(sample=sample, fullcount=full)
     #store_census()
 
-
-    param_Chicago = {
-    'title': "Vulnerable Neighborhood to COVID-19, NYC",
-    'subject': "COVID-19",
-    'filename_suffix': "New_York_kmeans_C5",
-    'inputCSV': "ACS_2018_5year__zipcode_NYC_byZipcode_normalized.csv",
-    'shapefile': "zipcode_NYC.shp",
-    'diseaseInputCSV': "COVID_NYC_20200711_revised.csv",
-    'rate1': 'Confirmed rate = _count/_tested',		# Formula to compute rate1 in subjectCSV such as confirmed rate1. 
-    'rate2': 'Case fatality rate = _deaths/_count',			# Formula to compute rate2 in subjectCSV such as death rate2.        
-    'subjectNormalization': '(/10k pop) = all * 10000.0 / Population',  # demoninator, per number of pop. 
-    'subjectNormalizationCSV': "Decision_Normalization_NYC.csv",            # divisor instead of population from CSV file		
-    'years': [2018],        
-    'method': "kmeans",  # Aspatial Clustering: affinity_propagation, gaussian_mixture, hdbscan, kmeans, spectral, ward
-                          # Spatial Clustering: azp, max_p, skater, spenc, ward_spatial   
-    'nClusters': 5,      # This option should be commented out for affinity_propagation and hdbscan
-    'label': "short_name",
-    'variables': [	
-        "Median monthly housing costs",
-        "% below poverty",                
-        "% unemployed",            
-        "% with 4year college degree",
-        "% manufacturing",
-        "% service industry",
-        "% structures more than 30 years old",
-        "% households moved <10 years ago",
-        "% multiunit structures",
-        "% owner occupied housing",
-        "% vacant housing",
-        "% > 60 years old",            
-        "% < 18 years old",
-        "% white",
-        "% Asian",
-        "% Hispanic",            
-        "% black",            
-        "% foreign born",
-                ],
-    'Distribution_INC1': True,                   #density chart: INC changes as the map extent changes 
-    'Zscore_Means_across_Clusters': True,
-    'Zscore_Means_of_Each_Cluster': True,
-    'Number_of_Barcharts_for_Subject_Clusters': 1,
-    'Number_of_BoxPlots_for_Subject_Clusters': 0,
-    }
-
     param_NYC = {
     'title': "Vulnerable Neighborhood to COVID-19, NYC",
     'subject': "COVID-19",
@@ -1640,8 +1593,136 @@ if __name__ == '__main__':
     'Number_of_BoxPlots_for_Subject_Clusters': 0,
     }
 
-    param_extended_Chicago = {
+    param_Chicago = {
         'title': "Vulnerable Neighborhood to COVID-19, Chicago",
+        'subject': "COVID-19",
+        'filename_suffix': "Chicago_kmeans_C5",
+        'inputCSV': "ACS_2018_5year__zipcode_Cook_byZipcode_normalized.csv",
+        'shapefile': "zipcode_Cook_County.shp",
+        'diseaseInputCSV': "COVID_IL_20200711.csv",
+        'rate1': 'Confirmed (%) = _count/_tested',		# Formula to compute rate1 in subjectCSV such as confirmed rate1. 
+        #'rate1': 'Confirmed (%) = _cases/_tested',		# Formula to compute rate1 in subjectCSV such as confirmed rate1.		
+        #'rate2': 'Death (%) = _deaths/_cases',			# Formula to compute rate2 in subjectCSV such as death rate2.        
+        'subjectNormalization': '(/10k pop) = all * 10000.0 / Population',  # denominator, per number of pop.
+        'subjectNormalizationCSV': "Decision_Normalization_Chicago.csv",            # divisor instead of population from CSV file
+        'years': [2018],        
+        'method': "kmeans",  # Aspatial Clustering: affinity_propagation, gaussian_mixture, hdbscan, kmeans, spectral, ward
+                             # Spatial Clustering: azp, max_p, skater, spenc, ward_spatial   
+        'nClusters': 5,     # This option should be commented out for affinity_propagation and hdbscan
+        'label': "variable",
+        'variables': [	
+            "Median monthly housing costs",
+            "% below poverty",				
+            "% unemployed",			
+            "% with 4year college degree",
+            "% manufacturing",
+            "% service industry",
+            "% structures more than 30 years old",
+            "% households moved <10 years ago",
+            "% multiunit structures",
+            "% owner occupied housing",
+            "% vacant housing",
+            "% > 60 years old",			
+            "% < 18 years old",
+            "% white",
+            "% Asian",
+            "% Hispanic",			
+            "% black",			
+            "% foreign born",
+                    ],	
+        'Distribution_INC1': True,                   #density chart: INC changes as the map extent changes 
+        'Zscore_Means_across_Clusters': True,
+        'Zscore_Means_of_Each_Cluster': True,
+        'Number_of_Barcharts_for_Subject_Clusters': 1,
+        'Number_of_BoxPlots_for_Subject_Clusters': 0,
+    }
+
+    param_Phoenix = {
+        'title': "Vulnerable Neighborhood to COVID-19, Phoenix",
+        'subject': "COVID-19",
+        'filename_suffix': "Phoenix_kmeans_C5",
+        'inputCSV': "ACS_2018_5year__zipcode_AZ_Maricopa_byZipcode_normalized.csv",
+        'shapefile': "AZ_maricopa.shp",	
+        'diseaseInputCSV': "COVID_20200715_Arizona.csv",
+        'rate1': 'Confirmed (%) = _count/_tested',		# Formula to compute rate1 in subjectCSV such as confirmed rate1. 
+        'subjectNormalization': '(/10k pop) = all * 10000.0 / Population',  # denominator, per number of pop. 		
+        'subjectNormalizationCSV': "Decision_Normalization.csv",            # divisor instead of population from CSV file	  
+        'years': [2018],        
+        'method': "kmeans",  # Aspatial Clustering: affinity_propagation, gaussian_mixture, hdbscan, kmeans, spectral, ward
+                             # Spatial Clustering: azp, max_p, skater, spenc, ward_spatial   
+        'nClusters': 5,      # This option should be commented out for affinity_propagation and hdbscan
+        'label': "short_name",
+        'variables': [	
+            "Median monthly housing costs",
+            "% below poverty",				
+            "% unemployed",			
+            "% with 4year college degree",
+            "% manufacturing",
+            "% service industry",
+            "% structures more than 30 years old",
+            "% households moved <10 years ago",
+            "% multiunit structures",
+            "% owner occupied housing",
+            "% vacant housing",
+            "% > 60 years old",			
+            "% < 18 years old",
+            "% white",
+            "% Asian",
+            "% Hispanic",			
+            "% black",			
+            "% foreign born",
+                    ],	
+        'Distribution_INC1': True,                   #density chart: INC changes as the map extent changes 
+        'Zscore_Means_across_Clusters': True,
+        'Zscore_Means_of_Each_Cluster': True,
+        'Number_of_Barcharts_for_Subject_Clusters': 1,
+        'Number_of_BoxPlots_for_Subject_Clusters': 0,
+    }
+
+    param_Miami = {
+         'title': "Vulnerable Neighborhood to COVID-19, Miami",
+         'subject': "COVID-19",
+         'filename_suffix': "Miami_kmeans_C5", 
+         'inputCSV': "ACS_2018_5year__zipcode_Miami_byZipcode_normalized.csv",   
+         'shapefile': "Miami4.shp",
+         'diseaseInputCSV': "COVID_Florida_20200717.csv", 
+         'rate1': 'Confirmed (%) = _count/_tested',# Formula to compute rate1 in subjectCSV such as confirmed rate1. 	
+         'subjectNormalization': '(/10k pop) = all * 10000.0 / Population',  # denominator, per number of pop. 		
+         'subjectNormalizationCSV': "Decision_Normalization.csv",            # divisor instead of population from CSV file			
+         'years': [2018],        
+         'method': "kmeans",  # Aspatial Clustering: affinity_propagation, gaussian_mixture, hdbscan, kmeans, spectral, ward
+                              # Spatial Clustering: azp, max_p, skater, spenc, ward_spatial   
+         'nClusters': 5,      # This option should be commented out for affinity_propagation and hdbscan
+         'label': "short_name",
+         'variables': [
+             "Median monthly housing costs",
+             "% below poverty",
+             "% unemployed",
+             "% with 4year college degree",
+             "% manufacturing",
+             "% service industry",
+             "% structures more than 30 years old",
+             "% households moved <10 years ago",
+             "% multiunit structures",
+             "% owner occupied housing",
+             "% vacant housing",
+             "% > 60 years old",
+             "% < 18 years old",
+             "% white",
+             "% Asian",
+             "% Hispanic",
+             "% black",
+             "% foreign born",
+                     ],
+         'Distribution_INC1': True,                   #density chart: INC changes as the map extent changes 
+         'Zscore_Means_across_Clusters': True,
+         'Zscore_Means_of_Each_Cluster': True,
+         'Number_of_Barcharts_for_Subject_Clusters': 1,
+         'Number_of_BoxPlots_for_Subject_Clusters': 0,
+    }
+
+    param_extended_Chicago = {
+        'title': "Vulnerable Neighborhood to COVID-19, Chicago and Suburban Areas",
         'subject': "COVID-19",
         'filename_suffix': "Chicago_extended_kmeans_C5",
         'inputCSV': "ACS_2018_5year__zipcode_extended_Chicago_byZipcode_normalized.csv",
@@ -1682,7 +1763,91 @@ if __name__ == '__main__':
         'Number_of_BoxPlots_for_Subject_Clusters': 0,
     }
 
-    vne_run(param=param_NYC)
+    param_Illinois = {
+        'title': "Vulnerable Neighborhood to COVID-19, Illinois",
+        'subject': "COVID-19",
+        'filename_suffix': "Illinois_kmeans_C5",
+        'inputCSV': "ACS_2018_5year__zipcode_IL_byZipcode_normalized.csv",
+        'shapefile': "zipcode_IL.shp",
+        'diseaseInputCSV': "COVID_IL_20200711.csv",
+        'rate1': 'Confirmed (%) = _count/_tested',		# Formula to compute rate1 in subjectCSV such as confirmed rate1. 
+        'subjectNormalization': '(/10k pop) = all * 10000.0 / Population',  # denominator, per number of pop. 		
+        'subjectNormalizationCSV': "Decision_Normalization.csv",            # divisor instead of population from CSV file	
+        'years': [2018],        
+        'method': "kmeans",  # Aspatial Clustering: affinity_propagation, gaussian_mixture, hdbscan, kmeans, spectral, ward
+                             # Spatial Clustering: azp, max_p, skater, spenc, ward_spatial   
+        'nClusters': 5,     # This option should be commented out for affinity_propagation and hdbscan
+        'label': "short_name",
+        'variables': [	
+            "Median monthly housing costs",
+            "% below poverty",				
+            "% unemployed",			
+            "% with 4year college degree",
+            "% manufacturing",
+            "% service industry",
+            "% structures more than 30 years old",
+            "% households moved <10 years ago",
+            "% multiunit structures",
+            "% owner occupied housing",
+            "% vacant housing",
+            "% > 60 years old",			
+            "% < 18 years old",
+            "% white",
+            "% Asian",
+            "% Hispanic",			
+            "% black",			
+            "% foreign born",
+                    ],	
+        'Distribution_INC1': True,                   #density chart: INC changes as the map extent changes 
+        'Zscore_Means_across_Clusters': True,
+        'Zscore_Means_of_Each_Cluster': True,
+        'Number_of_Barcharts_for_Subject_Clusters': 1,
+        'Number_of_BoxPlots_for_Subject_Clusters': 0,	
+    }
+
+    param_US = {
+        'title': "Vulnerable Neighborhood to COVID-19, US",
+        'subject': "COVID-19",
+        'filename_suffix': "US_kmeans_C5", 
+        'inputCSV': "ACS_2018_5year__County_US_byCounty_normalized.csv",   
+        'shapefile': "counties_mainland_US.shp", 		
+        'diseaseInputCSV': "COVID_us_counties.csv", 
+        'rate2': 'Case fatality rate = _deaths/_count',			# Formula to compute rate2 in subjectCSV such as death rate2.       
+        'subjectNormalization': '(/10k pop) = all * 10000.0 / Population',  # denominator, per number of pop. 		
+        'subjectNormalizationCSV': "Decision_Normalization_US.csv",            # divisor instead of population from CSV file	
+        'years': [2018],        
+        'method': "kmeans",  # Aspatial Clustering: affinity_propagation, gaussian_mixture, hdbscan, kmeans, spectral, ward
+                             # Spatial Clustering: azp, max_p, skater, spenc, ward_spatial   
+        'nClusters': 5,      # This option should be commented out for affinity_propagation and hdbscan
+        'label': "variable",
+        'variables': [	
+            "Median monthly housing costs",
+            "% below poverty",				
+            "% unemployed",			
+            "% with 4year college degree",
+            "% manufacturing",
+            "% service industry",
+            "% structures more than 30 years old",
+            "% households moved <10 years ago",
+            "% multiunit structures",
+            "% owner occupied housing",
+            "% vacant housing",
+            "% > 60 years old",			
+            "% < 18 years old",
+            "% white",
+            "% Asian",
+            "% Hispanic",			
+            "% black",			
+            "% foreign born",
+                    ],	
+        'Distribution_INC1': True,                   #density chart: INC changes as the map extent changes 
+        'Zscore_Means_across_Clusters': True,
+        'Zscore_Means_of_Each_Cluster': True,
+        'Number_of_Barcharts_for_Subject_Clusters': 1,
+        'Number_of_BoxPlots_for_Subject_Clusters': 0,
+    }
+    #param_NYC, param_Chicago, param_Phoenix, param_Miami, param_extended_Chicago, param_Illinois, param_US, 
+    vne_run(param=param_US)
 
     ended_datetime = datetime.now()
     elapsed = ended_datetime - started_datetime
@@ -1690,4 +1855,5 @@ if __name__ == '__main__':
     hours, remainder = divmod(total_seconds,60*60)
     minutes, seconds = divmod(remainder,60)	
     print('VulnerablePOP ended at %s    Elapsed %02d:%02d:%02d' % (ended_datetime.strftime('%Y-%m-%d %H:%M:%S'), hours, minutes, seconds))
-    
+
+
