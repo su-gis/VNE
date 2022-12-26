@@ -1,0 +1,26 @@
+﻿Unit_desc,Disaster,Population
+(/10k pop),total_count,Population
+(/10k pop),total_tested,Population
+(/10k pop),race_White_count,white
+(/10k pop),race_White_tested,white
+(/10k pop),race_Black_count,black
+(/10k pop),race_Black_tested,black
+(/10k pop),race_Asian_count,Asian
+(/10k pop),race_Asian_tested,Asian
+(/10k pop),race_Hispanic_count,Hispanic
+(/10k pop),race_Hispanic_tested,Hispanic
+(/10k pop),age_<20_count,age less than 20
+(/10k pop),age_<20_tested,age less than 20
+(/10k pop),age_20-29_count,age 20 to 29
+(/10k pop),age_20-29_tested,age 20 to 29
+(/10k pop),age_30-39_count,age 30 to 39
+(/10k pop),age_30-39_tested,age 30 to 39
+(/10k pop),age_40-49_count,age 40 to 49
+(/10k pop),age_40-49_tested,age 40 to 49
+(/10k pop),age_50-59_count,age 50 to 59
+(/10k pop),age_50-59_tested,age 50 to 59
+(/10k pop),age_60-69_count,age 60 to 69
+(/10k pop),age_60-69_tested,age 60 to 69
+(/10k pop),age_70-79_count,age 70 to 79
+(/10k pop),age_70-79_tested,age 70 to 79
+(/10k pop),age_80+_count,age 80  above

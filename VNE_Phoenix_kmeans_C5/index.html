@@ -1,34 +1,33 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<title>Vulnerable Neighborhood Explorer</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<title>Vulnerable Neighborhood to COVID-19, Phoenix</title>
 
 	<script src="data/GEO_CONFIG_Phoenix_kmeans_C5.js"></script>
 	<script src="data/GEO_JSON_Phoenix_kmeans_C5.js"></script>
 	<script src="data/GEO_VARIABLES_Phoenix_kmeans_C5.js"></script>
 
 	<script
-		src="http://wherecovid19.cigi.illinois.edu/Neighborhood_Analysis_Mapper/lib/jQuery/jquery-3.3.1.js"></script>
-	<script src="http://wherecovid19.cigi.illinois.edu/Neighborhood_Analysis_Mapper/lib/d3/d3.min.js"></script>
-	<script src="http://wherecovid19.cigi.illinois.edu/Neighborhood_Analysis_Mapper/lib/moment/moment.min.js"></script>
+		src="https://wherecovid19.cigi.illinois.edu/Neighborhood_Analysis_Mapper/lib/jQuery/jquery-3.3.1.js"></script>
+	<script src="https://wherecovid19.cigi.illinois.edu/Neighborhood_Analysis_Mapper/lib/d3/d3.min.js"></script>
+	<script src="https://wherecovid19.cigi.illinois.edu/Neighborhood_Analysis_Mapper/lib/moment/moment.min.js"></script>
 	<script
-		src="http://wherecovid19.cigi.illinois.edu/Neighborhood_Analysis_Mapper/lib/geostats/geostats.min.js"></script>
+		src="https://wherecovid19.cigi.illinois.edu/Neighborhood_Analysis_Mapper/lib/geostats/geostats.min.js"></script>
 	<script
-		src="http://wherecovid19.cigi.illinois.edu/Neighborhood_Analysis_Mapper/lib/simple-statistics@6.0.0/simple-statistics.min.js"></script>
-	<script src="http://wherecovid19.cigi.illinois.edu/Neighborhood_Analysis_Mapper/lib/leaflet/leaflet.js"></script>
+		src="https://wherecovid19.cigi.illinois.edu/Neighborhood_Analysis_Mapper/lib/simple-statistics@6.0.0/simple-statistics.min.js"></script>
+	<script src="https://wherecovid19.cigi.illinois.edu/Neighborhood_Analysis_Mapper/lib/leaflet/leaflet.js"></script>
 	<script
-		src="http://wherecovid19.cigi.illinois.edu/Neighborhood_Analysis_Mapper/lib/sweetalert/sweetalert.min.js"></script>
+		src="https://wherecovid19.cigi.illinois.edu/Neighborhood_Analysis_Mapper/lib/sweetalert/sweetalert.min.js"></script>
 	<script
-		src="http://wherecovid19.cigi.illinois.edu/Neighborhood_Analysis_Mapper/lib/plotly.js-1.49.1/plotly.js"></script>
+		src="https://wherecovid19.cigi.illinois.edu/Neighborhood_Analysis_Mapper/lib/plotly.js-1.49.1/plotly.js"></script>
 	<script
-		src="http://wherecovid19.cigi.illinois.edu/Neighborhood_Analysis_Mapper/lib/science.js-master/science.v1.min.js"></script>
+		src="https://wherecovid19.cigi.illinois.edu/Neighborhood_Analysis_Mapper/lib/science.js-master/science.v1.min.js"></script>
 	<link rel="stylesheet"
-		href="http://wherecovid19.cigi.illinois.edu/Neighborhood_Analysis_Mapper/lib/leaflet/leaflet.css" />
+		href="https://wherecovid19.cigi.illinois.edu/Neighborhood_Analysis_Mapper/lib/leaflet/leaflet.css" />
 	<link rel="stylesheet"
-		href="http://wherecovid19.cigi.illinois.edu/Neighborhood_Analysis_Mapper/css/Neighborhood_Analysis_Mapper.css" />
-	<link rel="stylesheet" href="..template/Neighborhood_Analysis_Mapper/css/style.css" />
-
+		href="https://wherecovid19.cigi.illinois.edu/Neighborhood_Analysis_Mapper/css/Neighborhood_Analysis_Mapper.css" />
+	<!--script src="lib/Neighborhood_Analysis_Mapper.js"></script-->
 
 	<style>
 		#tooltip {
@@ -61,6 +60,16 @@
 		#circle:hover path.fade {
 			display: none;
 		}
+		.blinking{
+			animation:blinkingText 1.2s infinite;
+		}
+		@keyframes blinkingText{
+			0%{     color: #000;    }
+			49%{    color: #000; }
+			60%{    color: transparent; }
+			99%{    color:transparent;  }
+			100%{   color: #000;    }
+		}		
 	</style>
 </head>
 
@@ -68,7 +77,7 @@
 <body>
 
 	<header>
-		<h1>Vulnerable Neighborhood to COVID-19</h1>
+		<h1>Vulnerable Neighborhood to COVID-19, Phoenix</h1>
 	</header>
 
 	<br>
@@ -145,14 +154,16 @@ var app={
 	chord_last_mouseovered_groupid: "",          // last mouse overed groupid in chord diagram
 	
 	subjectName: "Subject",                      // subject name from configuration file (default: "Subject")
+	QualitativeMap_Field: "2019",                 // QualitativeMap_Field from configuration file (default: "2019")
+	QualitativeMap_Name: "Neighborhood",    // QualitativeMap_Name from configuration file (default: "Neighborhood")
 	InitialMapCenter: null,                      // initial map center coordinates from configuration file [34.0522, -118.2437]
 	InitialMapZoomLevel: null,                   // initial map zoom level from configuration file (ex. 10)
 	InitialCharts: null,                         // initial charts from GEO_CONFIG.js
-	Index_of_neighborhood_change: false,         // draw INC map or not form configuration file (default: false)
+	Maps_of_Subject: true,                       // draw subject map or not form configuration file (must be true)
 	Maps_of_neighborhood: true,                  // draw Cluster maps or not form configuration file (default: true)
-	Distribution_INC1: false,                    // draw INC distribution chart or not form configuration file (default: false)
-	Distribution_INC2_different_period: false,   // draw INC by time period chart or not form configuration file (default: false)
-	Distribution_INC2_different_cluster: false,  // draw INC by cluster chart or not form configuration file (default: false)
+	Distribution_of_Subject: false,              // draw INC distribution chart or not form configuration file (default: false)
+	Distribution_of_Subject_different_period: false,   // draw INC by time period chart or not form configuration file (default: false)
+	Distribution_of_Subject_different_cluster: false,  // draw INC by cluster chart or not form configuration file (default: false)
 	Temporal_change_in_neighborhoods: false,     // draw stacked area chart or not form configuration file (default: false)
 	Chord_Diagram_in_neighborhoods: false,       // draw chord diagram or not from configuration file (default: false)
 	Parallel_Categories_Diagram_in_neighborhoods: false,    // draw parallel categories diagram or not from configuration file
@@ -267,10 +278,10 @@ var COLOR_CLASS = {
 	"Pink8"   : [ "#fde0dd", "#fcc5c0", "#fa9fb5", "#f768a1", "#dd3497", "#ae017e", "#7a0177", "#49006a"],
 	"Gray8"   : ["#cccccc", "#bfbfbf", "#b3b3b3", "#a6a6a6", "#999999", "#8c8c8c", "#808080", "#737373"],
 };
-var mbAttr = '' +
-		'' +
-		'',
-	mbUrl = 'https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw';
+	var mbAttr = 
+			'map &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, ' +
+			'Imagery © <a href="https://www.mapbox.com/">Mapbox, </a>'
+		mbUrl = 'https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw';
 
 
 var FakeBaseLayers = {
@@ -311,8 +322,8 @@ function draw_basemap(mIDX) {
 
 	var selected_mapdiv = document.getElementById(mIDX).getElementsByClassName("map")[0];
 
-	var	grayscale   = L.tileLayer(mbUrl, {id: 'mapbox.light'});
-	var	streets  = L.tileLayer(mbUrl, {id: 'mapbox.streets'});
+	var grayscale   = L.tileLayer(mbUrl, {id: 'mapbox/light-v9', tileSize: 512, zoomOffset: -1, attribution: mbAttr}),
+		streets  = L.tileLayer(mbUrl, {id: 'mapbox/streets-v11', tileSize: 512, zoomOffset: -1, attribution: mbAttr});
 
 	var mapCenter = [37.09024, -95.712891];
 	var mapZoomLevel = 4;
@@ -347,10 +358,12 @@ function draw_titlemap(mIDX, year) {
 	// set drop-down list of 'Year:'
 	var html_year = 'Year: <select name="yearSelect" onChange="year_change(\'' + mIDX + '\')">';
 	if( mIDX == "map0"){
-		html_year = app.subjectName + ': <select name="yearSelect" onChange="year_change(\'' + mIDX + '\')" style = "font-size:120%;">';
+		var fontSize120 = (app.MapWidth.replace("px", "") >= 500) ? 'style="font-size: 120%" ' : '';
+		html_year = app.subjectName + ': <select name="yearSelect" ' + fontSize120 + 'onChange="year_change(\'' + mIDX + '\')">';
 	}else{
-		html_year = 'Neighborhood:' + ' <select name="yearSelect" onChange="year_change(\'' + mIDX + '\')">';
-	}	
+		//html_year = app.QualitativeMap_Name + ' <select name="yearSelect" onChange="year_change(\'' + mIDX + '\')">';
+		html_year = app.QualitativeMap_Name + ' <select name="yearSelect" onChange="year_change(\'' + mIDX + '\')">';		
+	}		
 	//if (year == "INC")
 	//		html_year += '<option value="INC" class="line_none">INC</option>';
 	//else {
@@ -362,16 +375,16 @@ function draw_titlemap(mIDX, year) {
 	if (isYear(year)) {
 		for (var i=0; i<app.m; i++) {
 			if (!isYear(app.mYears[i])) continue;
-			html_year += '<option value="'+app.mYears[i]+'" class="line_none">'+app.mYears[i]+'</option>';
+			html_year += '<option value="'+app.mYears[i]+'" class="line_none">'+app.mYears[i]+'</option></select>  &nbsp;&nbsp;&nbsp; <a href= "cluster.html" target="_blank"></a>&nbsp; '; //help?
 		}
 	}
 	if (isSubject(year)) {
 		for (var i=1; i<app.titles.length; i++) {
 			if (!isSubject(app.titles[i])) continue;
-			html_year += '<option value="'+app.titles[i]+'" class="line_none">'+app.titles[i]+'</option>';
+			html_year += '<option value="'+app.titles[i]+'" class="line_none">&nbsp;'+app.titles[i].trim()+'&nbsp;</option>';
 		}
 	}
-	html_year += '</select>';
+	//html_year += '</select> ';
 	$("#"+mIDX+" .map_year").html(html_year);
 	$("#"+mIDX+" select[name=yearSelect]").val(year);
 	//if (isSubject(year)) $("#"+mIDX+" select[name=yearSelect]").attr('disabled', 'disabled');
@@ -382,7 +395,7 @@ function draw_titlemap(mIDX, year) {
 	if (isSubject(year)) {
 		var html_metroInterval =
 			'<span style="font-size: 80%;">' +
-			'	 <input id="metroInterval" type="checkbox" name="'+mIDX+'-checkbox" value="metroInterval" Checked>' +
+			'	 <input id="metroInterval" type="checkbox" name="'+mIDX+'-checkbox" value="metroInterval" >' +
 			'    <label for="metroInterval" >Local Class</label>' +
 			'</span>';
 		$("#"+mIDX+" .map_metroInterval").html(html_metroInterval);
@@ -401,8 +414,8 @@ function draw_titlemap(mIDX, year) {
 		}
 		ACSdata_render(mIDX);
 		//console.log("app[mIDX].item:", app[mIDX].item)
-		//if (app[mIDX].item.startsWith('INC') && app.Distribution_INC1) {
-		if (isSubject(app[mIDX].item) && app.Distribution_INC1) {
+		//if (app[mIDX].item.startsWith('INC') && app.Distribution_of_Subject) {
+		if (isSubject(app[mIDX].item) && app.Distribution_of_Subject) {
 			for (var i=0; i<app.d; i++) {
 				var dIDX = "mapD" + i;
 				var dYear = $("#"+dIDX+" select[name=yearSelect]").val();
@@ -430,7 +443,7 @@ function draw_titlemap(mIDX, year) {
 	html_syncbtn += '  <label for="'+mIDX+'_manual">' + leaveGroup + '</label>';
 	html_syncbtn += '</span>';
 	html_syncbtn += '<span style="font-size: 90%;">&nbsp;&nbsp;&nbsp;&nbsp;</span>';
-	html_syncbtn += '<button id="'+mIDX+'_syncbtn" type="button">Sync</button>'
+	html_syncbtn += '<button id="'+mIDX+'_syncbtn" type="button">Link</button>'
 	$("#"+mIDX+" .map_sync").html(html_syncbtn);
 	if (app.MapWidth.replace('px','') < 500) $("#"+mIDX+"_nPolygon").hide();
 
@@ -570,30 +583,32 @@ function draw_titlemap(mIDX, year) {
 function draw_titleSubjectBarchart(subjectBarchartD, selectedIndex) {
 	console.log("draw_titleSubjectBarchart started.  subjectBarchartD:", subjectBarchartD, selectedIndex)
 	
-	theYearOnMap = "2018";
+	theYearOnMap = app.QualitativeMap_Field;
+
 	
 	$("#"+subjectBarchartD+" .map_id").html(' &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; ');
 	
 	// set drop-down list of 'subjectName:'
-	var html_subject = app.subjectName + ': <select name="subjectBarchartSelect" onChange="barchart_subject_change(\'' + subjectBarchartD + '\')" style = "font-size:120%;" >';
+	var fontSize120 = (app.MapWidth.replace("px", "") >= 500) ? 'style="font-size: 120%" ' : '';
+	var html_subject = app.subjectName + ': <select id="'+subjectBarchartD+'_select" name="subjectBarchartSelect" ' + fontSize120 + 'onChange="barchart_subject_change(\'' + subjectBarchartD + '\')">';
 	for (var i=0; i<GEO_CLUSTER[theYearOnMap].length; i++) {
 		subjectName = GEO_CLUSTER[theYearOnMap][i][0];
 		//selected = (i == selectedIndex) ? "selected" : ""
 		selected = ((" "+subjectName).localeCompare(selectedIndex) == 0) ? "selected" : ""
-		html_subject += '<option value="'+i+'" '+selected+' class="line_none">&nbsp; '+subjectName+' &nbsp;</option>';
+		html_subject += '<option value="'+i+'" '+selected+' class="line_none">&nbsp;'+subjectName+'&nbsp;</option>';
 	}
 	html_subject += '</select>';
 	$("#"+subjectBarchartD+" .map_cluster").html(html_subject);
 	$("#"+subjectBarchartD+" .map_id").css("background-color", app.colorGradient1[1]);
-/*	
+	
+	var displayNone = (app.Barchart_of_Subject_Clusters == 1) ? " display: none;" : "";
 	var html_fixAxes =
-		'<span style="font-size: 80%;">' +
+		'<span style="font-size: 80%;' + displayNone + '">' +
 		'	 <input id="'+subjectBarchartD+'-fixAxes" type="checkbox" name="subjectBarchart_fixAxes" value="Fix Axes">' +
 		'    <label for="fixAxes">Fix Axes</label>' +
 		'</span>';
-		
 	$("#"+subjectBarchartD+" .map_fixAxes").html(html_fixAxes);
-*/	
+	
 	// if Fix Axes checkbox clicked
 	$('input[type=checkbox][id="'+subjectBarchartD+'-fixAxes"]').change(function() {
 		var fixAxes = $(this).is(":checked");
@@ -630,12 +645,13 @@ function draw_titleSubjectBarchart(subjectBarchartD, selectedIndex) {
 function draw_titleSubjectBoxPlot(subjectBoxPlotD, selectedIndex) {
 	console.log("draw_titleSubjectBoxPlot started.  subjectBoxPlotD:", subjectBoxPlotD, selectedIndex)
 	
-	theYearOnMap = "2018";
+	theYearOnMap = app.QualitativeMap_Field;
 	
 	$("#"+subjectBoxPlotD+" .map_id").html(' &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; ');
 	
 	// set drop-down list of 'subjectName:'
-	var html_subject = app.subjectName + ': <select name="subjectBoxPlotSelect" onChange="boxplot_subject_change(\'' + subjectBoxPlotD + '\')">';
+	var fontSize120 = (app.MapWidth.replace("px", "") >= 500) ? 'style="font-size: 120%" ' : '';
+	var html_subject = app.subjectName + ': <select id="'+subjectBoxPlotD+'_select" name="subjectBoxPlotSelect" ' + fontSize120 + 'onChange="boxplot_subject_change(\'' + subjectBoxPlotD + '\')">';
 	//for (var i=0; i<GEO_CLUSTER[theYearOnMap].length; i++) {
 	//	subjectName = GEO_CLUSTER[theYearOnMap][i][0];
 	//	selected = ((" "+subjectName).localeCompare(selectedIndex) == 0) ? "selected" : ""
@@ -645,14 +661,15 @@ function draw_titleSubjectBoxPlot(subjectBoxPlotD, selectedIndex) {
 		subjectName = GEO_VARIABLES[0][i];
 		if (isYear(subjectName)) continue;
 		selected = (subjectName.localeCompare(selectedIndex) == 0) ? "selected" : ""
-		html_subject += '<option value="'+i+'" '+selected+' class="line_none">&nbsp;'+subjectName+' &nbsp;</option>';
+		html_subject += '<option value="'+i+'" '+selected+' class="line_none">&nbsp;'+subjectName.trim()+'&nbsp;</option>';
 	}
 	html_subject += '</select>';
 	$("#"+subjectBoxPlotD+" .map_cluster").html(html_subject);
 	$("#"+subjectBoxPlotD+" .map_id").css("background-color", app.colorGradient1[1]);
 	
+	var displayNone = (app.BoxPlot_of_Subject_Clusters == 1) ? " display: none;" : "";
 	var html_fixAxes =
-		'<span style="font-size: 80%;">' +
+		'<span style="font-size: 80%;' + displayNone + '">' +
 		'	 <input id="'+subjectBoxPlotD+'-fixAxes" type="checkbox" name="subjectBoxPlot_fixAxes" value="Fix Axes">' +
 		'    <label for="fixAxes">Fix Axes</label>' +
 		'</span>';
@@ -702,18 +719,19 @@ function draw_titleBarchart(barchartD) {
 	//$("#"+barchartD+" .map_notice").html('Nx: <i>Cluster type</i>');
 
 	// set drop-down list of 'Cluster:'
-	var html_cluster = 'Z Score Means in <select name="clusterSelect" onChange="barchart_cluster_change(\'' + barchartD + '\')" style = "font-size:120%;">';
+	var fontSize120 = (app.MapWidth.replace("px", "") >= 500) ? 'style="font-size: 120%" ' : '';
+	var html_cluster = 'Z Score Means in <select name="clusterSelect" ' + fontSize120 + 'onChange="barchart_cluster_change(\'' + barchartD + '\')">';
 	for (var i=0; i<app.nClusters; i++) {
 		html_cluster += '<option value="'+i+'" class="line_none">&nbsp; Cluster '+i+' &nbsp;</option>';
 	}
-	html_cluster += '</select>';
+	html_cluster += '</select> &nbsp; (&nbsp; Z score represents how far a value of each variable is from the mean. <a href= "zscore.html" target="_blank"></a>&nbsp; )'; //help?
 	$("#"+barchartD+" .map_cluster").html(html_cluster);
 	$("#"+barchartD+" .map_id").css("background-color", app.colorGradient1[1]);
 }
 
 function draw_titleParcats(mapN=null) {
 	console.log("draw_titleParcats started.  mapN:", mapN)
-	$("#parcats0 .map_id").html('&nbsp;'+'Neighborhood');
+	$("#parcats0 .map_id").html('&nbsp;'+'<h3><span class="blinking">Mouse Over!</span></h3>');
 	//$("#parcats0 .map_notice").html('S: <i>sequence type</i> &nbsp; &nbsp; N: <i>Cluster type</i>');
 	$("#parcats0 .map_notice").html('</br> Cx: <i>Cluster type</i>');
 
@@ -1091,7 +1109,7 @@ function updateGloballyButton() {
 		//$("#global_sequence select[name=globalSequence]").css({"position":"absolute",  "z-index":"100", "background-color":"white", "opacity":"0.3"});
 		//$("#global-selection").css("background-color","#EAECEE");
 		$(".overlay").css({"position":"absolute",  "z-index":"100", "background-color":"white", "opacity":"0.3"});
-		$("#global-message").html('<i>The options above are available only when all maps have the same extent. Click a "Sync" button to enable.</i>');
+		$("#global-message").html('<i>The options above are available only when all maps have the same extent. Click a "Link" button to enable.</i>');
 	}
 }
 
@@ -1151,7 +1169,7 @@ function draw_globalSelection() {
 	var html_join = '<span style="font-size: 80%;">' +
 	//var html_join = '<span>' +
 					'	 <input id="globalJoin" type="checkbox" name="join_checkbox" value="groupingAuto">' +
-	//				'    <label for="globalJoin" style="color:gray;">Link All Maps</label>' +
+	//				'    <label for="globalJoin" style="color:gray;">Grouping All</label>' +
 					'    <label for="globalJoin">Link All Maps</label>' +
 					'</span>';
 	$("#global_join").html(html_join);
@@ -1331,7 +1349,7 @@ function draw_globalSelection() {
 			//console.log("Redraw all maps by global_submit ended in "+(msec/1000).toFixed(1)+" seconds.");
 			triggerSubjectBarchart();
 			triggerSubjectBoxPlot();
-			triggerZscoreHeatmap();
+			//triggerZscoreHeatmap();
 			triggerZscoreBarchart();
 			triggerParcats();
 			triggerChordDiagram();
@@ -1362,6 +1380,7 @@ function draw_globalSelection() {
 
 function year_change(mIDX) {
 	var year  = $("#"+mIDX+" select[name=yearSelect]").val();
+	console.log("year:", year)
 
 	// change year of density chart header
 	var dIDX = mIDX.replace('map', 'mapD');                          // map0 -> mapD0,  map1 -> mapD1  ....
@@ -1400,6 +1419,13 @@ function year_change(mIDX) {
 	$("#"+mIDX+" select[name=ACSdata]").val(prvLayer).prop('selected', true); */
 
 	headerChange(mIDX);
+	
+	// parint density chart of the graph of Clusters
+	for (var i=0; i<app.nClusters; i++) {
+		var graphC = "graphC" + i;
+		var year   = $("#"+graphC+" select[name=yearSelectGraphC]").val();
+		paintDensityGraphC(graphC, year, i);
+	}
 }
 
 
@@ -1412,6 +1438,20 @@ function barchart_subject_change(subjectBarchartD) {
 		triggerSubjectBarchart("");
 	}
 	else triggerSubjectBarchart(subjectBarchartD);
+	
+	// redraw map0 if variable of subject map not equal to variable of subject barchart
+	var subjectName_chart = $("#"+subjectBarchartD+"_select option:selected").text().trim();
+	var subjectName_map = $("#map0 select[name=yearSelect]").val().trim();
+	if (subjectName_map.localeCompare(subjectName_chart) != 0) {
+		$("#map0 .map_year option").each(function(i){
+			if ($(this).text().trim().localeCompare(subjectName_chart) == 0) {
+				$("#map0 .map_year select[name=yearSelect]").val($(this).val());
+				return false;
+			}
+		});
+		//headerChange("map0");
+		year_change("map0");
+	}
 }
 
 
@@ -1424,6 +1464,20 @@ function boxplot_subject_change(subjectBoxPlotD) {
 		triggerSubjectBoxPlot("");
 	}
 	else triggerSubjectBoxPlot(subjectBoxPlotD);
+	
+	// redraw map0 if variable of subject map not equal to variable of subject boxplot
+	var subjectName_chart = $("#"+subjectBoxPlotD+"_select option:selected").text().trim();
+	var subjectName_map = $("#map0 select[name=yearSelect]").val().trim();
+	if (subjectName_map.localeCompare(subjectName_chart) != 0) {
+		$("#map0 .map_year option").each(function(i){
+			if ($(this).text().trim().localeCompare(subjectName_chart) == 0) {
+				$("#map0 .map_year select[name=yearSelect]").val($(this).val());
+				return false;
+			}
+		});
+		//headerChange("map0");
+		year_change("map0");
+	}
 }
 
 
@@ -1471,6 +1525,28 @@ function headerChange(mIDX) {
 	mapOn_moveend_off();
 	setTimeout(function() {
 		redraw_maps(mIDX, 2);
+		if (isSubject(mIDX)) {
+			var subjectName = $("#"+mIDX+" select[name=yearSelect]").val().trim();
+			console.log("subjectName:", "'"+subjectName+"'");
+			if (app.Barchart_of_Subject_Clusters == 1) {
+				$("#subjectBarchart0 .map_cluster option").each(function(i){
+					if ($(this).text().trim().localeCompare(subjectName) == 0) {
+						$("#subjectBarchart0 .map_cluster select[name=subjectBarchartSelect]").val($(this).val());
+						return false;
+					}
+				});
+				triggerSubjectBarchart("subjectBarchart0");
+			}
+			if (app.BoxPlot_of_Subject_Clusters == 1) {
+				$("#subjectBoxPlot0 .map_cluster option").each(function(i){
+					if ($(this).text().trim().localeCompare(subjectName) == 0) {
+						$("#subjectBoxPlot0 .map_cluster select[name=subjectBoxPlotSelect]").val($(this).val());
+						return false;
+					}
+				});
+				triggerSubjectBoxPlot("subjectBoxPlot0");
+			}
+		}
 	}, 300);
 };
 
@@ -2000,7 +2076,9 @@ $( document ).ready(function() {
 	
 	
 	if (typeof SubjectName !== 'undefined' && SubjectName !== null) app.subjectName = SubjectName;
-	
+	if (typeof QualitativeMap_Name !== 'undefined' && QualitativeMap_Name !== null) app.QualitativeMap_Name = QualitativeMap_Name;
+	if (typeof QualitativeMap_Field !== 'undefined' && QualitativeMap_Field !== null) app.QualitativeMap_Field = QualitativeMap_Field;		
+	//QualitativeMap_Name
 	// change default years to InitialLayers in GEO_CONFIG.js  ->  ex) "2018"
 	//app.years = InitialLayers;
 
@@ -2229,22 +2307,22 @@ $( document ).ready(function() {
 	// redefine parameters of 'GEO_CONFIG' using app.selectedyears
 	//if (!app.selectedyears.includes("INC")) {
 	if (!anySubjectIs(app.selectedyears)) {
-		Index_of_neighborhood_change = false;
-		Distribution_INC1 = false;
+		Maps_of_Subject = false;
+		Distribution_of_Subject = false;
 	}
 	//if (app.selectedyears.length == 1 && app.selectedyears.includes("INC")) {
 	if (app.selectedyears.length == 1 && anySubjectIs(app.selectedyears)) {
 		Maps_of_neighborhood = false;
-		Distribution_INC2_different_period = false;
-		Distribution_INC2_different_cluster = false;
+		Distribution_of_Subject_different_period = false;
+		Distribution_of_Subject_different_cluster = false;
 		Temporal_change_in_neighborhoods = false;
 		Chord_Diagram_in_neighborhoods = false;
 	}
-	//console.log("Index_of_neighborhood_change:", Index_of_neighborhood_change);
+	//console.log("Maps_of_Subject:", Maps_of_Subject);
 	//console.log("Maps_of_neighborhood:", Maps_of_neighborhood);
-	//console.log("Distribution_INC1:", Distribution_INC1);
-	//console.log("Distribution_INC2_different_period:", Distribution_INC2_different_period);
-	//console.log("Distribution_INC2_different_cluster:", Distribution_INC2_different_cluster);
+	//console.log("Distribution_of_Subject:", Distribution_of_Subject);
+	//console.log("Distribution_of_Subject_different_period:", Distribution_of_Subject_different_period);
+	//console.log("Distribution_of_Subject_different_cluster:", Distribution_of_Subject_different_cluster);
 	//console.log("Temporal_change_in_neighborhoods:", Temporal_change_in_neighborhoods);
 
 
@@ -2261,10 +2339,10 @@ $( document ).ready(function() {
 	//console.log("app.InitialMapZoomLevel:", app.InitialMapZoomLevel);
 
 	// set draw INC map or not to global variable
-	if (typeof Index_of_neighborhood_change !== 'undefined' && typeof Index_of_neighborhood_change === 'boolean') {
-		app.Index_of_neighborhood_change = Index_of_neighborhood_change;
+	if (typeof Maps_of_Subject !== 'undefined' && typeof Maps_of_Subject === 'boolean') {
+		app.Maps_of_Subject = Maps_of_Subject;
 	}
-	//console.log("app.Index_of_neighborhood_change:", app.Index_of_neighborhood_change);
+	//console.log("app.Maps_of_Subject:", app.Maps_of_Subject);
 
 	// set draw Cluster maps or not to global variable
 	if (typeof Maps_of_neighborhood !== 'undefined' && typeof Maps_of_neighborhood === 'boolean') {
@@ -2273,22 +2351,22 @@ $( document ).ready(function() {
 	//console.log("app.Maps_of_neighborhood:", app.Maps_of_neighborhood);
 
 	// set draw INC distribution chart or not to global variable
-	if (typeof Distribution_INC1 !=='undefined' && typeof Distribution_INC1 === 'boolean') {
-		app.Distribution_INC1 = Distribution_INC1;
+	if (typeof Distribution_of_Subject !=='undefined' && typeof Distribution_of_Subject === 'boolean') {
+		app.Distribution_of_Subject = Distribution_of_Subject;
 	}
-	//console.log("app.Distribution_INC1:", app.Distribution_INC1);
+	//console.log("app.Distribution_of_Subject:", app.Distribution_of_Subject);
 	
 	// set draw INC by time period chart or not to global variable
-	if (typeof Distribution_INC2_different_period !=='undefined' && typeof Distribution_INC2_different_period ==='boolean') {
-		app.Distribution_INC2_different_period = Distribution_INC2_different_period;
+	if (typeof Distribution_of_Subject_different_period !=='undefined' && typeof Distribution_of_Subject_different_period ==='boolean') {
+		app.Distribution_of_Subject_different_period = Distribution_of_Subject_different_period;
 	}
-	//console.log("app.Distribution_INC2_different_period:", app.Distribution_INC2_different_period);
+	//console.log("app.Distribution_of_Subject_different_period:", app.Distribution_of_Subject_different_period);
 
 	// set draw INC by cluster chart or not to global variable
-	if (typeof Distribution_INC2_different_cluster !== 'undefined' && typeof Distribution_INC2_different_cluster === 'boolean') {
-		app.Distribution_INC2_different_cluster = Distribution_INC2_different_cluster;
+	if (typeof Distribution_of_Subject_different_cluster !== 'undefined' && typeof Distribution_of_Subject_different_cluster === 'boolean') {
+		app.Distribution_of_Subject_different_cluster = Distribution_of_Subject_different_cluster;
 	}
-	//console.log("app.Distribution_INC2_different_cluster:", app.Distribution_INC2_different_cluster);
+	//console.log("app.Distribution_of_Subject_different_cluster:", app.Distribution_of_Subject_different_cluster);
 
 	// set draw stacked area chart or not to global variable
 	if (typeof Temporal_change_in_neighborhoods !== 'undefined' && typeof Temporal_change_in_neighborhoods === 'boolean') {
@@ -2389,6 +2467,27 @@ $( document ).ready(function() {
 	if (typeof mapAclassification.color !== 'undefined' && typeof mapAclassification.color === 'string') {
 		app.mapAclassification.color = mapAclassification.color;
 	}
+	
+	
+	if (app.Maps_of_Subject == false) {
+		swal({
+			title: "Alert!",
+			text: "Maps_of_Subject in your 'GEO_CONFIG_xxxxx.js' must be true.",
+			icon: "error",
+			button: "ABORT",
+		});
+		return;
+	}
+	
+	if (app.Distribution_of_Subject == false && app.Distribution_of_Subject_different_period == true) {
+		swal({
+			title: "Alert!",
+			text: "Distribution_of_Subject in your 'GEO_CONFIG_xxxxx.js' must be true.",
+			icon: "error",
+			button: "ABORT",
+		});
+		return;
+	}
 
 
 	app.years = app.selectedyears;
@@ -2399,9 +2498,9 @@ $( document ).ready(function() {
 	var nYears = 0;
 	for (var i=0; i<app.years.length; i++) {
 		var year = app.years[i];
-		//if (app.Index_of_neighborhood_change == true &&  year.startsWith('INC')) app.mYears.push(year);
+		//if (app.Maps_of_Subject == true &&  year.startsWith('INC')) app.mYears.push(year);
 		//if (app.Maps_of_neighborhood         == true && !year.startsWith('INC')) app.mYears.push(year);
-		if (app.Index_of_neighborhood_change == true && isSubject(year)) app.mYears.push(year);
+		if (app.Maps_of_Subject == true && isSubject(year)) app.mYears.push(year);
 		if (app.Maps_of_neighborhood         == true && isYear(year)) {
 			app.mYears.push(year);
 			nYears += 1;
@@ -2418,11 +2517,11 @@ $( document ).ready(function() {
 	app.dYears = [];
 	for (var i=0; i<app.years.length; i++) {
 		var year = app.years[i];
-		//if (app.Distribution_INC1 == true &&  year.startsWith('INC')) app.dYears.push(year);
-		//if (app.Distribution_INC2_different_period == true && !year.startsWith('INC') &&
-		//    app.Distribution_INC2_different_period == true && !year.startsWith('Sequence')) app.dYears.push(year);
-		if (app.Distribution_INC1 == true && isSubject(year)) app.dYears.push(year);
-		if (app.Distribution_INC2_different_period == true && isYear(year)) app.dYears.push(year);
+		//if (app.Distribution_of_Subject == true &&  year.startsWith('INC')) app.dYears.push(year);
+		//if (app.Distribution_of_Subject_different_period == true && !year.startsWith('INC') &&
+		//    app.Distribution_of_Subject_different_period == true && !year.startsWith('Sequence')) app.dYears.push(year);
+		if (app.Distribution_of_Subject == true && isSubject(year)) app.dYears.push(year);
+		if (app.Distribution_of_Subject_different_period == true && isYear(year)) app.dYears.push(year);
 	}
 	app.d = app.dYears.length;
 
@@ -2466,7 +2565,7 @@ $( document ).ready(function() {
 			//console.log("Initiaize all maps ended in "+(msec/1000).toFixed(1)+" seconds.");
 			triggerSubjectBarchart();
 			triggerSubjectBoxPlot();
-			triggerZscoreHeatmap();
+			//triggerZscoreHeatmap();
 			triggerZscoreBarchart();
 			triggerParcats();
 			triggerChordDiagram();
@@ -2700,7 +2799,7 @@ function draw_all_maps() {
 		if (app.MapWidth.replace('px','') < 500) $("#"+mapD+" .map_nPolygon").hide();
 	}
 
-	if (app.Distribution_INC2_different_cluster) {
+	if (app.Distribution_of_Subject_different_cluster) {
 		var map_html = '';
 		map_html += '<div>';
 		map_html += '	<div class="map_year" style="margin:0px 100px 0px 0px; height:25px;float:left;"></div>';
@@ -3008,8 +3107,8 @@ function mapON_contextmenu(e, mIDX) {
 		CA = app.selectedGeoJSON;
 	}
 	ACSdata_render(mIDX);
-	//if (app[mIDX].item.startsWith('INC') && Distribution_INC1) {
-	if (isSubject(app[mIDX].item) && app.Distribution_INC1) {
+	//if (app[mIDX].item.startsWith('INC') && Distribution_of_Subject) {
+	if (isSubject(app[mIDX].item) && app.Distribution_of_Subject) {
 		for (var i=0; i<app.d; i++) {
 			var dIDX = "mapD" + i;
 			var dYear = $("#"+dIDX+" select[name=yearSelect]").val();
@@ -3136,9 +3235,9 @@ function redraw_maps(mIDX, drawMode, baseBounds) {
 				updateGloballyButton();
 				mapOn_movestart_set();
 				mapOn_moveend_set();
-				triggerSubjectBarchart();
-				triggerSubjectBoxPlot();
-				triggerZscoreHeatmap();
+				//triggerSubjectBarchart();
+				//triggerSubjectBoxPlot();
+				//triggerZscoreHeatmap();
 				triggerZscoreBarchart()
 				triggerParcats();
 				triggerChordDiagram();
@@ -3335,7 +3434,7 @@ function updateSelectedGeoJSON(mIDX) {
 function drawMapContainer() {
 	var html_maps = '';
 	
-	if (app.Distribution_INC1) {
+	if (app.Distribution_of_Subject) {
 		for (var i=0; i<1; i++) {
 			html_maps += '<div id="mapD'+i+'" class="mapArea"></div><div class="MapBetween"></div>';
 		}
@@ -3384,13 +3483,13 @@ function drawMapContainer() {
 		html_maps += '<div id="barchart0" class="mapArea"></div><div class="MapBetween"></div>';
 	}
 	
-	if (app.Distribution_INC2_different_period) {
+	if (app.Distribution_of_Subject_different_period) {
 		for (var i=1; i<app.d; i++) {
 			html_maps += '<div id="mapD'+i+'" class="mapArea"></div><div class="MapBetween"></div>';
 		}
 	}
 
-	if (app.Distribution_INC2_different_cluster) {
+	if (app.Distribution_of_Subject_different_cluster) {
 		for (var i=0; i<app.nClusters; i++) {                                            // graph of clusters
 			html_maps += '<div id="graphC'+i+'" class="mapArea"></div><div class="MapBetween"></div>';
 		}
@@ -3534,13 +3633,13 @@ function drawSubjectBarchart(subjectBarchartD) {
 	console.log(getNow(), "drawSubjectBarchart started.  subjectBarchartD:", subjectBarchartD)
 	
 	$("#"+subjectBarchartD+"_diagram").html("");
-	theYearOnMap = "2018"
+	theYearOnMap = QualitativeMap_Field;
 	var selectedIndex = $("#"+subjectBarchartD+" .map_cluster select[name=subjectBarchartSelect]").val();
 	
 	var trace1 = {
 		//x: ['C0','C1', 'C2', 'C3', 'C4', 'C5', 'C6'],
 		x: Array.from(new Array(app.nClusters),(val,index)=> 
-						("C"+index in ClusterLabels ? ClusterLabels["C"+index] : "C"+index)),
+						("C"+index in QualitativeMap_Labels ? QualitativeMap_Labels["C"+index] : "C"+index)),
 		y: GEO_CLUSTER[theYearOnMap][selectedIndex].slice(1),
 		marker:{
 			color: app.colorGradient1
@@ -3597,7 +3696,7 @@ function drawSubjectBoxPlot(subjectBoxPlotD, eventData="") {
 	$("#"+subjectBoxPlotD+"_diagram").html("");
 	
 	// get first year column index from app.titles
-	var theYearOnMap = "2018"
+	var theYearOnMap = QualitativeMap_Field;
 	var theYearCol = -1;
 	for (var i=0; i<GEO_VARIABLES[0].length; i++) {
 		var subjectName = GEO_VARIABLES[0][i];
@@ -3611,7 +3710,7 @@ function drawSubjectBoxPlot(subjectBoxPlotD, eventData="") {
 	var selectedIndex = $("#"+subjectBoxPlotD+" .map_cluster select[name=subjectBoxPlotSelect]").val();
 	
 	var xData = Array.from(new Array(app.nClusters),(val,index)=> 
-					("C"+index in ClusterLabels ? ClusterLabels["C"+index] : "C"+index));
+					("C"+index in QualitativeMap_Labels ? QualitativeMap_Labels["C"+index] : "C"+index));
 	//console.log(xData);
 	
 	var yData = [];
@@ -3686,7 +3785,7 @@ function drawSubjectBoxPlot(subjectBoxPlotD, eventData="") {
 	
 	var layout = {
 		//title: 'Points Scored by the Top 9 Scoring NBA Players in 2012',
-		'xaxis': {
+		xaxis: {
 			//range: [0, 1],
 			//'title': 'Neighborhood'
 			side: 'bottom',
@@ -3708,11 +3807,36 @@ function drawSubjectBoxPlot(subjectBoxPlotD, eventData="") {
 			b: 20,
 			t: 20
 		},
-		'dragmode': 'lasso',
-		showlegend: false
+		//paper_bgcolor: 'rgb(243, 243, 243)',
+		//plot_bgcolor: 'rgb(243, 243, 243)',
+		showlegend: false,
+		dragmode: 'lasso'
 	};
 	
-	Plotly.newPlot(subjectBoxPlotD+"_diagram", data, layout, {showSendToCloud: true, displayModeBar: true});
+	// hide the modebar (hover bar) buttons, plotly logo. show plotly tooltips. add initialize chart button.
+    var defaultPlotlyConfiguration = {
+		modeBarButtonsToAdd: [{
+			name: 'Refresh',
+			title: 'Initialize Chart',
+			//icon: Plotly.Icons.camera,
+			icon:Plotly.Icons.newplotlylogo, 
+			click: function (gd) {
+				//console.log("clicked Initialize Chart button.")
+				resetSytlefromScatter(app.sPointsScatter);
+				app.sPointsScatter = [];
+				drawSubjectBoxPlot(subjectBoxPlotD);
+			}
+		}],
+		modeBarButtonsToRemove: [
+			'sendDataToCloud', 'autoScale2d', 'select2d',
+			'hoverClosestCartesian', 'hoverCompareCartesian', 'toggleSpikelines'
+		], 
+		displaylogo: false, 
+		showTips: true
+	};
+	
+	//Plotly.newPlot(subjectBoxPlotD+"_diagram", data, layout, {showSendToCloud: true, displayModeBar: true});
+	Plotly.newPlot(subjectBoxPlotD+"_diagram", data, layout, defaultPlotlyConfiguration);
 	
 	var subjectBoxPlotDiv = document.getElementById(subjectBoxPlotD+"_diagram");
 	subjectBoxPlotDiv.on('plotly_selected', function(eventData) {
@@ -3825,8 +3949,8 @@ function drawZscoreHeatmap(heatmapD) {
 	
 	yAxisUserDefined = [];
 	for (var y=0; y<GEO_ZSCORES.yAxis.length; y++) {
-		if (GEO_ZSCORES.yAxis[y] in ClusterLabels) 
-			yAxisUserDefined.push(ClusterLabels[GEO_ZSCORES.yAxis[y]]);
+		if (GEO_ZSCORES.yAxis[y] in QualitativeMap_Labels) 
+			yAxisUserDefined.push(QualitativeMap_Labels[GEO_ZSCORES.yAxis[y]]);
 		else
 			yAxisUserDefined.push(GEO_ZSCORES.yAxis[y]);
 	}
@@ -4020,13 +4144,13 @@ function drawZscoreBarchart(barchartD) {
 // check and draw parallel categories diagram
 function triggerParcats() {
 	console.log(getNow(), "triggerParcats started.");
-	if (app.Parallel_Categories_Diagram_in_neighborhoods) drawdrawParcatsDiagram("parcats0")
+	if (app.Parallel_Categories_Diagram_in_neighborhoods) drawParcatsDiagram("parcats0")
 }
 
-//function drawdrawParcatsDiagram(parcatsD, fYear, tYear, sDict, matrix, mmap) {
-function drawdrawParcatsDiagram(parcatsD) {
+//function drawParcatsDiagram(parcatsD, fYear, tYear, sDict, matrix, mmap) {
+function drawParcatsDiagram(parcatsD) {
 	if (parcatsD != $("#parcats0").attr("id")) return;					// Skip, if no div for parallel categories diagram
-	console.log(getNow(), "drawdrawParcatsDiagram started.")
+	console.log(getNow(), "drawParcatsDiagram started.")
 
 	var divPCD = document.getElementById(parcatsD+'_diagram');
 	Plotly.purge(divPCD);
@@ -4039,7 +4163,7 @@ function drawdrawParcatsDiagram(parcatsD) {
 			html += '<div style="padding:60px 50px; color:blue">';
 			html += '<i>';
 			html += 'This parallel categories diagram is shown only when all maps have the same extent.<br><br>';
-			html += '"Sync", "Join group" and "Link All Maps" can be used to make maps have the same extent.';
+			html += '"Link", "Join group" and "Grouping All" can be used to make maps have the same extent.';
 			html += '</i>';
 			html += '</div>';
 			//$("#chart_ParallelCoordinates").html(html);
@@ -4182,7 +4306,7 @@ function drawdrawParcatsDiagram(parcatsD) {
 		colorscales.push([colorscales[i-1][0]+spacing, colorGradient[i]]);
 	}
 	colorscales.push([1, colorGradient[colorGradient.length-1]]);
-	//console.log("colorscales:", colorscales)
+	console.log("colorscales:", colorscales)
 
 	var traces = [
 		{
@@ -4190,9 +4314,11 @@ function drawdrawParcatsDiagram(parcatsD) {
 			//dimensions: categories,
 			//dimensions: [categories[0], categories[1], categories[2], categories[3]],
 			dimensions: categories,
+			thickness:100,
 			line: {color: color, colorscale: colorscales},
 			//hoveron: 'color', /******************************************************/
 			hoverinfo: 'count+probability',
+			//hoverinfo: 'all',
 			labelfont: {size: 14},
 			tickfont: {size: 13, color: "blue"},
 			arrangement: 'freeform',
@@ -4255,6 +4381,10 @@ function drawdrawParcatsDiagram(parcatsD) {
 	divPCD.on('plotly_hover', function(eventData) {
 		//console.log(eventData)
 		//console.log(eventData.event)
+		//console.log(eventData.event.srcElement)
+		//console.log(eventData.event.srcElement.__data__.rawColor)
+		
+		//console.log(eventData.event)
 		//console.log(eventData.event.target)
 		//if (app.sPointsParcats.length > 0) {
 		//	resetSytlefromParcats();
@@ -4275,6 +4405,11 @@ function drawdrawParcatsDiagram(parcatsD) {
 		//console.log("exceptGeoid:", exceptGeoid.filter(function(e) {return e != null}))
 		app.sPointsParcats = exceptGeoid.filter(function(e) {return e != null})
 		setSytleHighlightfromParcats(app.sPointsParcats);
+		
+		var cluster = eventData.event.srcElement.__data__.rawColor;
+		console.log("hovered cluster:", cluster);
+		$("#barchart0 .map_cluster select[name=clusterSelect]").val(cluster);
+		triggerZscoreBarchart();
 	});
 
 	divPCD.on('plotly_unhover', function(eventData) {
@@ -4384,7 +4519,7 @@ function triggerChordDiagram() {
 			html += '<div style="padding:60px 50px; color:blue">';
 			html += '<i>';
 			html += 'This chord diagram is shown only when all maps have the same extent.<br><br>';
-			html += '"Sync", "Join group" and "Link All Maps" can be used to make maps have the same extent.';
+			html += '"Link", "Join group" and "Grouping All" can be used to make maps have the same extent.';
 			html += '</i>';
 			html += '</div>';
 			$("#"+chordD+"_diagram").html(html);
@@ -5247,7 +5382,8 @@ function paintDensityGraphC(graphC, year, cluster) {
 	if (graphC != $("#"+graphC).attr("id")) return;					// Skip, if no div for graphC
 
 	var item = year;
-	var subjectItem = $("#mapD0 select[name=yearSelect]").val();
+	//var subjectItem = $("#mapD0 select[name=yearSelect]").val();
+	var subjectItem = $("#map0 select[name=yearSelect]").val();
 	if (!subjectItem || !isSubject(subjectItem)) subjectItem = "INC";
 	console.log("subjectItem:", subjectItem)
 	Plotly.purge(graphC+'_density_chart');
