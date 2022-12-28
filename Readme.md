@@ -1,6 +1,6 @@
 
 # Vulnerable Neighborhood Explorer (VNE)
-<br\>
+
 <h2 align="center" style="margin-top:-10px">Vulnerable Neighborhood Explorer (VNE) is an open-source visual analytics tool for exploring social vulnerability across different neighborhoods</h2> 
 <br\><br\>
 
