@@ -62,11 +62,11 @@ VNE is a cyberGIS-based visual analytics tool that allows users to (1) delineate
     </ul> 
  </li>
  
-<li>‘Distribution_of_Subject’: A1 in Fig1. Enter ‘True’ to display or ‘False’ not to display</li> 
-<li>‘Zscore_Means_across_Clusters’: A in Fig2. Enter ‘True’ to display or ‘False’ not to display</li> 
-<li>‘Zscore_Means_of_Each_Cluster’: B in Fig2. Enter ‘True’ to display or ‘False’ not to display</li> 
-<li>‘Number_of_Barcharts_for_Subject_Clusters’: The number of bar charts shows up in section B of Fig1</li>
-<li>‘Number_of_BoxPlots_for_Subject_Clusters’: The number of box plots shows up in section C of Fig1</li>
+<li>‘Distribution_of_Subject’: A1 in Fig1. Enter ‘True’ to display or ‘False’ not to display.</li> 
+<li>‘Zscore_Means_across_Clusters’: A in Fig2. Enter ‘True’ to display or ‘False’ not to display.</li> 
+<li>‘Zscore_Means_of_Each_Cluster’: B in Fig2. Enter ‘True’ to display or ‘False’ not to display.</li> 
+<li>‘Number_of_Barcharts_for_Subject_Clusters’: The number of bar charts shows up in section B of Fig1.</li>
+<li>‘Number_of_BoxPlots_for_Subject_Clusters’: The number of box plots shows up in section C of Fig1.</li>
 </ul> 
 
 ## A Case Study
