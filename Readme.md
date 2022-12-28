@@ -1,12 +1,12 @@
 
 # Vulnerable Neighborhood Explorer (VNE)
-<br\>
+
 <h2 align="center" style="margin-top:-10px">Vulnerable Neighborhood Explorer (VNE) is an open-source visual analytics tool for exploring social vulnerability across different neighborhoods</h2> 
 <br\><br\>
 
 
 VNE is a cyberGIS-based visual analytics tool that allows users to (1) delineate neighborhoods based on their selection of variables describing socioeconomic and demographic profiles and (2) explore which neighborhoods are susceptible to the impacts of disasters based on specific socioeconomic and demographic characteristics. [Firefox](https://www.mozilla.org/en-US/firefox/new/) or [Google Chrome](https://www.google.com/chrome/download) is the recommended web browser for reaping the best performance of VNE
-<br\>
+
 
 ## QuickStart
 
@@ -28,7 +28,7 @@ VNE is a cyberGIS-based visual analytics tool that allows users to (1) delineate
 
 ## Input parameter description
 <ul> 
-<li>‘title’: Texts will be placed at the top of the result visualization</li>
+<li>‘title’: Texts will be placed at the top of the result visualization.</li>
 <li>‘subject’: Texts will be placed at the top of the maps, column bar charts, and box plots.</li>
 <li>‘inputCSV’: User’s CSV file normally containing socioeconomic, demographic, and health status.</li>
 <li>‘shapefile’: A shapefile to visualize polygons on the map. The first column header must start with ‘geoid,’ and the code should match with the 'geoid' column of another input CSV file that you enter for inputCSV' and 'disasterInputCSV’.</li>
