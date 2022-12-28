@@ -48,6 +48,9 @@ This project is licensed under the Apache License 2.0 - see the [LICENSE](https:
 
 -------------
 <<<<<<< HEAD
+<<<<<<< HEAD
 If you have questions, please contact Dr. Su Yeon Han at su.han@txstate.edu at Geography and Environmental Studies, Texas State Universit.
 =======
 If you have questions, please contact Dr. Su Yeon Han at su.han@txstate.edu at Geography and Environmental Studies, Texas State University
+=======
+>>>>>>> 358eb29030a0165c47e4d4a415dc2fb0a4dc42ac
