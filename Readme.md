@@ -1,9 +1,6 @@
 
 # Vulnerable Neighborhood Explorer (VNE)
 
-<h2 align="center" style="margin-top:-10px">Vulnerable Neighborhood Explorer (VNE) is an open-source visual analytics tool for exploring social vulnerability across different neighborhoods.</h2> 
-<br/>
-
 
 VNE is a cyberGIS-based visual analytics tool that allows users to (1) delineate neighborhoods based on their selection of variables describing socioeconomic and demographic profiles and (2) explore which neighborhoods are susceptible to the impacts of disasters based on specific socioeconomic and demographic characteristics. [Firefox](https://www.mozilla.org/en-US/firefox/new/) or [Google Chrome](https://www.google.com/chrome/download) is the recommended web browser for reaping the best performance of VNE
 
