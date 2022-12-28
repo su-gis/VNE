@@ -80,15 +80,15 @@ Two images (Fig 1 and 2) below show the result visualization of VNE, which allow
 <li> American Community Survey (ACS) 5-year estimates from 2014 to 2018. From ACS. From ACS, 18 variables representing different socioeconomic and demographic statuses were collected.</li>
 </ul>
 
-Fig 1. The first part of the visualization of VNE. 
+ 
 
-Fig 2. The second part of the visualization of VNE. 
 
- <p align="center">
+
+ <p align="center">Fig 1. The first part of the visualization of VNE.
 <img height=800 src="http://su-gis.iptime.org/VNE/images/Fig_S1.png" alt="CyberGIS_Vis.PNG"/>
 </p>
 
- <p align="center">
+ <p align="center">Fig 2. The second part of the visualization of VNE. 
 <img height=600 src="http://su-gis.iptime.org/VNE/images/Fig_S2.png" alt="CyberGIS_Vis.PNG"/>
 </p>
 
