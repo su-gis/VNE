@@ -1,6 +1,6 @@
 
 # Vulnerable Neighborhood Explorer (VNE)
-
+<br\>
 <h2 align="center" style="margin-top:-10px">Vulnerable Neighborhood Explorer (VNE) is an open-source visual analytics tool for exploring social vulnerability across different neighborhoods</h2> 
 <br\><br\>
 
@@ -68,6 +68,21 @@ VNE is a cyberGIS-based visual analytics tool that allows users to (1) delineate
 <li>‘Number_of_Barcharts_for_Subject_Clusters’: The number of bar charts shows up in section B of Fig1</li>
 <li>‘Number_of_BoxPlots_for_Subject_Clusters’: The number of box plots shows up in section C of Fig1</li>
 </ul> 
+
+## A Case Study
+
+Exploring Neighborhood-level Social Vulnerability to COVID-19 in Chicago. 
+
+Two images (Fig 1 and 2) below show the result visualization of VNE, which allow users to explore socioeconomic and demographic disparity in COVID-19 outbreaks as well as vulnerable neighborhoods and their socioeconomic and demographic characteristics. Two input data were used: 
+<ul>
+<li>COVID-19 confirmed and test cases at the zip code level in Chicago. They were downloaded from the website of the Illinois Department of Public Health. The data used reflects the duration of the COVID-19 outbreak until July 11th, 2020, when the data was downloaded.</li> 
+
+<li> American Community Survey (ACS) 5-year estimates from 2014 to 2018. From ACS. From ACS, 18 variables representing different socioeconomic and demographic statuses were collected.</li>
+</ul>
+
+Fig 1. The first part of the visualization of VNE. 
+
+Fig 2. The second part of the visualization of VNE. 
 
  <p align="center">
 <img height=800 src="http://su-gis.iptime.org/VNE/images/Fig_S1.png" alt="CyberGIS_Vis.PNG"/>
