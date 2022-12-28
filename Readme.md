@@ -47,10 +47,4 @@ Su Yeon Han¹, Jeon-Young Kang², Fangzheng Lyu³, Furqan Baig³, Jinwoo Park³,
 This project is licensed under the Apache License 2.0 - see the [LICENSE](https://github.com/cybergis/VNE/blob/master/LICENSE) file for details.
 
 -------------
-<<<<<<< HEAD
-<<<<<<< HEAD
-If you have questions, please contact Dr. Su Yeon Han at su.han@txstate.edu at Geography and Environmental Studies, Texas State Universit.
-=======
 If you have questions, please contact Dr. Su Yeon Han at su.han@txstate.edu at Geography and Environmental Studies, Texas State University
-=======
->>>>>>> 358eb29030a0165c47e4d4a415dc2fb0a4dc42ac
