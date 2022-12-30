@@ -20,7 +20,7 @@ VNE is a cyberGIS-based visual analytics tool that allows users to (1) delineate
 *	Illinois_kmeans_C5 <br/>
 
 ## Getting Started
-**You can run VNE in your Jupyter Notebook installed on your PC as well as in CybearGISX. We recommend that you use CyberGISX because all the required packages have been integrated in CyberGISX.**<br/><br/>
+**You can run VNE in your Jupyter Notebook/Lab installed on your PC as well as in CybearGISX. We recommend that you use CyberGISX because all the required packages have been integrated in CyberGISX.**<br/><br/>
 
 **To use it in CyberGISX, follow steps below:**
 1. If you do not have a CyerGISX account, create a CyberGISX account with your institution's email address or Google email address at  [https://cybergisxhub.cigi.illinois.edu](https://cybergisxhub.cigi.illinois.edu)
