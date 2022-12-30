@@ -77,7 +77,7 @@ Two images (Fig 1 and 2) below show the result visualization of VNE, which allow
 <ul>
 <li>COVID-19 confirmed and test cases at the zip code level in Chicago. They were downloaded from the website of the Illinois Department of Public Health. The data used reflects the duration of the COVID-19 outbreak until July 11th, 2020, when the data was downloaded.</li> 
 
-<li> American Community Survey (ACS) 5-year estimates from 2014 to 2018. From ACS. From ACS, 18 variables representing different socioeconomic and demographic statuses were collected.</li>
+<li> American Community Survey (ACS) 5-year estimates from 2014 to 2018. From ACS, 18 variables representing different socioeconomic and demographic statuses were collected.</li>
 </ul>
 
  
