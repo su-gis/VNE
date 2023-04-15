@@ -9,24 +9,24 @@
 	<script src="data/GEO_VARIABLES_US_kmeans_C5.js"></script>
 
 	<script
-		src="https://wherecovid19.cigi.illinois.edu/Neighborhood_Analysis_Mapper/lib/jQuery/jquery-3.3.1.js"></script>
-	<script src="https://wherecovid19.cigi.illinois.edu/Neighborhood_Analysis_Mapper/lib/d3/d3.min.js"></script>
-	<script src="https://wherecovid19.cigi.illinois.edu/Neighborhood_Analysis_Mapper/lib/moment/moment.min.js"></script>
+		src="../template/Neighborhood_Analysis_Mapper/lib/jQuery/jquery-3.3.1.js"></script>
+	<script src="../template/Neighborhood_Analysis_Mapper/lib/d3/d3.min.js"></script>
+	<script src="../template/Neighborhood_Analysis_Mapper/lib/moment/moment.min.js"></script>
 	<script
-		src="https://wherecovid19.cigi.illinois.edu/Neighborhood_Analysis_Mapper/lib/geostats/geostats.min.js"></script>
+		src="../template/Neighborhood_Analysis_Mapper/lib/geostats/geostats.min.js"></script>
 	<script
-		src="https://wherecovid19.cigi.illinois.edu/Neighborhood_Analysis_Mapper/lib/simple-statistics@6.0.0/simple-statistics.min.js"></script>
-	<script src="https://wherecovid19.cigi.illinois.edu/Neighborhood_Analysis_Mapper/lib/leaflet/leaflet.js"></script>
+		src="../template/Neighborhood_Analysis_Mapper/lib/simple-statistics@6.0.0/simple-statistics.min.js"></script>
+	<script src="../template/Neighborhood_Analysis_Mapper/lib/leaflet/leaflet.js"></script>
 	<script
-		src="https://wherecovid19.cigi.illinois.edu/Neighborhood_Analysis_Mapper/lib/sweetalert/sweetalert.min.js"></script>
+		src="../template/Neighborhood_Analysis_Mapper/lib/sweetalert/sweetalert.min.js"></script>
 	<script
-		src="https://wherecovid19.cigi.illinois.edu/Neighborhood_Analysis_Mapper/lib/plotly.js-1.49.1/plotly.js"></script>
+		src="../template/Neighborhood_Analysis_Mapper/lib/plotly.js-1.49.1/plotly.js"></script>
 	<script
-		src="https://wherecovid19.cigi.illinois.edu/Neighborhood_Analysis_Mapper/lib/science.js-master/science.v1.min.js"></script>
+		src="../template/Neighborhood_Analysis_Mapper/lib/science.js-master/science.v1.min.js"></script>
 	<link rel="stylesheet"
-		href="https://wherecovid19.cigi.illinois.edu/Neighborhood_Analysis_Mapper/lib/leaflet/leaflet.css" />
+		href="../template/Neighborhood_Analysis_Mapper/lib/leaflet/leaflet.css" />
 	<link rel="stylesheet"
-		href="https://wherecovid19.cigi.illinois.edu/Neighborhood_Analysis_Mapper/css/Neighborhood_Analysis_Mapper.css" />
+		href="../template/Neighborhood_Analysis_Mapper/css/Neighborhood_Analysis_Mapper.css" />
 	<!--script src="lib/Neighborhood_Analysis_Mapper.js"></script-->
 
 	<style>
@@ -84,7 +84,7 @@
 	<section>
 	<div style="height:40px;background-color:transparent; width:900px;">
 		<button type="submit" id="submitForm" style="margin:10px 10px 10px 0px; float:left">Submit for Cluster Analysis</button>
-		<button type="submit" id="initFiveMaps" style="margin:10px 10px 10px 0px; float:left" hidden>Initialize all maps</button>
+		<button type="submit" id="initFiveMaps" style="margin:10px 10px 10px 20px; float:left" hidden>Reset</button>
 		<div id="global-selection" style="margin:5px 0px 5px 30px; float:left; height:30px; border: 0px solid #99CCFF; border-radius: 5px;" hidden>
 			<div class="overlay">
 				<div id="global_year" style="margin:3px 0px 0px 20px; float:left" hidden></div>
@@ -278,10 +278,11 @@ var COLOR_CLASS = {
 	"Pink8"   : [ "#fde0dd", "#fcc5c0", "#fa9fb5", "#f768a1", "#dd3497", "#ae017e", "#7a0177", "#49006a"],
 	"Gray8"   : ["#cccccc", "#bfbfbf", "#b3b3b3", "#a6a6a6", "#999999", "#8c8c8c", "#808080", "#737373"],
 };
-	var mbAttr = 
-			'map &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, ' +
-			'Imagery © <a href="https://www.mapbox.com/">Mapbox, </a>'
-		mbUrl = 'https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw';
+	var cartodbAttr = '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, &copy; <a href="https://carto.com/attribution">CARTO</a>';
+	var openAttr = '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>';
+	
+	var cartoURL = 'https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png';
+	var openURL = 'https://tile.openstreetmap.org/{z}/{x}/{y}.png'
 
 
 var FakeBaseLayers = {
@@ -322,9 +323,9 @@ function draw_basemap(mIDX) {
 
 	var selected_mapdiv = document.getElementById(mIDX).getElementsByClassName("map")[0];
 
-	var grayscale   = L.tileLayer(mbUrl, {id: 'mapbox/light-v9', tileSize: 512, zoomOffset: -1, attribution: mbAttr}),
-		streets  = L.tileLayer(mbUrl, {id: 'mapbox/streets-v11', tileSize: 512, zoomOffset: -1, attribution: mbAttr});
-
+	var grayscale   = L.tileLayer(cartoURL, {attribution: cartodbAttr});
+	var	streets  = L.tileLayer(openURL, {attribution: openAttr});
+	
 	var mapCenter = [37.09024, -95.712891];
 	var mapZoomLevel = 4;
 	if (app.InitialMapCenter != null) mapCenter = app.InitialMapCenter;
@@ -731,7 +732,7 @@ function draw_titleBarchart(barchartD) {
 
 function draw_titleParcats(mapN=null) {
 	console.log("draw_titleParcats started.  mapN:", mapN)
-	$("#parcats0 .map_id").html('&nbsp;'+'<h3><span class="blinking">Mouse Over!</span></h3>');
+	$("#parcats0 .map_id").html('&nbsp;'+'<h3><span class="blinking" style = "position:relative; top:-30px; margin: 0px 0px 0px 0px;">Mouse Over!</span></h3>'); 
 	//$("#parcats0 .map_notice").html('S: <i>sequence type</i> &nbsp; &nbsp; N: <i>Cluster type</i>');
 	$("#parcats0 .map_notice").html('</br> Cx: <i>Cluster type</i>');
 
@@ -2748,14 +2749,14 @@ function draw_all_maps() {
 		var map_html = '';
 		map_html += '<div>';
 
-		map_html += '	<div class="map_id" style="margin:0px 0px 0px 30px; height:25px;float:left;"></div>';
+		map_html += '	<div class="map_id" style="margin:0px 0px 0px 30px; height:6px;float:left;"></div>';
 		map_html += '	<div class="map_year" style="margin:0px 0px 0px 50px; height:25px;float:left;"></div>';
 		//map_html += '	<div class="map_nPolygon" style="margin:0px 100px 0px 0px; height:25px;float:left;"></div>';
 		//map_html += '	<div class="map_fixAxes" style="height:25px;float:left;"></div>';
 		map_html += '</div>';
 		map_html += '<br>';
 		//map_html += '<div class="map_notice" style="margin:0px 50px 0px 0px; height:25px; float:right; color:blue; font-size: smaller;"></div>';
-		map_html += '<div class="map_notice" style="margin:0px 0px 0px 35px; height:25px; clear:both; color:blue; font-size: smaller;"></div>';
+		map_html += '<div class="map_notice" style="margin:0px 0px 0px 30px; height:30px; clear:both; color:blue; font-size: smaller;"></div>';
 		//map_html += '<br>';
 		map_html += '<div id="parcats0_diagram" class="chart" ' +
 					'onmouseenter="mouseenterParallelCategories(this)" onmouseleave="mouseleaveParallelCategories(this)"></div>';
@@ -2822,8 +2823,13 @@ function draw_all_maps() {
 	$(".map").css("width", app.MapWidth);
 	$(".map").css("height", app.MapHeight);
 	$(".chart").css("width", app.MapWidth.replace('px','')*1-10+'px');
-	$(".chart").css("height", app.MapHeight.replace('px','')*1-10+'px');
+	//$(".chart").css("height", app.MapHeight.replace('px','')*1-50+'px');
+	$(".chart").css("height", app.MapHeight.replace('px','')*1+30 + 'px');
 	//alert(app.m);	
+	//$("#parcats0").css("width", app.MapWidth.replace('px','')*2+10+'px');
+	//$("#parcats0 .chart").css("width", app.MapWidth.replace('px','')*2-10+'px');	
+	
+/**	
 	if (app.m < 3) {
 		$("#parcats0").css("width", app.MapWidth.replace('px','')*0.3+10+'px');
 		$("#parcats0 .chart").css("width", app.MapWidth.replace('px','')*0.3-10+'px');
@@ -2834,6 +2840,7 @@ function draw_all_maps() {
 		$("#parcats0").css("width", app.MapWidth.replace('px','')*2+10+'px');
 		$("#parcats0 .chart").css("width", app.MapWidth.replace('px','')*2-10+'px');
 	}
+**/
 	
 /*	// for test
 	GEO_ZSCORES.xAxis = GEO_ZSCORES.xAxis.concat(GEO_ZSCORES.xAxis.map(x => x+"1"));
@@ -4273,7 +4280,8 @@ function drawParcatsDiagram(parcatsD) {
 		distinctClusters.sort(function(a,b) { return a-b; });
 		categories[i].categoryarray = distinctClusters;
 		if (items[i].startsWith('Sequence')) categories[i].ticktext = distinctClusters.map(e => "S"+e);
-		else                                 categories[i].ticktext = distinctClusters.map(e => "C"+e);
+		//else                                 categories[i].ticktext = distinctClusters.map(e => "C"+e);
+		else categories[i].ticktext = distinctClusters.map(e => ("C"+e in QualitativeMap_Labels ? QualitativeMap_Labels["C"+e] : "C"+e));
 		//for (var j=0; j<clusters[i].length; j++) {
 		//	if (clusters[i][j] == "    ") categories[i].ticktext.push("");
 		//	else categories[i].ticktext.push("C"+j);
@@ -4340,7 +4348,7 @@ function drawParcatsDiagram(parcatsD) {
 	//}];
 
 	var layout = {
-		margin: {t: 20, r: 0, b: 10, l: 10}, /******************************************************/
+		margin: {t: 25, r: 0, b: 40, l: 10}, /******************************************************/
 		//width: 400,
 	};
 
@@ -5669,3 +5677,4 @@ function lineify(inputGeom) {
 
 </body>
 </html>
+

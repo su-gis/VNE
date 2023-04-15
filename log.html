@@ -13,52 +13,7 @@
   <table>
     <tr>
       <td>
-      <span style="color:#CD5C5C;"><strong>1. VNE_New_York_kmeans_C7</strong></span>        <span style="display: inline-block; width:380px; text-align: right;"><span class="utcToLocal">2022-07-21T13:57:52+00:00</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;        <input type="text" value=https://cybergisx.cigi.illinois.edu/user/sugis/view/Vulnerable_Neighborhood_Explorer/VNE_New_York_kmeans_C7/index.html id="myInput1">        <button onclick="myFunction1()">Copy</button></span>
-      </td>
-    </tr>
-    <tr>
-      <td>
-<pre>
-
-  {'title': 'Vulnerable Neighborhood to COVID-19, NYC',
-   'subject': 'COVID-19',
-   'filename_suffix': 'New_York_kmeans_C7',
-   'inputCSV': 'input_NYC/ACS_2018_5year__zipcode_NYC_byZipcode_normalized.csv',
-   'shapefile': 'input_NYC/zipcode_NYC.shp',
-   'diseaseInputCSV': 'input_NYC/COVID_NYC_20200711_revised.csv',
-   'rate1': 'Confirmed rate = _count/_tested',
-   'rate2': 'Case fatality rate = _deaths/_count',
-   'subjectNormalization': '(/10k pop) = all * 10000.0 / Population',
-   'subjectNormalizationCSV': 'input_NYC/Decision_Normalization_NYC.csv',
-   'years': [2018],
-   'method': 'kmeans',
-   'nClusters': 7,
-   'variables': ['Median monthly housing costs', '% below poverty',
-                 '% unemployed', '% with 4year college degree', '% manufacturing',
-                 '% service industry', '% structures more than 30 years old',
-                 '% households moved <10 years ago', '% multiunit structures',
-                 '% owner occupied housing', '% vacant housing',
-                 '% > 60 years old', '% < 18 years old', '% white', '% Asian',
-                 '% Hispanic', '% black', '% foreign born'],
-   'Distribution_of_Subject': True,
-   'Distribution_of_Subject_different_period': False,
-   'Distribution_of_Subject_different_cluster': False,
-   'Zscore_Means_across_Clusters': True,
-   'Zscore_Means_of_Each_Cluster': False,
-   'Number_of_Barcharts_for_Subject_Clusters': 1,
-   'Number_of_BoxPlots_for_Subject_Clusters': 1}
-</pre>
-      </td>
-    </tr>
-  </table>
-</div>
-<script>function myFunction1() {  var copyText = document.getElementById("myInput1");  copyText.select();  copyText.setSelectionRange(0, 99999);  navigator.clipboard.writeText(copyText.value);  alert("The URL has been copied to the clipboard. Paste it to the browser to see your visualizations: " + copyText.value);};document.querySelectorAll(".utcToLocal").forEach(  function (i) {    const options = {hour12: false, hour:"2-digit", minute:"2-digit", timeZoneName: "short", year: "numeric", month: "numeric", day: "numeric"};    i.innerHTML = new Date(i.innerText).toLocaleString("en-US",options);  });</script>
-
-<div style="margin:10px; float:left; border: 1px solid #99CCFF; border-radius: 5px;">
-  <table>
-    <tr>
-      <td>
-      <span style="color:#CD5C5C;"><strong>2. VNE_Chicago_kmeans_C5</strong></span>        <span style="display: inline-block; width:380px; text-align: right;"><span class="utcToLocal">2022-12-03T22:31:01+00:00</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;        <input type="text" value=https://cybergisx.cigi.illinois.edu/user/sugis/view/Vulnerable_Neighborhood_Explorer/VNE_Chicago_kmeans_C5/index.html id="myInput2">        <button onclick="myFunction2()">Copy</button></span>
+      <span style="color:#CD5C5C;"><strong>1. VNE_Chicago_kmeans_C5</strong></span>        <span style="display: inline-block; width:380px; text-align: right;"><span class="utcToLocal">2022-12-03T22:31:01+00:00</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;        <input type="text" value=F:\Github\Vulnerable_Neigborhood_Explorer/VNE_Chicago_kmeans_C5/index.html id="myInput1">        <button onclick="myFunction1()">Copy</button></span>
       </td>
     </tr>
     <tr>
@@ -95,13 +50,144 @@
     </tr>
   </table>
 </div>
+<script>function myFunction1() {  var copyText = document.getElementById("myInput1");  copyText.select();  copyText.setSelectionRange(0, 99999);  navigator.clipboard.writeText(copyText.value);  alert("The URL has been copied to the clipboard. Paste it to the browser to see your visualizations: " + copyText.value);};document.querySelectorAll(".utcToLocal").forEach(  function (i) {    const options = {hour12: false, hour:"2-digit", minute:"2-digit", timeZoneName: "short", year: "numeric", month: "numeric", day: "numeric"};    i.innerHTML = new Date(i.innerText).toLocaleString("en-US",options);  });</script>
+
+<div style="margin:10px; float:left; border: 1px solid #99CCFF; border-radius: 5px;">
+  <table>
+    <tr>
+      <td>
+      <span style="color:#CD5C5C;"><strong>2. VNE_US_kmeans_C5</strong></span>        <span style="display: inline-block; width:380px; text-align: right;"><span class="utcToLocal">2022-12-24T22:37:05+00:00</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;        <input type="text" value=F:\Github\Vulnerable_Neigborhood_Explorer/VNE_US_kmeans_C5/index.html id="myInput2">        <button onclick="myFunction2()">Copy</button></span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+<pre>
+
+  {'title': 'Vulnerable Neighborhood to COVID-19, US',
+   'subject': 'COVID-19',
+   'filename_suffix': 'US_kmeans_C5',
+   'inputCSV': 'input_US/ACS_2018_5year__County_US_byCounty_normalized.csv',
+   'shapefile': 'input_US/counties_mainland_US.shp',
+   'disasterInputCSV': 'input_US/COVID_us_counties.csv',
+   'rate2': 'Case fatality rate = _deaths/_count',
+   'subjectNormalization': '(/10k pop) = all * 10000.0 / Population',
+   'normalizationCSV': 'input_US/Decision_Normalization_US.csv',
+   'normalizationUnit': 10000,
+   'years': [2018],
+   'method': 'kmeans',
+   'nClusters': 5,
+   'label': 'short_name',
+   'variables': ['Median monthly housing costs', '% below poverty',
+                 '% unemployed', '% with 4year college degree', '% manufacturing',
+                 '% service industry', '% structures more than 30 years old',
+                 '% households moved <10 years ago', '% multiunit structures',
+                 '% owner occupied housing', '% vacant housing',
+                 '% > 60 years old', '% < 18 years old', '% white', '% Asian',
+                 '% Hispanic', '% black', '% foreign born'],
+   'Distribution_of_Subject': True,
+   'Zscore_Means_across_Clusters': True,
+   'Zscore_Means_of_Each_Cluster': True,
+   'Number_of_Barcharts_for_Subject_Clusters': 3,
+   'Number_of_BoxPlots_for_Subject_Clusters': 3}
+</pre>
+      </td>
+    </tr>
+  </table>
+</div>
 <script>function myFunction2() {  var copyText = document.getElementById("myInput2");  copyText.select();  copyText.setSelectionRange(0, 99999);  navigator.clipboard.writeText(copyText.value);  alert("The URL has been copied to the clipboard. Paste it to the browser to see your visualizations: " + copyText.value);};document.querySelectorAll(".utcToLocal").forEach(  function (i) {    const options = {hour12: false, hour:"2-digit", minute:"2-digit", timeZoneName: "short", year: "numeric", month: "numeric", day: "numeric"};    i.innerHTML = new Date(i.innerText).toLocaleString("en-US",options);  });</script>
 
 <div style="margin:10px; float:left; border: 1px solid #99CCFF; border-radius: 5px;">
   <table>
     <tr>
       <td>
-      <span style="color:#CD5C5C;"><strong>3. VNE_Chicago_kmeans_C5_v2</strong></span>        <span style="display: inline-block; width:380px; text-align: right;"><span class="utcToLocal">2022-12-24T22:22:59+00:00</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;        <input type="text" value=https://cybergisx.cigi.illinois.edu/user/sugis/view/Vulnerable_Neighborhood_Explorer/VNE_Chicago_kmeans_C5_v2/index.html id="myInput3">        <button onclick="myFunction3()">Copy</button></span>
+      <span style="color:#CD5C5C;"><strong>3. VNE_Chicago_extended_kmeans_C5</strong></span>        <span style="display: inline-block; width:380px; text-align: right;"><span class="utcToLocal">2022-12-24T22:38:45+00:00</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;        <input type="text" value=F:\Github\Vulnerable_Neigborhood_Explorer/VNE_Chicago_extended_kmeans_C5/index.html id="myInput3">        <button onclick="myFunction3()">Copy</button></span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+<pre>
+
+  {'title': 'Vulnerable Neighborhood to COVID-19, Chicago',
+   'subject': 'COVID-19',
+   'filename_suffix': 'Chicago_extended_kmeans_C5',
+   'inputCSV': 'input_extended_Chicago/ACS_2018_5year__zipcode_extended_Chicago_byZipcode_normalized.csv',
+   'shapefile': 'input_extended_Chicago/Chicago_extended.shp',
+   'disasterInputCSV': 'input_Chicago/COVID_IL_20200711.csv',
+   'subjectNormalization': '(/10k pop) = all * 10000.0 / Population',
+   'normalizationCSV': 'input_Chicago/Decision_Normalization_Chicago.csv',
+   'normalizationUnit': 10000,
+   'years': [2018],
+   'method': 'kmeans',
+   'nClusters': 5,
+   'label': 'short_name',
+   'variables': ['Median monthly housing costs', '% below poverty',
+                 '% unemployed', '% with 4year college degree', '% manufacturing',
+                 '% service industry', '% structures more than 30 years old',
+                 '% households moved <10 years ago', '% multiunit structures',
+                 '% owner occupied housing', '% vacant housing',
+                 '% > 60 years old', '% < 18 years old', '% white', '% Asian',
+                 '% Hispanic', '% black', '% foreign born'],
+   'Distribution_of_Subject': True,
+   'Zscore_Means_across_Clusters': True,
+   'Zscore_Means_of_Each_Cluster': True,
+   'Number_of_Barcharts_for_Subject_Clusters': 3,
+   'Number_of_BoxPlots_for_Subject_Clusters': 3}
+</pre>
+      </td>
+    </tr>
+  </table>
+</div>
+<script>function myFunction3() {  var copyText = document.getElementById("myInput3");  copyText.select();  copyText.setSelectionRange(0, 99999);  navigator.clipboard.writeText(copyText.value);  alert("The URL has been copied to the clipboard. Paste it to the browser to see your visualizations: " + copyText.value);};document.querySelectorAll(".utcToLocal").forEach(  function (i) {    const options = {hour12: false, hour:"2-digit", minute:"2-digit", timeZoneName: "short", year: "numeric", month: "numeric", day: "numeric"};    i.innerHTML = new Date(i.innerText).toLocaleString("en-US",options);  });</script>
+
+<div style="margin:10px; float:left; border: 1px solid #99CCFF; border-radius: 5px;">
+  <table>
+    <tr>
+      <td>
+      <span style="color:#CD5C5C;"><strong>4. VNE_Illinois_kmeans_C5</strong></span>        <span style="display: inline-block; width:380px; text-align: right;"><span class="utcToLocal">2022-12-24T22:39:20+00:00</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;        <input type="text" value=F:\Github\Vulnerable_Neigborhood_Explorer/VNE_Illinois_kmeans_C5/index.html id="myInput4">        <button onclick="myFunction4()">Copy</button></span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+<pre>
+
+  {'title': 'Vulnerable Neighborhood to COVID-19, Illinois',
+   'subject': 'COVID-19',
+   'filename_suffix': 'Illinois_kmeans_C5',
+   'inputCSV': 'input_Illinois/ACS_2018_5year__zipcode_IL_byZipcode_normalized.csv',
+   'shapefile': 'input_Illinois/zipcode_IL.shp',
+   'disasterInputCSV': 'input_Chicago/COVID_IL_20200711.csv',
+   'rate1': 'Confirmed (%) = _count/_tested',
+   'subjectNormalization': '(/10k pop) = all * 10000.0 / Population',
+   'normalizationCSV': 'Decision_Normalization.csv',
+   'normalizationUnit': 10000,
+   'years': [2018],
+   'method': 'kmeans',
+   'nClusters': 5,
+   'label': 'short_name',
+   'variables': ['Median monthly housing costs', '% below poverty',
+                 '% unemployed', '% with 4year college degree', '% manufacturing',
+                 '% service industry', '% structures more than 30 years old',
+                 '% households moved <10 years ago', '% multiunit structures',
+                 '% owner occupied housing', '% vacant housing',
+                 '% > 60 years old', '% < 18 years old', '% white', '% Asian',
+                 '% Hispanic', '% black', '% foreign born'],
+   'Distribution_of_Subject': True,
+   'Zscore_Means_across_Clusters': True,
+   'Zscore_Means_of_Each_Cluster': True,
+   'Number_of_Barcharts_for_Subject_Clusters': 3,
+   'Number_of_BoxPlots_for_Subject_Clusters': 3}
+</pre>
+      </td>
+    </tr>
+  </table>
+</div>
+<script>function myFunction4() {  var copyText = document.getElementById("myInput4");  copyText.select();  copyText.setSelectionRange(0, 99999);  navigator.clipboard.writeText(copyText.value);  alert("The URL has been copied to the clipboard. Paste it to the browser to see your visualizations: " + copyText.value);};document.querySelectorAll(".utcToLocal").forEach(  function (i) {    const options = {hour12: false, hour:"2-digit", minute:"2-digit", timeZoneName: "short", year: "numeric", month: "numeric", day: "numeric"};    i.innerHTML = new Date(i.innerText).toLocaleString("en-US",options);  });</script>
+
+<div style="margin:10px; float:left; border: 1px solid #99CCFF; border-radius: 5px;">
+  <table>
+    <tr>
+      <td>
+      <span style="color:#CD5C5C;"><strong>5. VNE_Chicago_kmeans_C5_v2</strong></span>        <span style="display: inline-block; width:380px; text-align: right;"><span class="utcToLocal">2023-04-14T21:28:57+00:00</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;        <input type="text" value=F:\Github\Vulnerable_Neigborhood_Explorer/VNE_Chicago_kmeans_C5_v2/index.html id="myInput5">        <button onclick="myFunction5()">Copy</button></span>
       </td>
     </tr>
     <tr>
@@ -118,7 +204,7 @@
    'normalizationCSV': 'input_Chicago/Normalization_Table_Chicago.csv',
    'normalizationUnit': 10000,
    'years': [2018],
-   'method': 'gaussian_mixture',
+   'method': 'kmeans',
    'nClusters': 5,
    'variables': ['Median monthly housing costs', '% below poverty',
                  '% unemployed', '% with 4year college degree', '% manufacturing',
@@ -137,13 +223,13 @@
     </tr>
   </table>
 </div>
-<script>function myFunction3() {  var copyText = document.getElementById("myInput3");  copyText.select();  copyText.setSelectionRange(0, 99999);  navigator.clipboard.writeText(copyText.value);  alert("The URL has been copied to the clipboard. Paste it to the browser to see your visualizations: " + copyText.value);};document.querySelectorAll(".utcToLocal").forEach(  function (i) {    const options = {hour12: false, hour:"2-digit", minute:"2-digit", timeZoneName: "short", year: "numeric", month: "numeric", day: "numeric"};    i.innerHTML = new Date(i.innerText).toLocaleString("en-US",options);  });</script>
+<script>function myFunction5() {  var copyText = document.getElementById("myInput5");  copyText.select();  copyText.setSelectionRange(0, 99999);  navigator.clipboard.writeText(copyText.value);  alert("The URL has been copied to the clipboard. Paste it to the browser to see your visualizations: " + copyText.value);};document.querySelectorAll(".utcToLocal").forEach(  function (i) {    const options = {hour12: false, hour:"2-digit", minute:"2-digit", timeZoneName: "short", year: "numeric", month: "numeric", day: "numeric"};    i.innerHTML = new Date(i.innerText).toLocaleString("en-US",options);  });</script>
 
 <div style="margin:10px; float:left; border: 1px solid #99CCFF; border-radius: 5px;">
   <table>
     <tr>
       <td>
-      <span style="color:#CD5C5C;"><strong>4. VNE_New_York_kmeans_C5</strong></span>        <span style="display: inline-block; width:380px; text-align: right;"><span class="utcToLocal">2022-12-24T22:23:02+00:00</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;        <input type="text" value=https://cybergisx.cigi.illinois.edu/user/sugis/view/Vulnerable_Neighborhood_Explorer/VNE_New_York_kmeans_C5/index.html id="myInput4">        <button onclick="myFunction4()">Copy</button></span>
+      <span style="color:#CD5C5C;"><strong>6. VNE_New_York_kmeans_C5</strong></span>        <span style="display: inline-block; width:380px; text-align: right;"><span class="utcToLocal">2023-04-14T21:28:59+00:00</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;        <input type="text" value=F:\Github\Vulnerable_Neigborhood_Explorer/VNE_New_York_kmeans_C5/index.html id="myInput6">        <button onclick="myFunction6()">Copy</button></span>
       </td>
     </tr>
     <tr>
@@ -183,13 +269,13 @@
     </tr>
   </table>
 </div>
-<script>function myFunction4() {  var copyText = document.getElementById("myInput4");  copyText.select();  copyText.setSelectionRange(0, 99999);  navigator.clipboard.writeText(copyText.value);  alert("The URL has been copied to the clipboard. Paste it to the browser to see your visualizations: " + copyText.value);};document.querySelectorAll(".utcToLocal").forEach(  function (i) {    const options = {hour12: false, hour:"2-digit", minute:"2-digit", timeZoneName: "short", year: "numeric", month: "numeric", day: "numeric"};    i.innerHTML = new Date(i.innerText).toLocaleString("en-US",options);  });</script>
+<script>function myFunction6() {  var copyText = document.getElementById("myInput6");  copyText.select();  copyText.setSelectionRange(0, 99999);  navigator.clipboard.writeText(copyText.value);  alert("The URL has been copied to the clipboard. Paste it to the browser to see your visualizations: " + copyText.value);};document.querySelectorAll(".utcToLocal").forEach(  function (i) {    const options = {hour12: false, hour:"2-digit", minute:"2-digit", timeZoneName: "short", year: "numeric", month: "numeric", day: "numeric"};    i.innerHTML = new Date(i.innerText).toLocaleString("en-US",options);  });</script>
 
 <div style="margin:10px; float:left; border: 1px solid #99CCFF; border-radius: 5px;">
   <table>
     <tr>
       <td>
-      <span style="color:#CD5C5C;"><strong>5. VNE_Phoenix_kmeans_C5</strong></span>        <span style="display: inline-block; width:380px; text-align: right;"><span class="utcToLocal">2022-12-24T22:26:26+00:00</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;        <input type="text" value=https://cybergisx.cigi.illinois.edu/user/sugis/view/Vulnerable_Neighborhood_Explorer/VNE_Phoenix_kmeans_C5/index.html id="myInput5">        <button onclick="myFunction5()">Copy</button></span>
+      <span style="color:#CD5C5C;"><strong>7. VNE_Phoenix_kmeans_C5</strong></span>        <span style="display: inline-block; width:380px; text-align: right;"><span class="utcToLocal">2023-04-14T21:29:02+00:00</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;        <input type="text" value=F:\Github\Vulnerable_Neigborhood_Explorer/VNE_Phoenix_kmeans_C5/index.html id="myInput7">        <button onclick="myFunction7()">Copy</button></span>
       </td>
     </tr>
     <tr>
@@ -233,137 +319,6 @@
     </tr>
   </table>
 </div>
-<script>function myFunction5() {  var copyText = document.getElementById("myInput5");  copyText.select();  copyText.setSelectionRange(0, 99999);  navigator.clipboard.writeText(copyText.value);  alert("The URL has been copied to the clipboard. Paste it to the browser to see your visualizations: " + copyText.value);};document.querySelectorAll(".utcToLocal").forEach(  function (i) {    const options = {hour12: false, hour:"2-digit", minute:"2-digit", timeZoneName: "short", year: "numeric", month: "numeric", day: "numeric"};    i.innerHTML = new Date(i.innerText).toLocaleString("en-US",options);  });</script>
-
-<div style="margin:10px; float:left; border: 1px solid #99CCFF; border-radius: 5px;">
-  <table>
-    <tr>
-      <td>
-      <span style="color:#CD5C5C;"><strong>6. VNE_US_kmeans_C5</strong></span>        <span style="display: inline-block; width:380px; text-align: right;"><span class="utcToLocal">2022-12-24T22:37:05+00:00</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;        <input type="text" value=https://cybergisx.cigi.illinois.edu/user/sugis/view/Vulnerable_Neighborhood_Explorer/VNE_US_kmeans_C5/index.html id="myInput6">        <button onclick="myFunction6()">Copy</button></span>
-      </td>
-    </tr>
-    <tr>
-      <td>
-<pre>
-
-  {'title': 'Vulnerable Neighborhood to COVID-19, US',
-   'subject': 'COVID-19',
-   'filename_suffix': 'US_kmeans_C5',
-   'inputCSV': 'input_US/ACS_2018_5year__County_US_byCounty_normalized.csv',
-   'shapefile': 'input_US/counties_mainland_US.shp',
-   'disasterInputCSV': 'input_US/COVID_us_counties.csv',
-   'rate2': 'Case fatality rate = _deaths/_count',
-   'subjectNormalization': '(/10k pop) = all * 10000.0 / Population',
-   'normalizationCSV': 'input_US/Decision_Normalization_US.csv',
-   'normalizationUnit': 10000,
-   'years': [2018],
-   'method': 'kmeans',
-   'nClusters': 5,
-   'label': 'short_name',
-   'variables': ['Median monthly housing costs', '% below poverty',
-                 '% unemployed', '% with 4year college degree', '% manufacturing',
-                 '% service industry', '% structures more than 30 years old',
-                 '% households moved <10 years ago', '% multiunit structures',
-                 '% owner occupied housing', '% vacant housing',
-                 '% > 60 years old', '% < 18 years old', '% white', '% Asian',
-                 '% Hispanic', '% black', '% foreign born'],
-   'Distribution_of_Subject': True,
-   'Zscore_Means_across_Clusters': True,
-   'Zscore_Means_of_Each_Cluster': True,
-   'Number_of_Barcharts_for_Subject_Clusters': 3,
-   'Number_of_BoxPlots_for_Subject_Clusters': 3}
-</pre>
-      </td>
-    </tr>
-  </table>
-</div>
-<script>function myFunction6() {  var copyText = document.getElementById("myInput6");  copyText.select();  copyText.setSelectionRange(0, 99999);  navigator.clipboard.writeText(copyText.value);  alert("The URL has been copied to the clipboard. Paste it to the browser to see your visualizations: " + copyText.value);};document.querySelectorAll(".utcToLocal").forEach(  function (i) {    const options = {hour12: false, hour:"2-digit", minute:"2-digit", timeZoneName: "short", year: "numeric", month: "numeric", day: "numeric"};    i.innerHTML = new Date(i.innerText).toLocaleString("en-US",options);  });</script>
-
-<div style="margin:10px; float:left; border: 1px solid #99CCFF; border-radius: 5px;">
-  <table>
-    <tr>
-      <td>
-      <span style="color:#CD5C5C;"><strong>7. VNE_Chicago_extended_kmeans_C5</strong></span>        <span style="display: inline-block; width:380px; text-align: right;"><span class="utcToLocal">2022-12-24T22:38:45+00:00</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;        <input type="text" value=https://cybergisx.cigi.illinois.edu/user/sugis/view/Vulnerable_Neighborhood_Explorer/VNE_Chicago_extended_kmeans_C5/index.html id="myInput7">        <button onclick="myFunction7()">Copy</button></span>
-      </td>
-    </tr>
-    <tr>
-      <td>
-<pre>
-
-  {'title': 'Vulnerable Neighborhood to COVID-19, Chicago',
-   'subject': 'COVID-19',
-   'filename_suffix': 'Chicago_extended_kmeans_C5',
-   'inputCSV': 'input_extended_Chicago/ACS_2018_5year__zipcode_extended_Chicago_byZipcode_normalized.csv',
-   'shapefile': 'input_extended_Chicago/Chicago_extended.shp',
-   'disasterInputCSV': 'input_Chicago/COVID_IL_20200711.csv',
-   'subjectNormalization': '(/10k pop) = all * 10000.0 / Population',
-   'normalizationCSV': 'input_Chicago/Decision_Normalization_Chicago.csv',
-   'normalizationUnit': 10000,
-   'years': [2018],
-   'method': 'kmeans',
-   'nClusters': 5,
-   'label': 'short_name',
-   'variables': ['Median monthly housing costs', '% below poverty',
-                 '% unemployed', '% with 4year college degree', '% manufacturing',
-                 '% service industry', '% structures more than 30 years old',
-                 '% households moved <10 years ago', '% multiunit structures',
-                 '% owner occupied housing', '% vacant housing',
-                 '% > 60 years old', '% < 18 years old', '% white', '% Asian',
-                 '% Hispanic', '% black', '% foreign born'],
-   'Distribution_of_Subject': True,
-   'Zscore_Means_across_Clusters': True,
-   'Zscore_Means_of_Each_Cluster': True,
-   'Number_of_Barcharts_for_Subject_Clusters': 3,
-   'Number_of_BoxPlots_for_Subject_Clusters': 3}
-</pre>
-      </td>
-    </tr>
-  </table>
-</div>
 <script>function myFunction7() {  var copyText = document.getElementById("myInput7");  copyText.select();  copyText.setSelectionRange(0, 99999);  navigator.clipboard.writeText(copyText.value);  alert("The URL has been copied to the clipboard. Paste it to the browser to see your visualizations: " + copyText.value);};document.querySelectorAll(".utcToLocal").forEach(  function (i) {    const options = {hour12: false, hour:"2-digit", minute:"2-digit", timeZoneName: "short", year: "numeric", month: "numeric", day: "numeric"};    i.innerHTML = new Date(i.innerText).toLocaleString("en-US",options);  });</script>
-
-<div style="margin:10px; float:left; border: 1px solid #99CCFF; border-radius: 5px;">
-  <table>
-    <tr>
-      <td>
-      <span style="color:#CD5C5C;"><strong>8. VNE_Illinois_kmeans_C5</strong></span>        <span style="display: inline-block; width:380px; text-align: right;"><span class="utcToLocal">2022-12-24T22:39:20+00:00</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;        <input type="text" value=https://cybergisx.cigi.illinois.edu/user/sugis/view/Vulnerable_Neighborhood_Explorer/VNE_Illinois_kmeans_C5/index.html id="myInput8">        <button onclick="myFunction8()">Copy</button></span>
-      </td>
-    </tr>
-    <tr>
-      <td>
-<pre>
-
-  {'title': 'Vulnerable Neighborhood to COVID-19, Illinois',
-   'subject': 'COVID-19',
-   'filename_suffix': 'Illinois_kmeans_C5',
-   'inputCSV': 'input_Illinois/ACS_2018_5year__zipcode_IL_byZipcode_normalized.csv',
-   'shapefile': 'input_Illinois/zipcode_IL.shp',
-   'disasterInputCSV': 'input_Chicago/COVID_IL_20200711.csv',
-   'rate1': 'Confirmed (%) = _count/_tested',
-   'subjectNormalization': '(/10k pop) = all * 10000.0 / Population',
-   'normalizationCSV': 'Decision_Normalization.csv',
-   'normalizationUnit': 10000,
-   'years': [2018],
-   'method': 'kmeans',
-   'nClusters': 5,
-   'label': 'short_name',
-   'variables': ['Median monthly housing costs', '% below poverty',
-                 '% unemployed', '% with 4year college degree', '% manufacturing',
-                 '% service industry', '% structures more than 30 years old',
-                 '% households moved <10 years ago', '% multiunit structures',
-                 '% owner occupied housing', '% vacant housing',
-                 '% > 60 years old', '% < 18 years old', '% white', '% Asian',
-                 '% Hispanic', '% black', '% foreign born'],
-   'Distribution_of_Subject': True,
-   'Zscore_Means_across_Clusters': True,
-   'Zscore_Means_of_Each_Cluster': True,
-   'Number_of_Barcharts_for_Subject_Clusters': 3,
-   'Number_of_BoxPlots_for_Subject_Clusters': 3}
-</pre>
-      </td>
-    </tr>
-  </table>
-</div>
-<script>function myFunction8() {  var copyText = document.getElementById("myInput8");  copyText.select();  copyText.setSelectionRange(0, 99999);  navigator.clipboard.writeText(copyText.value);  alert("The URL has been copied to the clipboard. Paste it to the browser to see your visualizations: " + copyText.value);};document.querySelectorAll(".utcToLocal").forEach(  function (i) {    const options = {hour12: false, hour:"2-digit", minute:"2-digit", timeZoneName: "short", year: "numeric", month: "numeric", day: "numeric"};    i.innerHTML = new Date(i.innerText).toLocaleString("en-US",options);  });</script>
 </body>
 </html>
