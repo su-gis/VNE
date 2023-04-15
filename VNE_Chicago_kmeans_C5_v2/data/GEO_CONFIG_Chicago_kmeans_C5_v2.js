@@ -3,10 +3,10 @@
 var SubjectName = "COVID-19"; //Display the name of quantitative map on the left
 var QualitativeMap_Name = "Neighborhood"; //Display the name of qualitative map on the right
 var QualitativeMap_Field = [2018]; //Assign the field of qualitative map on the right 
-//var InitialLayers = [" total_count (/10k pop)", "2018"];
-//var InitialCharts = [" race_White_count (/10k pop)", " race_Asian_count (/10k pop)", " race_Hispanic_count (/10k pop)", " race_Black_count (/10k pop)"];
+var InitialLayers = [" total_count (/10K pop)", "2018"];
+var InitialCharts = [" total_count (/10k pop)", " total_tested (/10k pop)", " total_Confirmed (%)"];
 //var QualitativeMap_Labels = {"C0": "C0 White Rich Owner", "C1": "C1 White Hispanic Aging Suburban", "C2": "C2 Asian Elite Renter", "C3": "C3 Hispanic Laborer", "C4": "C4 Black Poor"};
-var QualitativeMap_Labels = {};
+var QualitativeMap_Labels = {"C0": "C0 White Rich Owner", "C1": "C1 White Hispanic Aging Suburban", "C2": "C2 Asian Elite Renter", "C3": "C3 Hispanic Laborer", "C4": "C4 Black Poor"};
 
 
 /* Map Extent and Zoom level will be automatically adjusted when you do not define map center and zoom level */

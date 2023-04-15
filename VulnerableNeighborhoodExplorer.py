@@ -17,23 +17,23 @@ from scipy import stats
 import geopandas as gpd
 import csv
 from IPython.core.display import display, HTML
-#from jupyter_server  import serverapp
+from jupyter_server  import serverapp
 
 #Create directory for Visualization    
-#servers = list(serverapp.list_running_servers())
-#servers1 = 'https://cybergisx.cigi.illinois.edu'+servers[0]["base_url"]+ 'view'
-#servers2 = 'https://cybergisx.cigi.illinois.edu'+servers[0]["base_url"]+ 'edit'      
+servers = list(serverapp.list_running_servers())
+servers1 = 'https://cybergisx.cigi.illinois.edu'+servers[0]["base_url"]+ 'view'
+servers2 = 'https://cybergisx.cigi.illinois.edu'+servers[0]["base_url"]+ 'edit'      
 cwd = os.getcwd()
 prefix_cwd = "/home/jovyan/work"
 cwd = cwd.replace(prefix_cwd, "")
 
 # This is for Jupyter notebbok installed in your PC
-local_dir1 = cwd + '/'
-local_dir2 = cwd + '/'  
+#local_dir1 = cwd + '/'
+#local_dir2 = cwd + '/'  
 
 #This is for CyberGISX. Uncomment two command lines below when you run in CyberGIX Environment
-#local_dir1 = servers1 + cwd + '/'
-#local_dir2 = servers2 + cwd + '/' 
+local_dir1 = servers1 + cwd + '/'
+local_dir2 = servers2 + cwd + '/' 
 
 # write param.log file from param into the new result folder.
 def write_LOG(param):
