@@ -17,7 +17,7 @@ from scipy import stats
 import geopandas as gpd
 import csv
 from IPython.core.display import display, HTML
-#from jupyter_server  import serverapp
+from jupyter_server  import serverapp
 
 #Create directory for Visualization    
 servers = list(serverapp.list_running_servers())
