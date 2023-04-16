@@ -5,7 +5,7 @@ var QualitativeMap_Name = "Neighborhood"; //Display the name of qualitative map 
 var QualitativeMap_Field = ""; //Assign the field of qualitative map on the right 
 //var InitialLayers = [" total_count (/10K pop)", "2018"];
 //var InitialCharts = [" total_count (/10K pop)", " total_tested (/10K pop)", " total_Confirmed (%)"];
-//var QualitativeMap_Labels = {"C0": "C0 White Rich Owner", "C1": "C1 White Hispanic Aging Suburban", "C2": "C2 Asian Elite Renter", "C3": "C3 Hispanic Laborer", "C4": "C4 Black Poor"};
+//var QualitativeMap_Labels = {"C0": "C0 White Rich Owner", "C1": "C1 Asian Elite Renter", "C2": "C2 White Hispanic Aging Suburban", "C3": "C3 Hispanic Laborer", "C4": "C4 Black Poor"};
 var QualitativeMap_Labels = {};
 
 
