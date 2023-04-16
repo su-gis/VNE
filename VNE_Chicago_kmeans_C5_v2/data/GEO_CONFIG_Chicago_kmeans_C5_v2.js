@@ -6,16 +6,17 @@ var QualitativeMap_Field = [2018]; //Assign the field of qualitative map on the 
 var InitialLayers = [" total_count (/10K pop)", "2018"];
 var InitialCharts = [" total_count (/10k pop)", " total_tested (/10k pop)", " total_Confirmed (%)"];
 //var QualitativeMap_Labels = {"C0": "C0 White Rich Owner", "C1": "C1 White Hispanic Aging Suburban", "C2": "C2 Asian Elite Renter", "C3": "C3 Hispanic Laborer", "C4": "C4 Black Poor"};
-var QualitativeMap_Labels = {"C0": "C0 White Rich Owner", "C1": "C1 White Hispanic Aging Suburban", "C2": "C2 Asian Elite Renter", "C3": "C3 Hispanic Laborer", "C4": "C4 Black Poor"};
+var QualitativeMap_Labels = {"C0": "C0 White Rich Owner", "C1": "C1 White Hispanic Aging Suburban", "C2": "C2 Hispanic Laborer", "C3": "C3 Asian Elite Renter", "C4": "C4 Black Poor"};
 
 
 /* Map Extent and Zoom level will be automatically adjusted when you do not define map center and zoom level */
 //var Initial_map_center = [34.0522, -117.9];  
 //var Initial_map_zoom_level = 8;   
 
+
 var Maps_of_Subject = true;									//choropleth map: Maps representing subject
 var Maps_of_neighborhood = true;							//choropleth map: Maps representing clustering result  
-var Distribution_of_Subject = false;							//density chart: INC changes as the map extent changes 
+var Distribution_of_Subject = true;							//density chart: INC changes as the map extent changes 
 var Distribution_of_Subject_different_period = false;		//density chart: INC changes by different years
 var Distribution_of_Subject_different_cluster = false;		//density chart: INC changes by different clusters
 var Temporal_change_in_neighborhoods = false;				//stacked chart: Temporal Change in Neighborhoods over years
@@ -41,7 +42,7 @@ var Map_height = "500px";                                  // min 300px
 //option for count(the number of classes): 1 to 8  (Only Red color scheme has up to 10)
 //options for color scheme of INC map: Green, Blue, Orange, Red, Pink
 
-var mapAclassification = {class: 'quantile', count: 8, color: 'Orange'};
+var mapAclassification = {class: 'ckmeans', count: 8, color: 'Orange'};
 
 /////////////////////////////////////////////////////////////////
 // Options for change order of clusters for visualization      //

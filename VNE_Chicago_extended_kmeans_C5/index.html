@@ -225,7 +225,7 @@ Olive: AAAA00
 	
 */					
 	colorGradient: [
-		"#77AADD","#44BB99","#EEDD88", "#FFAABB","#EE8866", 
+		"#77AADD","#EEDD88", "#FFAABB","#EE8866","#44BB99",
 		"#BBCC33","#fdbf6f","#ccebc5","#99DDFF","#bc80bd",
 		"#e31a1c","#33a02c","#1f78b4","#6a3d9a","#a6cee3",
 		"#b2df8a","#cab2d6","#e6e600","#b15928","#8dd3c7",
@@ -333,6 +333,7 @@ function draw_basemap(mIDX) {
 	app[mIDX].map = L.map(selected_mapdiv, {
 		center: mapCenter,
 		zoom: mapZoomLevel,
+		scrollWheelZoom: false,		
 		layers: [grayscale]
 	});
 
@@ -2824,10 +2825,10 @@ function draw_all_maps() {
 	$(".map").css("height", app.MapHeight);
 	$(".chart").css("width", app.MapWidth.replace('px','')*1-10+'px');
 	//$(".chart").css("height", app.MapHeight.replace('px','')*1-50+'px');
-	$(".chart").css("height", app.MapHeight.replace('px','')*1+30 + 'px');
+	$(".chart").css("height", app.MapHeight.replace('px','')*1 + 'px');
 	//alert(app.m);	
-	//$("#parcats0").css("width", app.MapWidth.replace('px','')*2+10+'px');
-	//$("#parcats0 .chart").css("width", app.MapWidth.replace('px','')*2-10+'px');	
+	$("#parcats0").css("width", app.MapWidth.replace('px','')*0.7+10+'px');
+	$("#parcats0 .chart").css("width", app.MapWidth.replace('px','')*0.7-10+'px');
 	
 /**	
 	if (app.m < 3) {

@@ -20,20 +20,20 @@ from IPython.core.display import display, HTML
 #from jupyter_server  import serverapp
 
 #Create directory for Visualization    
-servers = list(serverapp.list_running_servers())
-servers1 = 'https://cybergisx.cigi.illinois.edu'+servers[0]["base_url"]+ 'view'
-servers2 = 'https://cybergisx.cigi.illinois.edu'+servers[0]["base_url"]+ 'edit'      
+#servers = list(serverapp.list_running_servers())
+#servers1 = 'https://cybergisx.cigi.illinois.edu'+servers[0]["base_url"]+ 'view'
+#servers2 = 'https://cybergisx.cigi.illinois.edu'+servers[0]["base_url"]+ 'edit'      
 cwd = os.getcwd()
 prefix_cwd = "/home/jovyan/work"
 cwd = cwd.replace(prefix_cwd, "")
 
 # This is for Jupyter notebbok installed in your PC
-#local_dir1 = cwd + '/'
-#local_dir2 = cwd + '/'  
+local_dir1 = cwd + '/'
+local_dir2 = cwd + '/'  
 
 #This is for CyberGISX. Uncomment two command lines below when you run in CyberGIX Environment
-local_dir1 = servers1 + cwd + '/'
-local_dir2 = servers2 + cwd + '/' 
+#local_dir1 = servers1 + cwd + '/'
+#local_dir2 = servers2 + cwd + '/' 
 
 # write param.log file from param into the new result folder.
 def write_LOG(param):
@@ -607,16 +607,6 @@ def write_GEO_VARIABLES_js(community, param):
     #print("years:", type(years), years)
     df_geoVariables = pd.DataFrame(geoVariablesList[1:], columns=geoVariablesList[0])
     #print(df_geoVariables)
-    
-    # convert values of df_geoVariables[years] using clusterChange dictionary
-    if (zScore_wAHb is not None):
-        for year in years:
-            changedClusters = []
-            for l, row in df_geoVariables.iterrows():
-                changedClusters.append(clusterChange[row[year]])
-            df_geoVariables[year] = changedClusters
-        #print(df_geoVariables)
-    
     filename_GEO_VARIABLES_CSV = "VNE_" + param['filename_suffix'] + "/data/CSV_VARIABLES_"+param['filename_suffix']+".csv"
     df_geoVariables.to_csv(filename_GEO_VARIABLES_CSV, index=False)
     
@@ -645,13 +635,6 @@ def write_GEO_VARIABLES_js(community, param):
     ofile.write('}\n')
     #print(geoZscoresList)
     df_geoZscores = pd.DataFrame(geoZscoresList[1:], columns=geoZscoresList[0])
-    if (zScore_wAHb is not None):
-        changedClusters = []
-        for l, row in df_geoZscores.iterrows():
-            changedClusters.append("C"+str(clusterChange[int(row['Cluster'][1:])]))
-        df_geoZscores['Cluster'] = changedClusters
-        #print(df_geoZscores)
-        df_geoZscores = df_geoZscores.sort_values(df_geoZscores.columns[0])
     #print(df_geoZscores)
     
     filename_GEO_ZSCORES_CSV = "VNE_" + param['filename_suffix'] + "/data/CSV_ZSCORES_"+param['filename_suffix']+".csv"
@@ -791,26 +774,10 @@ def write_GEO_VARIABLES_js(community, param):
             #print(geoClusterList)
             df_geoCluster = pd.DataFrame(geoClusterList[1:], columns=geoClusterList[0])
             #print(df_geoCluster)
-            if (zScore_wAHb is not None):
-                changedClusters = []
-                for column in df_geoCluster.columns:
-                    if (isinstance(column, str)): column = "C" + str(clusterChange[int(column[1:])])
-                    else: column = str(column)
-                    changedClusters.append(column)
-                #print(changedClusters)
-                df_geoCluster.columns = changedClusters
-                df_geoCluster = df_geoCluster.reindex(sorted(df_geoCluster.columns), axis=1)
-                #print(df_geoCluster)
+            
             filename_GEO_ZSCORES_CSV = "VNE_" + param['filename_suffix'] + "/data/CSV_CLUSTER_"+param['filename_suffix']+"_"+str(year)+".csv"
             df_geoCluster.to_csv(filename_GEO_ZSCORES_CSV, index=False)
         ofile.write('}\n')
-        
-        if (zScore_wAHb is not None):
-            aLine = "var CHANGE_CLUSTER = "
-            #aLine += json.dumps(clusterChange).replace('"','') + ";"
-            aLine += json.dumps(clusterChange)
-            #print(aLine)
-            ofile.write('\n'+aLine+'\n')
         
     ofile.close()
 

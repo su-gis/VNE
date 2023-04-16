@@ -1,4 +1,4 @@
-2023-04-14 22:00:52 VNE_New_York_kmeans_C5
+2023-04-16 11:30:47 VNE_New_York_kmeans_C5
 
   {'title': 'Vulnerable Neighborhood to COVID-19, NYC',
    'subject': 'COVID-19',
@@ -13,7 +13,6 @@
    'years': [2018],
    'method': 'kmeans',
    'nClusters': 5,
-   'label': 'short_name',
    'variables': ['Median monthly housing costs', '% below poverty',
                  '% unemployed', '% with 4year college degree', '% manufacturing',
                  '% service industry', '% structures more than 30 years old',
