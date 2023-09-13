@@ -39,7 +39,7 @@ VNE is a cyberGIS-based visual analytics tool that allows users to (1) delineate
 <li>‘years’: ‘inputCSV’ must contain the year column, and the year should be entered.</li> 
 <li>‘method’: Clustering algorithms are used to identify neighborhood types. It is required to enter one of the following clustering methods: ‘kmeans’, ‘ward’, ‘affinity_propagation’, ‘spectral’, ‘gaussian_mixture’, ‘hdbscan’,‘ward_spatial’, ‘spenc’, ‘skater’, ‘azp’, ‘max_p’. For detailed information about each of methods, see the ‘Neighborhood Clustering Methods’ in the ‘Analyze Module’ of the Geospatial Neighborhood Analysis Package (GEOSNAP) </li>
 <li>‘nClusters’: The number of clusters </li>
-<li>‘variables’: Select variables to be computed from ‘inputCSV’. Here is the full description of eighteen variables in Fig 1 in the manuscript.
+<li>‘variables’: Select variables to be computed from ‘inputCSV’. Here is the full description of eighteen variables in Fig 1.
     <ul>
         <li>Median monthly housing costs: Median monthly housing costs </li>
         <li>% below poverty: percentage of population in poverty </li>
