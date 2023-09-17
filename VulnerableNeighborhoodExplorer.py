@@ -510,7 +510,7 @@ def write_GEO_VARIABLES_js(community, param):
             row = clusterChange[p]
             row = c
             clusterChange[p] = row
-        print("clusterChange:", clusterChange)    
+        #print("clusterChange:", clusterChange)    
     df_disease = None
     
     if ('disasterInputCSV' in param):
