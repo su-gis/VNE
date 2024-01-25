@@ -85,11 +85,11 @@ Two images (Fig 1 and 2) below show the result visualization of VNE, which allow
 
 
  <p align="center">Fig 1. The first part of the visualization of VNE.
-<img height=800 src="http://su-gis.iptime.org/VNE/images/Fig_S1.png" alt="CyberGIS_Vis.PNG"/>
+<img height=800 src="https://su-gis.org/VNE/images/Fig_S1.png" alt="CyberGIS_Vis.PNG"/>
 </p>
 
  <p align="center">Fig 2. The second part of the visualization of VNE. 
-<img height=600 src="http://su-gis.iptime.org/VNE/images/Fig_S2.png" alt="CyberGIS_Vis.PNG"/>
+<img height=600 src="https://su-gis.org/VNE/images/Fig_S2.png" alt="CyberGIS_Vis.PNG"/>
 </p>
 
  
