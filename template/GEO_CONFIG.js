@@ -45,6 +45,6 @@ var mapAclassification = {class: 'quantile', count: 8, color: 'Orange'};
 
 /////////////////////////////////////////////////////////////////
 // To change order of clusters for visualization,              //
-// open GEO_VARIABLES_XXXXX.js in the sample folder            //
+// open GEO_VARIABLES_XXXXX.js in the same folder              //
 // Enter cluster numbers in from:to format                     //
 /////////////////////////////////////////////////////////////////
