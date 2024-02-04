@@ -5,6 +5,7 @@
 	<title>Vulnerable Neighborhood Explorer</title>
 
 	<script src="data/GEO_CONFIG.js"></script>
+	<script src="data/GEO_CONFIG.js"></script>
 	<script src="data/GEO_JSON.js"></script>
 	<script src="data/GEO_VARIABLES.js"></script>
 
@@ -179,7 +180,6 @@ var app={
 
 	mapAclassification: {class: 'quantile', count: 8, color: 'Red'},
 	map0classification: {class: null, count: null, color: null},
-	CHANGE_CLUSTER: {0:0, 1:1, 2:2, 3:3, 4:4},
 
 	receivedGeoJSON: null,                       // global area for full GeoJSON data from the server
 	selectedGeoJSON: null,                       // global area for selected GeoJSON data from full GeoJSON data
@@ -2042,7 +2042,6 @@ $( document ).ready(function() {
 	
 	if (typeof CHANGE_CLUSTER === 'object') {    // change cluster by CHANGE_CLUSTER
 		// var CHANGE_CLUSTER = {0:3, 1:2, 2:0, 3:1}
-		var CHANGE_CLUSTER = app.CHANGE_CLUSTER;
 		console.log(CHANGE_CLUSTER)
 		console.log(GEO_VARIABLES)
 		console.log(GEO_ZSCORES)
