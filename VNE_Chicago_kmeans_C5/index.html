@@ -225,7 +225,7 @@ Olive: AAAA00
 	
 */					
 	colorGradient: [
-		"#77AADD","#EEDD88", "#FFAABB","#EE8866","#44BB99",
+		"#77AADD","#EEDD88","#FFAABB","#EE8866","#44BB99",
 		"#BBCC33","#fdbf6f","#ccebc5","#99DDFF","#bc80bd",
 		"#e31a1c","#33a02c","#1f78b4","#6a3d9a","#a6cee3",
 		"#b2df8a","#cab2d6","#e6e600","#b15928","#8dd3c7",
@@ -2079,7 +2079,8 @@ $( document ).ready(function() {
 	
 	if (typeof SubjectName !== 'undefined' && SubjectName !== null) app.subjectName = SubjectName;
 	if (typeof QualitativeMap_Name !== 'undefined' && QualitativeMap_Name !== null) app.QualitativeMap_Name = QualitativeMap_Name;
-	if (typeof QualitativeMap_Field !== 'undefined' && QualitativeMap_Field !== null) app.QualitativeMap_Field = QualitativeMap_Field;		
+	if (typeof QualitativeMap_Field !== 'undefined' && QualitativeMap_Field !== null) app.QualitativeMap_Field = QualitativeMap_Field;
+	if (typeof colorGradient !== 'undefined' && colorGradient !== null) app.colorGradient = colorGradient;	
 	//QualitativeMap_Name
 	// change default years to InitialLayers in GEO_CONFIG.js  ->  ex) "2018"
 	//app.years = InitialLayers;
