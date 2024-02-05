@@ -33,15 +33,30 @@ var Map_width  = "450px";                                  // min 350px
 var Map_height = "500px";                                  // min 300px
 
 
-/////////////////////////////////////////////////////////////////
-// Options for only INC map                                    //
-/////////////////////////////////////////////////////////////////
-
-//option for class(the classification method): equal, quantile, ckmeans, std, arithmetic, geometric
-//option for count(the number of classes): 1 to 8  (Only Red color scheme has up to 10)
-//options for color scheme of INC map: Green, Blue, Orange, Red, Pink
+////////////////////////////////////////////////////////////////////////////////////////////////////////
+// Options for disaster map                                                                           //
+//option for class(the classification method): equal, quantile, ckmeans, std, arithmetic, geometric   //
+//option for count(the number of classes): 1 to 8  (Only Red color scheme has up to 10)               //
+//options for color scheme of INC map: Green, Blue, Orange, Red, Pink                                 //
+////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 var mapAclassification = {class: 'quantile', count: 8, color: 'Orange'};
+
+
+/////////////////////////////////////////////////////////////////
+// Options for qualitative map                                 //
+/////////////////////////////////////////////////////////////////
+
+var	colorGradient = [
+		"#77AADD","#EEDD88","#FFAABB","#EE8866","#44BB99",
+		"#BBCC33","#fdbf6f","#ccebc5","#99DDFF","#bc80bd",
+		"#e31a1c","#33a02c","#1f78b4","#6a3d9a","#a6cee3",
+		"#b2df8a","#cab2d6","#e6e600","#b15928","#8dd3c7",
+		"#bebada","#FA6454","#A29E00","#fccde5","#1e90ff",
+		"#d9d9d9","#b03060","#cab2d6","#b8860b","#6666b2",
+		"#556b2f","#bc8f8f","#ff7f00"
+					];
+
 
 /////////////////////////////////////////////////////////////////
 // To change order of clusters for visualization,              //
