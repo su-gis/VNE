@@ -609,6 +609,7 @@ def write_GEO_VARIABLES_js(community, param):
     #print(df_geoVariables)
     
     # convert values of df_geoVariables[years] using clusterChange dictionary
+    '''
     if (zScore_wAHb is not None):
         for year in years:
             changedClusters = []
@@ -616,7 +617,7 @@ def write_GEO_VARIABLES_js(community, param):
                 changedClusters.append(clusterChange[row[year]])
             df_geoVariables[year] = changedClusters
         #print(df_geoVariables)
-    
+    '''
     filename_GEO_VARIABLES_CSV = "VNE_" + param['filename_suffix'] + "/data/CSV_VARIABLES_"+param['filename_suffix']+".csv"
     df_geoVariables.to_csv(filename_GEO_VARIABLES_CSV, index=False)
     
@@ -1284,12 +1285,12 @@ if __name__ == '__main__':
         'title': "CDC SVI, COVID19 test and vaccinated rates, Chicago",
         'subject': "COVID-19",
         'filename_suffix': "Chicago_kmeans_C5_v2",
-        #'inputCSV': "input_Chicago_v2\ChicagoMSA_SVI_byZipcode_v2.csv",
+        #'inputCSV': "input_Chicago\ChicagoMSA_SVI_byZipcode_v2.csv",
         'inputCSV': "input_extended_Chicago\ACS_2018_5year__zipcode_extended_Chicago_byZipcode_normalized.csv",
-        'shapefile': "input_Chicago_v2\Zipcode_Chicago_MSA2.shp",
-        'disasterInputCSV': "input_Chicago_v2\COVID19_Vaccine_rate_sites_data_ChicagoMSA.csv",        
+        'shapefile': "input_Chicago\Zipcode_Chicago_MSA2.shp",
+        'disasterInputCSV': "input_Chicago\COVID19_Vaccine_rate_sites_data_ChicagoMSA.csv",        
         #'subjectNormalization': '(/10k pop) = all * 10000.0 / Population',  # denominator, per number of pop.
-        'normalizationCSV': "input_Chicago_v2\Decision_Normalization_Chicago.csv",            # divisor instead of population 
+        'normalizationCSV': "input_Chicago\Decision_Normalization_Chicago.csv",            # divisor instead of population 
         'normalizationUnit': 10000,               # default: 10000
         'years': [2018],
         'method': "kmeans",  # Aspatial Clustering: affinity_propagation, gaussian_mixture, hdbscan, kmeans, spectral, ward
@@ -1333,7 +1334,7 @@ if __name__ == '__main__':
         'rate1': 'Confirmed (%) = _count/_tested',      # Formula to compute rate1 in subjectCSV such as confirmed rate1.        
         #'subjectNormalization': '(/10k pop) = all * 10000.0 / Population',  # denominator, per number of pop.
         #'subjectNormalizationCSV': "input_Chicago/Decision_Normalization_Chicago.csv", # divisor instead of population from CSV file
-        'normalizationCSV': "input_Chicago/Normalization_Table_Chicago_v2.csv", # divisor instead of population from CSV file
+        'normalizationCSV': "input_Chicago/Normalization_Table_Chicago.csv", # divisor instead of population from CSV file
         'normalizationUnit': 100000,               # default: 10000
         'years': [2018],        
         'method': "kmeans",  # Aspatial Clustering: affinity_propagation, gaussian_mixture, hdbscan, kmeans, spectral, ward
@@ -1363,8 +1364,8 @@ if __name__ == '__main__':
         'Distribution_of_Subject': True,                   #density chart: INC changes as the map extent changes 
         'Zscore_Means_across_Clusters': True,
         'Zscore_Means_of_Each_Cluster': True,
-        'Number_of_Barcharts_for_Subject_Clusters': 3,
-        'Number_of_BoxPlots_for_Subject_Clusters': 0,
+        'Number_of_Barcharts_for_Subject_Clusters': 2,
+        'Number_of_BoxPlots_for_Subject_Clusters': 2,
     }   
     
     # param_NYC, param_Chicago, param_Phoenix, param_Miami, param_extended_Chicago, param_Illinois, param_US, param_Chicago_v2
