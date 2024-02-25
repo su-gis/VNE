@@ -17,23 +17,54 @@ from scipy import stats
 import geopandas as gpd
 import csv
 from IPython.core.display import display, HTML
-from jupyter_server  import serverapp
+from pingouin import pairwise_tukey
+#from jupyter_server  import serverapp
 
 #Create directory for Visualization    
-servers = list(serverapp.list_running_servers())
-servers1 = 'https://cybergisx.cigi.illinois.edu'+servers[0]["base_url"]+ 'view'
-servers2 = 'https://cybergisx.cigi.illinois.edu'+servers[0]["base_url"]+ 'edit'      
+#servers = list(serverapp.list_running_servers())
+#servers1 = 'https://cybergisx.cigi.illinois.edu'+servers[0]["base_url"]+ 'view'
+#servers2 = 'https://cybergisx.cigi.illinois.edu'+servers[0]["base_url"]+ 'edit'      
 cwd = os.getcwd()
 prefix_cwd = "/home/jovyan/work"
 cwd = cwd.replace(prefix_cwd, "")
 
 # This is for Jupyter notebbok installed in your PC
-#local_dir1 = cwd + '/'
-#local_dir2 = cwd + '/'  
+local_dir1 = cwd + '/'
+local_dir2 = cwd + '/'  
 
 #This is for CyberGISX. Uncomment two command lines below when you run in CyberGIX Environment
-local_dir1 = servers1 + cwd + '/'
-local_dir2 = servers2 + cwd + '/' 
+#local_dir1 = servers1 + cwd + '/'
+#local_dir2 = servers2 + cwd + '/' 
+
+class ABindex:
+    def __init__(self, n):
+        self.n = n
+        self.arr = np.array([-1] * (n*n)).reshape((n,n))
+        self.m = 0
+        for self.a in range(self.n-1):
+            for self.b in range(self.a+1,self.n):
+                #print(a, b, m)
+                self.arr[self.a, self.b] = self.m;
+                self.m += 1
+        self.table = np.array([-1] * (self.m*2)).reshape((self.m,2))
+        #print(self.arr)
+        for self.a in range(self.n-1):
+            for self.b in range(self.a+1,self.n):
+                self.table[self.arr[self.a, self.b], 0] = self.a
+                self.table[self.arr[self.a, self.b], 1] = self.b
+        #print(self.table)
+        
+    def count(self):
+        return self.m
+    
+    def ab2id(self, a, b):
+        if (not isinstance(a, int)): a = int(a)
+        if (not isinstance(b, int)): b = int(b) 
+        return self.arr[a, b]
+    
+    def id2ab(self, n):
+        return self.table[n]
+
 
 # write param.log file from param into the new result folder.
 def write_LOG(param):
@@ -519,6 +550,7 @@ def write_GEO_VARIABLES_js(community, param):
         #print("df_disease:   " + df_disease.geoid)        
         df_disease = df_disease.set_index(geoid)
     
+    
     # write df_pivot to GEO_VARIABLES.js
     filename_GEO_VARIABLES = "VNE_" + param['filename_suffix'] + "/data/GEO_VARIABLES_"+param['filename_suffix']+".js"
     geoVariablesList = []
@@ -620,6 +652,7 @@ def write_GEO_VARIABLES_js(community, param):
     '''
     filename_GEO_VARIABLES_CSV = "VNE_" + param['filename_suffix'] + "/data/CSV_VARIABLES_"+param['filename_suffix']+".csv"
     df_geoVariables.to_csv(filename_GEO_VARIABLES_CSV, index=False)
+    #print(df_geoVariables)
     
     # write zscore to GEO_VARIABLES.js
     geoZscoresList = []
@@ -661,6 +694,8 @@ def write_GEO_VARIABLES_js(community, param):
     if (df_disease is not None):
         df_disease = df_disease.reset_index()
         countbycluster = {}
+        #print("df_pivot:", df_pivot)
+        #print("df_pivot.columns:", df_pivot.columns)
         for year in df_pivot.columns:
             #print("year:", year, type(year))
             if (isinstance(year, str)): continue
@@ -804,7 +839,63 @@ def write_GEO_VARIABLES_js(community, param):
                 #print(df_geoCluster)
             filename_GEO_ZSCORES_CSV = "VNE_" + param['filename_suffix'] + "/data/CSV_CLUSTER_"+param['filename_suffix']+"_"+str(year)+".csv"
             df_geoCluster.to_csv(filename_GEO_ZSCORES_CSV, index=False)
+            #print(df_geoCluster)
         ofile.write('}\n')
+        
+        # from pingouin import pairwise_tukey
+        # perform multiple pairwise comparison (Tukey HSD)
+        # for unbalanced (unequal sample size) data, pairwise_tukey uses Tukey-Kramer test
+        #m_comp = pairwise_tukey(data=Tukey_HSD_Test_Input, dv=selected, between='2018')
+        #m_comp = pairwise_tukey(data=Tukey_HSD_Test_Input, dv=selected, between='2018').round(6)
+        #print(m_comp)
+        #print(df_pivot)
+        #print(df_disease)
+        #print(df_geoVariables)
+        n = len(set(df_geoVariables[years[0]].to_list()))
+        ab = ABindex(n)
+        #print("m =", ab.count())
+        #print(len(set(df_geoVariables[years[0]].to_list())))
+        
+        ofile.write('\n')
+        ofile.write('var GEO_TUKEY =\n')
+        ofile.write('{\n')
+        ofile.write('    "data format": [\n')
+        for k in range(ab.count()):
+            a = ab.id2ab(k)[0]
+            b = ab.id2ab(k)[1]
+            ofile.write('        ["{}", "{}", "p-tukey", "P"],\n'.format("A"+str(a), "B"+str(b)))
+        ofile.write('    ],\n')
+        
+        for j, column in enumerate(df_geoVariables.columns):
+            if (column == geoid): continue
+            if (column == years[0]): continue
+            #if (j > 3): continue
+            #print(j, column)
+            ofile.write('    "{}": [\n'.format(column.strip()))
+            m_comp = pairwise_tukey(data=df_geoVariables, dv=column, between=years[0])
+            #print(type(m_comp))
+            #print(m_comp)
+            for k, row in m_comp.iterrows():
+                aLine = row.tolist()
+                #print(k, type(row), row)
+                #print(type(row.A))               # <class 'numpy.float64'>
+                a = int(row.A)
+                b = int(row.B)
+                if (k != ab.ab2id(a, b)):
+                    print(k, ab.ab2id(a, b), a, b, "{:0.6f}".format(row['p-tukey']))
+                sign = "   "
+                if (row['p-tukey'] < 0.05): sign = "*  "
+                if (row['p-tukey'] < 0.01): sign = "** "
+                if (row['p-tukey'] < 0.001): sign = "***"
+                ofile.write('        [{}, {}, {:0.6f}, "{}"],\n'.format(a, b, row['p-tukey'], sign))
+            ofile.write('    ],\n')
+        
+        ofile.write('}\n')
+        
+        
+        
+        
+        
         
         if (zScore_wAHb is not None):
             aLine = "var CHANGE_CLUSTER = "
@@ -814,6 +905,7 @@ def write_GEO_VARIABLES_js(community, param):
             ofile.write('\n'+aLine+'\n')
         
     ofile.close()
+    #sys.exit(4)
 
 def Vulnerability_log(param):
     #Create a new folder where GEO_CONFIG.js GEO_JSON.js VARIABLES.js will be saved
@@ -929,6 +1021,14 @@ def Vulnerability_log(param):
     webbrowser.open(url)
 
 def Vulnerability_viz(param):
+    # check years parameters
+    if (len(param['years']) != 1):
+        print("param['years'] must be one element")
+        print("param['years'] =", param['years'])
+        print("\n", param, "\n")
+        print("program terminated abnormally.")
+        sys.exit(10)
+    
     write_LOG(param)
     community = None
     
@@ -1336,7 +1436,8 @@ if __name__ == '__main__':
         #'subjectNormalizationCSV': "input_Chicago/Decision_Normalization_Chicago.csv", # divisor instead of population from CSV file
         'normalizationCSV': "input_Chicago/Normalization_Table_Chicago.csv", # divisor instead of population from CSV file
         'normalizationUnit': 100000,               # default: 10000
-        'years': [2018],        
+        'years': [2018],     # must be one element
+        #'cluster' : '2018', # default is 1st year
         'method': "kmeans",  # Aspatial Clustering: affinity_propagation, gaussian_mixture, hdbscan, kmeans, spectral, ward
                              # Spatial Clustering: azp, max_p, skater, spenc, ward_spatial   
         'nClusters': 5,      # This option should be commented out for affinity_propagation and hdbscan

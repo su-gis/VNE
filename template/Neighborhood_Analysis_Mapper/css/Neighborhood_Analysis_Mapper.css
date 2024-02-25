@@ -11,6 +11,7 @@
 		//.densityPeriod { width: 490px; height: 500px; margin: 3px; border: 2px solid #FFA500; }
 		//.densityCluster { width: 490px; height: 500px; margin: 3px; border: 2px solid #00FA9A; }
 		.chart { width: 490px; height: 500px; margin: 10px 3px 3px 3px; }
+		.chartlegend { width: 490px; height: 50px; margin: 0px 20px 0px 20px; font-size: medium; }
 		.densityINC { border: 2px solid gray; }
 		.densityPeriod { border: 2px solid #FFA500; }
 		.densityCluster { border: 2px solid #00FA9A; }
