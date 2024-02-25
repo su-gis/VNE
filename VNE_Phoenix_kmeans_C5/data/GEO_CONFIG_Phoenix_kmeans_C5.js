@@ -5,7 +5,7 @@ var QualitativeMap_Name = "Neighborhood"; //Display the name of qualitative map 
 var QualitativeMap_Field = [2018]; //Assign the field of qualitative map on the right 
 //var InitialLayers = [" total_count (/10K pop)", "2018"];
 //var InitialCharts = [" total_count (/10K pop)", " total_tested (/10K pop)", " total_Confirmed (%)"];
-//var QualitativeMap_Labels = {"C0": "C0 White Rich Owner", "C1": "C1 White Hispanic Aging Suburban", "C2": "C2 Asian Elite Renter", "C3": "C3 Hispanic Laborer", "C4": "C4 Black Poor"};
+//var QualitativeMap_Labels = {"C0": "C0 White Rich Owner", "C1": "C1 Asian Elite Renter", "C2": "C2 White Hispanic Aging Suburban", "C3": "C3 Hispanic Laborer", "C4": "C4 Black Poor"};
 var QualitativeMap_Labels = {};
 
 
@@ -33,18 +33,33 @@ var Map_width  = "450px";                                  // min 350px
 var Map_height = "500px";                                  // min 300px
 
 
-/////////////////////////////////////////////////////////////////
-// Options for only INC map                                    //
-/////////////////////////////////////////////////////////////////
-
-//option for class(the classification method): equal, quantile, ckmeans, std, arithmetic, geometric
-//option for count(the number of classes): 1 to 8  (Only Red color scheme has up to 10)
-//options for color scheme of INC map: Green, Blue, Orange, Red, Pink
+////////////////////////////////////////////////////////////////////////////////////////////////////////
+// Options for disaster map                                                                           //
+//option for class(the classification method): equal, quantile, ckmeans, std, arithmetic, geometric   //
+//option for count(the number of classes): 1 to 8  (Only Red color scheme has up to 10)               //
+//options for color scheme of INC map: Green, Blue, Orange, Red, Pink                                 //
+////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 var mapAclassification = {class: 'quantile', count: 8, color: 'Orange'};
 
+
 /////////////////////////////////////////////////////////////////
-// Options for change order of clusters for visualization      //
-// uncomment below and enter cluster numbers in from:to format //
+// Options for qualitative map                                 //
 /////////////////////////////////////////////////////////////////
-//var CHANGE_CLUSTER = { 0:0, 1:1, 2:2, 3:3, 4:4, 5:5 }
+
+var	colorGradient = [
+		"#77AADD","#EEDD88","#FFAABB","#EE8866","#44BB99",
+		"#BBCC33","#fdbf6f","#ccebc5","#99DDFF","#bc80bd",
+		"#e31a1c","#33a02c","#1f78b4","#6a3d9a","#a6cee3",
+		"#b2df8a","#cab2d6","#e6e600","#b15928","#8dd3c7",
+		"#bebada","#FA6454","#A29E00","#fccde5","#1e90ff",
+		"#d9d9d9","#b03060","#cab2d6","#b8860b","#6666b2",
+		"#556b2f","#bc8f8f","#ff7f00"
+					];
+
+
+/////////////////////////////////////////////////////////////////
+// To change order of clusters for visualization,              //
+// open GEO_VARIABLES_XXXXX.js in the same folder              //
+// Enter cluster numbers in from:to format                     //
+/////////////////////////////////////////////////////////////////

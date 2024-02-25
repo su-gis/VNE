@@ -189,6 +189,8 @@ var app={
 	lastLassoedD: null,                          // last lassod div in the scatter plots
 	sPointsScatter: [],                          // selected points in the scatter plots
 	sPointsParcats: [],                          // selected points in the parallel categories diagram
+	
+	tukeycolor: {},								 // for colors of SubjectBarchart when mouse hover
 
 	maps: {map: null, bounds: null, geojson: null, info: null, legend: null, layers: null, layerscontrol:null, lastHighlightedTractid: null, classification: null, item: null, items: null, zIntervals: null, mIntervals: null, nPolygonbyClass: [], densityChart: {minX: null, maxX: null, minY: null, maxY: null}},
 	map0: {map: null, bounds: null, geojson: null, info: null, legend: null, layers: null, layerscontrol:null, lastHighlightedTractid: null, classification: null, item: null, items: null, zIntervals: null, mIntervals: null, nPolygonbyClass: [], densityChart: {minX: null, maxX: null, minY: null, maxY: null}},
@@ -225,7 +227,7 @@ Olive: AAAA00
 	
 */					
 	colorGradient: [
-		"#77AADD","#EEDD88", "#FFAABB","#EE8866","#44BB99",
+		"#77AADD","#EEDD88","#FFAABB","#EE8866","#44BB99",
 		"#BBCC33","#fdbf6f","#ccebc5","#99DDFF","#bc80bd",
 		"#e31a1c","#33a02c","#1f78b4","#6a3d9a","#a6cee3",
 		"#b2df8a","#cab2d6","#e6e600","#b15928","#8dd3c7",
@@ -2040,11 +2042,12 @@ $( document ).ready(function() {
 	
 	
 	if (typeof CHANGE_CLUSTER === 'object') {    // change cluster by CHANGE_CLUSTER
-		// var CHANGE_CLUSTER = {0:3, 1:2, 2:0, 3:1}
-		console.log(CHANGE_CLUSTER)
-		console.log(GEO_VARIABLES)
-		console.log(GEO_ZSCORES)
-		console.log(GEO_CLUSTER)
+		// var CHANGE_CLUSTER = {"0": 1, "1": 4, "2": 0, "3": 3, "4": 2}
+		//console.log(CHANGE_CLUSTER)
+		//console.log(GEO_VARIABLES)
+		//console.log(GEO_ZSCORES)
+		//console.log(GEO_CLUSTER)
+		//console.log(GEO_TUKEY)
 		for (var i=1; i<GEO_VARIABLES.length; i++) {
 			var c = (GEO_VARIABLES[i][1] in CHANGE_CLUSTER) ? CHANGE_CLUSTER[GEO_VARIABLES[i][1]] : GEO_VARIABLES[i][1]
 			//console.log(GEO_VARIABLES[i][1], c)
@@ -2066,7 +2069,7 @@ $( document ).ready(function() {
 			for (var i=1; i<geo_cluster_year[0].length; i++) {
 				var j = i - 1;
 				var c = (j in CHANGE_CLUSTER) ? CHANGE_CLUSTER[j] : j
-				console.log("i:", i, "j:", j, "c:", c)
+				//console.log("i:", i, "j:", j, "c:", c)
 				for (var k=0; k<geo_cluster_year.length; k++) {
 					GEO_CLUSTER[year][k][c+1] = geo_cluster_year[k][i]
 				}
@@ -2074,12 +2077,43 @@ $( document ).ready(function() {
 			//console.log(geo_cluster_year)
 			//console.log(GEO_CLUSTER[year])
 		}
+		var tukeys = Object.keys(GEO_TUKEY);
+		for (var i=0; i<tukeys.length; i++) {
+			//if (i > 1) break;
+			var tukey = tukeys[i];
+			var values = GEO_TUKEY[tukey];
+			//console.log("GEO_TUKEY['"+tukey+"']:", values)
+			var newValues = []
+			for (var j=0; j<values.length; j++) {
+				//console.log(i, j, values[j])
+				var a = values[j][0];
+				var b = values[j][1];
+				var t = values[j][2];
+				var p = values[j][3];
+				if (typeof a === 'string') {
+					a = values[j][0].substring(1,2);
+					b = values[j][1].substring(1,2);
+					a = (a in CHANGE_CLUSTER) ? CHANGE_CLUSTER[a] : a;
+					b = (b in CHANGE_CLUSTER) ? CHANGE_CLUSTER[b] : b;
+					a = values[j][0].substring(0,1) + String(a);
+					b = values[j][1].substring(0,1) + String(b);
+				} else {
+					a = (a in CHANGE_CLUSTER) ? CHANGE_CLUSTER[a] : a;
+					b = (b in CHANGE_CLUSTER) ? CHANGE_CLUSTER[b] : b;
+				}
+				newValues.push([a, b, t, p]);
+			}
+			GEO_TUKEY[tukey] = newValues
+			//console.log(i, newValues)
+		}
+		console.log("changed GEO_TUKEY:", GEO_TUKEY)
 	}
 	
 	
 	if (typeof SubjectName !== 'undefined' && SubjectName !== null) app.subjectName = SubjectName;
 	if (typeof QualitativeMap_Name !== 'undefined' && QualitativeMap_Name !== null) app.QualitativeMap_Name = QualitativeMap_Name;
-	if (typeof QualitativeMap_Field !== 'undefined' && QualitativeMap_Field !== null) app.QualitativeMap_Field = QualitativeMap_Field;		
+	if (typeof QualitativeMap_Field !== 'undefined' && QualitativeMap_Field !== null) app.QualitativeMap_Field = QualitativeMap_Field;
+	if (typeof colorGradient !== 'undefined' && colorGradient !== null) app.colorGradient = colorGradient;	
 	//QualitativeMap_Name
 	// change default years to InitialLayers in GEO_CONFIG.js  ->  ex) "2018"
 	//app.years = InitialLayers;
@@ -2712,6 +2746,7 @@ function draw_all_maps() {
 			map_html += '</div>';
 			map_html += '<br>';
 			map_html += '<div id="subjectBarchart'+i+'_diagram" class="chart" style="overflow:auto;"></div>';
+			map_html += '<div id="subjectBarchart'+i+'_legend" class="chartlegend" style="overflow:auto;"></div>';
 			document.getElementById("subjectBarchart"+i).innerHTML = map_html;
 		}
 	}
@@ -2826,6 +2861,7 @@ function draw_all_maps() {
 	$(".chart").css("width", app.MapWidth.replace('px','')*1-10+'px');
 	//$(".chart").css("height", app.MapHeight.replace('px','')*1-50+'px');
 	$(".chart").css("height", app.MapHeight.replace('px','')*1 + 'px');
+	$(".chartlegend").css("width", app.MapWidth.replace('px','')*1-10+'px');
 	//alert(app.m);	
 	$("#parcats0").css("width", app.MapWidth.replace('px','')*0.7+10+'px');
 	$("#parcats0 .chart").css("width", app.MapWidth.replace('px','')*0.7-10+'px');
@@ -3643,6 +3679,7 @@ function drawSubjectBarchart(subjectBarchartD) {
 	$("#"+subjectBarchartD+"_diagram").html("");
 	theYearOnMap = QualitativeMap_Field;
 	var selectedIndex = $("#"+subjectBarchartD+" .map_cluster select[name=subjectBarchartSelect]").val();
+	var selectedText = $("#"+subjectBarchartD+" .map_cluster select[name=subjectBarchartSelect] option:selected").text().trim();
 	
 	var trace1 = {
 		//x: ['C0','C1', 'C2', 'C3', 'C4', 'C5', 'C6'],
@@ -3654,6 +3691,62 @@ function drawSubjectBarchart(subjectBarchartD) {
 		},
 		type: 'bar'
 	};
+	
+	//console.log(selectedIndex, '"'+selectedText+'"', trace1)
+	//console.log(GEO_TUKEY[selectedText])
+	//console.log(trace1.x.length, trace1.x)
+	var n = trace1.x.length;
+	var colors = [];
+	for (var i=0; i<n; i++) {
+		var rows = [];
+		for (var j=0; j<n; j++) {
+			rows.push("#00FFFF");
+		}
+		colors.push(rows);
+	}
+	//console.log(colors)
+	
+	//               grey       orange	   pink?	  red
+	var nColors = ["#CCCCCC", "#ff9a00", "#ff7400", "#ff4d00"];
+	var sTukeys = GEO_TUKEY[selectedText];
+	for (var i=0; i<sTukeys.length; i++) {
+		var a = sTukeys[i][0];
+		var b = sTukeys[i][1];
+		var p_tukey = sTukeys[i][2];
+		var sColor = nColors[0];
+		if (p_tukey < 0.05) sColor = nColors[1];
+		if (p_tukey < 0.01) sColor = nColors[2];
+		if (p_tukey < 0.001) sColor = nColors[3];
+		colors[a][b] = sColor;
+		colors[b][a] = sColor;
+	}
+	//console.log(colors)
+	app.tukeycolor[selectedText] = colors;
+	
+	// The subject barchart message that appears first time or when the mouse unhovers.
+	// "Click each of the bars to see Tukey's HSD post hoe Test."
+	var html_message = "";
+	html_message += "<span style='color:#0000FF';><i>";
+	html_message += "Hover your mouse over each of the bars to see Tukey's HSD post hoe Test.";
+	html_message += "</></span>";
+	$("#"+subjectBarchartD+"_legend").html(html_message);
+	
+	// The subject barchart legend that appears when the mouse hovers.
+	var html_legend = '';
+	html_legend += '<table id="Tukey_Test_legend" cellspacing="0">';
+	html_legend += '  <th><td style="font-size: xx-small;">&nbsp;</td></th>';
+	//html_legend += '  <th><td style="font-size: medium;">&nbsp;</td></th>';
+	html_legend += '  <tr>';
+	html_legend += '    <td style="width:75px;background:#00FFFF">&nbsp;Selected</td>';
+	html_legend += '    <td style="width:15px";></td>';
+	html_legend += '    <td style="width:85px;background:#ff4d00">&nbsp;P < 0.001</td>';
+	html_legend += '    <td style="width:15px";></td>';
+	html_legend += '    <td style="width:75px;background:#ff7400">&nbsp;P < 0.01</td>'; 
+	html_legend += '    <td style="width:15px";></td>';
+	html_legend += '    <td style="width:75px;background:#ff9a00">&nbsp;P < 0.05</td>'; 
+	html_legend += '  </tr>';
+	html_legend += '</table>';
+	//$("#"+subjectBarchartD+"_legend").html(html_legend);
 	
 	var data = [trace1];
 	
@@ -3681,6 +3774,43 @@ function drawSubjectBarchart(subjectBarchartD) {
 	};
 	
 	Plotly.newPlot(subjectBarchartD+"_diagram", data, layout, {showSendToCloud: true, displayModeBar: false});
+	
+	var subjectBarchartDiv = document.getElementById(subjectBarchartD+"_diagram");
+	subjectBarchartDiv.on('plotly_hover', function(eventData) {
+	    //console.log(typeof(eventData), eventData);
+		if (typeof eventData !== "object" || !("points" in eventData)) return;
+		//console.log(typeof(eventData.points));
+		if (!("pointIndex" in eventData.points[0]) || eventData.points[0].pointIndex < 0) return;
+		if (!("x" in eventData.points[0])) return;
+		if (!("y" in eventData.points[0])) return;
+		//console.log(eventData.points);
+		//console.log(eventData.points[0]);
+		//console.log(eventData.points[0].pointIndex, eventData.points[0].x, eventData.points[0].y);
+		
+		var selectedText = $("#"+subjectBarchartD+" .map_cluster select[name=subjectBarchartSelect] option:selected").text().trim();
+		//console.log(selectedText, GEO_TUKEY[selectedText])
+		
+		if (selectedText in app.tukeycolor && eventData.points[0].pointIndex < app.tukeycolor[selectedText].length) {
+			var update = {
+				marker:{
+					color: app.tukeycolor[selectedText][eventData.points[0].pointIndex]
+				},
+			}
+			Plotly.restyle(subjectBarchartD+"_diagram", update);
+			$("#"+subjectBarchartD+"_legend").html(html_legend);
+		}
+	});
+	
+	subjectBarchartDiv.on('plotly_unhover', function(eventData) {
+	    //console.log('plotly_unhover', typeof(eventData), eventData);
+		var update = {
+			marker:{
+				color: app.colorGradient1
+			},
+		}
+		Plotly.restyle(subjectBarchartD+"_diagram", update);
+		$("#"+subjectBarchartD+"_legend").html(html_message);
+	});
 	
 	return;
 }
@@ -5678,4 +5808,3 @@ function lineify(inputGeom) {
 
 </body>
 </html>
-

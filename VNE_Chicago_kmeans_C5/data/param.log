@@ -1,4 +1,4 @@
-2024-02-05 01:10:25 VNE_Chicago_kmeans_C5
+2024-02-24 23:29:07 VNE_Chicago_kmeans_C5
 
   {'title': 'Vulnerable Neighborhood to COVID-19, Chicago',
    'subject': 'COVID-19',
@@ -7,12 +7,11 @@
    'shapefile': 'input_Chicago/zipcode_Cook_County.shp',
    'disasterInputCSV': 'input_Chicago/COVID_IL_20200711.csv',
    'rate1': 'Confirmed (%) = _count/_tested',
-   'normalizationCSV': 'input_Chicago/Normalization_Table_Chicago_v2.csv',
-   'normalizationUnit': 100000,
+   'normalizationCSV': 'input_Chicago/Normalization_Table_Chicago.csv',
+   'normalizationUnit': 10000,
    'years': [2018],
    'method': 'kmeans',
    'nClusters': 5,
-   'label': 'short_name',
    'variables': ['Median monthly housing costs', '% below poverty',
                  '% unemployed', '% with 4year college degree', '% manufacturing',
                  '% service industry', '% structures more than 30 years old',
