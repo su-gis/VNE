@@ -111,6 +111,9 @@ Su Yeon Han¹, Jeon-Young Kang², Fangzheng Lyu³, Furqan Baig³, Jinwoo Park³,
 ² Department of Geography, Kyung Hee University, South Korea
 ³ CyberGIS Center for Advanced Digital and Spatial Studies, University of Illinois at Urbana-Champaign, Urbana, IL, USA
 
+## Referencees
+Han, S. Y., Kang, J. Y., Lyu, F., Baig, F., Park, J., Smilovsky, D., & Wang, S. (2023). A cyberGIS approach to exploring neighborhood‐level social vulnerability for disaster risk management. Transactions in GIS, 27(7), 1942-1958.
+
 ## License
 This project is licensed under the Apache License 2.0 - see the [LICENSE](https://github.com/cybergis/VNE/blob/master/LICENSE) file for details.
 
