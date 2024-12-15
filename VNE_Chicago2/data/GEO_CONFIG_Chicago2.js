@@ -1,12 +1,15 @@
 // Define the number of maps and some configuration parameters that you want to visualize.
 
-var SubjectName = ""; //Display the name of quantitative map on the left
+var SubjectName = "COVID-19"; //Display the name of quantitative map on the left
 var QualitativeMap_Name = "Neighborhood"; //Display the name of qualitative map on the right
-var QualitativeMap_Field = ""; //Assign the field of qualitative map on the right 
+var QualitativeMap_Field = [2018]; //Assign the field of qualitative map on the right 
 //var InitialLayers = [" total_count (/10K pop)", "2018"];
+// "race_White_count (/10K pop)", "race_Hispanic_count (/10K pop)"
+var InitialCharts = [" race_White_count (/10K pop)", " race_Hispanic_count (/10K pop)"];
 //var InitialCharts = [" total_count (/10K pop)", " total_tested (/10K pop)", " total_Confirmed (%)"];
-//var QualitativeMap_Labels = {"C0": "C0 White Rich Owner", "C1": "C1 Asian Elite Renter", "C2": "C2 White Hispanic Aging Suburban", "C3": "C3 Hispanic Laborer", "C4": "C4 Black Poor"};
-var QualitativeMap_Labels = {};
+var QualitativeMap_Labels = {"C0": "C0 White Rich Owner", "C1": "C1 White Hispanic Aging Suburban", "C2": "C2 Asian Elite Renter", "C3": "C3 Hispanic Laborer", "C4": "C4 Black Poor"};
+//var QualitativeMap_Labels = {"C0": "C0 White Rich Owner", "C1": "C1 Asian Elite Renter", "C2": "C2 Hispanic Laborer", "C3": "C3 White Hispanic Aging Suburban", "C4": "C4 Black Poor"};
+//var QualitativeMap_Labels = {};
 
 
 /* Map Extent and Zoom level will be automatically adjusted when you do not define map center and zoom level */
@@ -15,7 +18,7 @@ var QualitativeMap_Labels = {};
 
 var Maps_of_Subject = true;									//choropleth map: Maps representing subject
 var Maps_of_neighborhood = true;							//choropleth map: Maps representing clustering result  
-var Distribution_of_Subject = false;							//density chart: INC changes as the map extent changes 
+var Distribution_of_Subject = true;							//density chart: INC changes as the map extent changes 
 var Distribution_of_Subject_different_period = false;		//density chart: INC changes by different years
 var Distribution_of_Subject_different_cluster = false;		//density chart: INC changes by different clusters
 var Temporal_change_in_neighborhoods = false;				//stacked chart: Temporal Change in Neighborhoods over years
@@ -23,14 +26,14 @@ var Parallel_Categories_Diagram_in_neighborhoods = true;	//parallel categories d
 var Chord_Diagram_in_neighborhoods = true;					//chord diagram
 var Zscore_Means_across_Clusters = true;					//heatmap: Z Score Means across Clusters
 var Zscore_Means_of_Each_Cluster = true;					//barchart: Z Score Means of Each Cluster
-var Barchart_of_Subject_Clusters = 0;						//Number of subject barchart for cluster count
-var BoxPlot_of_Subject_Clusters = 0;						//Number of subject box plot for cluster count
+var Barchart_of_Subject_Clusters = 2;						//Number of subject barchart for cluster count
+var BoxPlot_of_Subject_Clusters = 2;						//Number of subject box plot for cluster count
   
 
 var Num_Of_Decimal_Places = 2;                             // default = 2
 
-var Map_width  = "450px";                                  // min 350px
-var Map_height = "500px";                                  // min 300px
+var Map_width  = "350px";                                  // min 350px
+var Map_height = "430px";                                  // min 300px
 
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////
