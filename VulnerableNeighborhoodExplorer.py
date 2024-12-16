@@ -18,8 +18,11 @@ import geopandas as gpd
 import csv
 from IPython.core.display import display, HTML
 from pingouin import pairwise_tukey
+import ipywidgets as widgets
+from IPython.display import display, HTML
 #This is for CyberGISX. Uncomment two command lines below when you run in CyberGIX Environment
 from jupyter_server  import serverapp
+
 
 #Create directory for Visualization. This is for CyberGISX. Uncomment two command lines below when you run in CyberGIX Environment    
 servers = list(serverapp.list_running_servers())
@@ -1113,6 +1116,289 @@ def Vulnerability_viz(param):
     print(local_dir2 + 'VNE_' + param['filename_suffix']+'/data/CONFIG_' + param['filename_suffix']+'.js')
 
 
+def VNE(attribute):
+
+    # Exclude the first two columns for variable selection
+    data = attribute
+    available_variables = data.columns[2:].tolist()
+    
+    # Text input for title
+    title_input = widgets.Text(
+        value="Vulnerable Neighborhood to COVID-19, Chicago",
+        description='Title:',
+        style={'description_width': 'initial'},
+        layout=widgets.Layout(width='600px')
+    )
+    
+    # Text input for subject
+    subject_input = widgets.Text(
+        value="COVID-19",
+        description='Subject:',
+        style={'description_width': 'initial'},
+        layout=widgets.Layout(width='600px')
+    )
+    
+    # Text input for filename suffix
+    filename_suffix_input = widgets.Text(
+        value="Chicago_kmeans_C5",
+        description='Filename Suffix:',
+        style={'description_width': 'initial'},
+        layout=widgets.Layout(width='600px')
+    )
+    
+    # Text input for input CSV path
+    input_csv_input = widgets.Text(
+        value="input_Chicago/ACS_2018_5year__zipcode_Cook_byZipcode_normalized.csv",
+        description='Input CSV:',
+        style={'description_width': 'initial'},
+        layout=widgets.Layout(width='600px')
+    )
+    
+    # Function to update variables dynamically based on Input CSV
+    def update_variables(change):
+        global available_variables
+        try:
+            df = pd.read_csv(change['new'])
+            available_variables = df.columns[2:].tolist()
+            variables_listbox.options = available_variables
+        except Exception as e:
+            with output:
+                output.clear_output()
+                print(f"Error updating variables: {e}")
+                
+    # Observe changes in Input CSV
+    input_csv_input.observe(update_variables, names='value')
+    
+    
+    # Text input for shapefile path
+    shapefile_input = widgets.Text(
+        value="input_Chicago/zipcode_Cook_County.shp",
+        description='Shapefile:',
+        style={'description_width': 'initial'},
+        layout=widgets.Layout(width='600px')
+    )
+    
+    # Text input for disaster input CSV path
+    disaster_csv_input = widgets.Text(
+        value="input_Chicago/COVID_IL_20200711.csv",
+        description='Disaster CSV:',
+        style={'description_width': 'initial'},
+        layout=widgets.Layout(width='600px')
+    )
+    
+    # Text input for rate1
+    rate1_input = widgets.Text(
+        value="Confirmed (%) = _count/_tested",
+        description='Rate Formula:',
+        style={'description_width': 'initial'},
+        layout=widgets.Layout(width='600px')
+    )
+    
+    # Text input for normalization CSV
+    normalization_csv_input = widgets.Text(
+        value="input_Chicago/Normalization_Table_Chicago.csv",
+        description='Normalization CSV:',
+        style={'description_width': 'initial'},
+        layout=widgets.Layout(width='600px')
+    )
+    
+    # Text input for normalization unit
+    normalization_unit_input = widgets.Text(
+        value="10000",
+        description='Normalization Unit:',
+        style={'description_width': 'initial'},
+        layout=widgets.Layout(width='600px')
+    )
+    
+    # Text input for years
+    years_input = widgets.Text(
+        value="2018",
+        description='Years:',
+        style={'description_width': 'initial'},
+        layout=widgets.Layout(width='600px')
+    )
+    
+    # Dropdown for method selection
+    method_dropdown = widgets.Dropdown(
+        options=['kmeans', 'affinity_propagation', 'gaussian_mixture', 'spectral', 'ward',
+                 'azp', 'max_p', 'skater', 'spenc', 'ward_spatial'],
+        value='kmeans',
+        description='Method:',
+        style={'description_width': 'initial'},
+        layout=widgets.Layout(width='600px')
+    )
+    
+    # Dropdown for number of clusters
+    nClusters_dropdown = widgets.Dropdown(
+        options=list(range(31)),  # 0 to 30
+        value=5,
+        description='Number of Clusters:',
+        style={'description_width': 'initial'},
+        layout=widgets.Layout(width='600px')
+    )
+    
+    # Listbox for variables with shift key support
+    variables_listbox = widgets.SelectMultiple(
+        options=available_variables,
+        value=[available_variables[0]],  # Default selection
+        description='Variables:',
+        style={'description_width': 'initial'},
+        layout=widgets.Layout(width='600px', height='340px')
+    )
+    
+    # Label for checkboxes
+    checkbox_label = widgets.Label(
+        value="Select plots to visualize:"
+    )
+    
+    # Checkboxes for boolean parameters
+    Distribution_of_Subject_checkbox = widgets.Checkbox(
+        value=True,
+        description='Distribution of Subject',
+        layout=widgets.Layout(width='400px'),
+        style={'description_width': '160px'},
+    )
+    Zscore_Means_across_Clusters_checkbox = widgets.Checkbox(
+        value=True,
+        description='Zscore Means across Clusters',
+        layout=widgets.Layout(width='400px'),
+        style={'description_width': '160px'},
+    )
+    Zscore_Means_of_Each_Cluster_checkbox = widgets.Checkbox(
+        value=True,
+        description='Zscore Means of Each Cluster',
+        layout=widgets.Layout(width='400px'),
+        style={'description_width': '160px'},
+    )
+    
+    # Dropdown for number of bar charts
+    barcharts_dropdown = widgets.Dropdown(
+        options=list(range(31)),  # 0 to 30
+        value=3,
+        description='Bar Charts:',
+        layout=widgets.Layout(width='400px'),
+        style={'description_width': '160px'},
+    )
+    
+    # Dropdown for number of box plots
+    boxplots_dropdown = widgets.Dropdown(
+        options=list(range(31)),  # 0 to 30
+        value=0,
+        description='Box Plots:',
+        layout=widgets.Layout(width='400px'),
+        style={'description_width': '160px'},
+    )
+    
+    # Button to run the program
+    run_button = widgets.Button(
+        description="Submit",
+        button_style='success',  # 'success', 'info', 'warning', 'danger' or ''
+        tooltip="Click to run the visualization",
+        icon='play',  # (FontAwesome names without the `fa-` prefix)
+        layout=widgets.Layout(width='300px', height='50px')
+    )
+    
+    # Output widget to capture the result
+    output = widgets.Output()
+    
+    def on_button_click(b):
+        with output:
+            output.clear_output()
+            params = get_inputs()
+            Vulnerability_viz(params)
+    
+    run_button.on_click(on_button_click)
+    
+    # Add an empty line
+    empty_line = widgets.HTML(value="<br>")
+    
+    # Help content
+    help_content = widgets.HTML(
+        value="""
+        <h4>Help Section</h4>
+        <p>Use this interface to configure the parameters for Vulnerability Visualization:</p>
+        <ul>
+            <li><b>Title:</b> Enter a descriptive title for the visualization. Texts will be placed at the top of the result visualization.</li>
+            <li><b>Subject:</b> Specify the subject matter (e.g., COVID-19). Texts will be placed at the top of the maps, column bar charts, and box plots.</li> 
+            <li><b>Filename Suffix:</b> Enter the name of the output folder where your result visualization is saved. It shouldn't contain spaces.</li>
+            <li><b>Input CSV:</b> Provide the path to your input CSV file. The user’s CSV file normally contains socioeconomic, demographic, and health status data.</li>
+            <li><b>Shapefile:</b> Enter the path to the shapefile. A shapefile is used to visualize polygons on the map. The first column header must start with ‘geoid,’ and the code should match the 'geoid' column of another input CSV file that you enter for 'inputCSV' and 'disasterInputCSV’.</li>
+            <li><b>disasterInputCSV:</b> Enter the path to your input CSV file containing data representing the number of disaster-affected people. In the case of COVID-19, the file can contain the number of confirmed cases, COVID-19 testing cases, and deaths.</li>
+            
+            <li><b>Years:</b> List the years for the analysis, separated by commas.</li>
+            <li><b>normalizationCSV:</b> Enter the path to your input CSV file. The first column of the CSV should contain column headers in ‘disasterInputCSV’, and the second column should contain column headers in ‘inputCSV’. For example, if you enter ‘total_count’ in the first column and ‘Population’ in the second column of the same row, it will compute ‘total_count’/’Population’ multiplied by the value entered in the next parameter, ‘normalizationUnit’.</li>
+            <li><b>Normalization Unit:</b> Set the normalization value (e.g., 10000). If you enter the value 10000 here, your cases will be represented per 10000.</li>
+            <li><b>Rate Formula:</b> It can be used mostly for disease data. The purpose is to compute the percentage using two variables in ‘disasterInputCSV.’ For example, when the disasterInputCSV contains the columns such as ‘total_count’ (i.e., the number of confirmed cases of disease) and ‘total_test’ (i.e., the number of individuals being tested for the disease), you can pass 'Confirmed (%) =_count/_tested.' Then, confirmed cases (e.g., the number of confirmed cases/ the number of people who got COVID-19 testing *100) will be computed and shown as ‘total_Confirmed (%)’ in the result visualization.</li>
+            
+            <li><b>Method:</b> Choose a clustering method from the dropdown.</li>
+            <li><b>Number of Clusters:</b> Enter the number of clusters/neighborhoods you want to create.</li>
+            <li><b>Variables:</b> Select multiple variables by holding down the Ctrl key. They are inputs for your selected clustering method above.</li>
+            <li><b>Check Plots:</b> Choose the plots to visualize.</li>
+            <li><b>Bar Charts:</b> Enter the number of column bar charts to be visualized.</li>
+            <li><b>Box Plots:</b> Enter the number of box plots to be visualized.</li>
+        </ul>
+        <p>Click <b>Submit</b> to run the visualization with the configured parameters.</p>
+        """
+    )
+    
+    # Display the widgets and the button
+    display(widgets.VBox([
+        help_content,  # Help section at the top
+        empty_line, #######################    
+        empty_line, #######################    
+        title_input,
+        subject_input,
+        filename_suffix_input,
+        empty_line, #######################       
+        input_csv_input,
+        shapefile_input,
+        disaster_csv_input,
+        empty_line, ####################### 
+        years_input,
+        normalization_csv_input,
+        normalization_unit_input,
+        rate1_input,
+        empty_line, ####################### 
+        method_dropdown,
+        nClusters_dropdown,
+        empty_line, #######################    
+        variables_listbox,
+        empty_line, #######################
+        checkbox_label,
+        Distribution_of_Subject_checkbox,
+        Zscore_Means_across_Clusters_checkbox,
+        Zscore_Means_of_Each_Cluster_checkbox,
+        barcharts_dropdown,
+        boxplots_dropdown,
+        empty_line, #######################
+        run_button,
+        output
+    ], layout=widgets.Layout(width='100%', border='solid 1px #10A5F5', padding='50px')))
+    
+    # Function to gather inputs when needed
+    def get_inputs():
+        return {
+            'title': title_input.value,
+            'subject': subject_input.value,
+            'filename_suffix': filename_suffix_input.value,
+            'inputCSV': input_csv_input.value,
+            'shapefile': shapefile_input.value,
+            'disasterInputCSV': disaster_csv_input.value,
+            'rate1': rate1_input.value,
+            'normalizationCSV': normalization_csv_input.value,
+            'normalizationUnit': int(normalization_unit_input.value),
+            'years': [int(y.strip()) for y in years_input.value.split(',')],
+            'method': method_dropdown.value,
+            'nClusters': nClusters_dropdown.value,
+            'variables': list(variables_listbox.value),
+            'Distribution_of_Subject': Distribution_of_Subject_checkbox.value,
+            'Zscore_Means_across_Clusters': Zscore_Means_across_Clusters_checkbox.value,
+            'Zscore_Means_of_Each_Cluster': Zscore_Means_of_Each_Cluster_checkbox.value,
+            'Number_of_Barcharts_for_Subject_Clusters': barcharts_dropdown.value,
+            'Number_of_BoxPlots_for_Subject_Clusters': boxplots_dropdown.value
+        }    
+
+    
 if __name__ == '__main__':
     started_datetime = datetime.now()
     print('VulnerableNeighborhoodExplorer start at %s' % (started_datetime.strftime('%Y-%m-%d %H:%M:%S')))
