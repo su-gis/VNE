@@ -1,6 +1,6 @@
 var GEO_VARIABLES =
 [
-  ["geoid", "2018", " total_count", " total_count (/10K pop)", " total_tested", " total_tested (/10K pop)", " total_Confirmed (%)", " race_White_count", " race_White_count (/10K pop)", " race_White_tested", " race_White_tested (/10K pop)", " race_White_Confirmed (%)", " race_Black_count", " race_Black_count (/10K pop)", " race_Black_tested", " race_Black_tested (/10K pop)", " race_Black_Confirmed (%)", " race_Asian_count", " race_Asian_count (/10K pop)", " race_Asian_tested", " race_Asian_tested (/10K pop)", " race_Asian_Confirmed (%)", " race_Hispanic_count", " race_Hispanic_count (/10K pop)", " race_Hispanic_tested", " race_Hispanic_tested (/10K pop)", " race_Hispanic_Confirmed (%)", " race_NH/PI*_count", " race_NH/PI*_tested", " race_NH/PI*_Confirmed (%)", " race_AI/AN**_count", " race_AI/AN**_tested", " race_AI/AN**_Confirmed (%)", " race_unkown_count", " race_unkown_tested", " race_unkown_Confirmed (%)", " race_other_count", " race_other_tested", " race_other_Confirmed (%)", " age_Unknown_count", " age_Unknown_tested", " age_Unknown_Confirmed (%)", " age_<20_count", " age_<20_count (/10K pop)", " age_<20_tested", " age_<20_tested (/10K pop)", " age_<20_Confirmed (%)", " age_20-29_count", " age_20-29_count (/10K pop)", " age_20-29_tested", " age_20-29_tested (/10K pop)", " age_20-29_Confirmed (%)", " age_30-39_count", " age_30-39_count (/10K pop)", " age_30-39_tested", " age_30-39_tested (/10K pop)", " age_30-39_Confirmed (%)", " age_40-49_count", " age_40-49_count (/10K pop)", " age_40-49_tested", " age_40-49_tested (/10K pop)", " age_40-49_Confirmed (%)", " age_50-59_count", " age_50-59_count (/10K pop)", " age_50-59_tested", " age_50-59_tested (/10K pop)", " age_50-59_Confirmed (%)", " age_60-69_count", " age_60-69_count (/10K pop)", " age_60-69_tested", " age_60-69_tested (/10K pop)", " age_60-69_Confirmed (%)", " age_70-79_count", " age_70-79_count (/10K pop)", " age_70-79_tested", " age_70-79_tested (/10K pop)", " age_70-79_Confirmed (%)", " age_80+_count", " age_80+_count (/10K pop)", " age_80+_tested", " age_80+_Confirmed (%)", " gender_male_count", " gender_male_tested", " gender_male_Confirmed (%)", " gender_female_count", " gender_female_tested", " gender_female_Confirmed (%)", " gender_unkown_count", " gender_unkown_tested", " gender_unkown_Confirmed (%)"],
+  ["geoid", "2018", " total_count", " Infection_Rate", " total_tested", " total_tested (/10K pop)", " total_Confirmed (%)", " White_count", " White_Infection_Rate", " White_tested", " White_tested (/10K pop)", " White_Confirmed (%)", " Black_count", " Black_Infection_Rate", " Black_tested", " Black_tested (/10K pop)", " Black_Confirmed (%)", " Asian_count", " Asian_Infection_Rate", " Asian_tested", " Asian_tested (/10K pop)", " Asian_Confirmed (%)", " Hispanic_count", " Hispanic_Infection_Rate", " Hispanic_tested", " Hispanic_tested (/10K pop)", " Hispanic_Confirmed (%)", " NH/PI*_count", " NH/PI*_tested", " NH/PI*_Confirmed (%)", " AI/AN**_count", " AI/AN**_tested", " AI/AN**_Confirmed (%)", " unkown_count", " unkown_tested", " unkown_Confirmed (%)", " other_count", " other_tested", " other_Confirmed (%)", " age_Unknown_count", " age_Unknown_tested", " age_Unknown_Confirmed (%)", " age_<20_count", " age_<20_Infection_Rate", " age_<20_tested", " age_<20_tested (/10K pop)", " age_<20_Confirmed (%)", " age_20-29_count", " age_20-29_Infection_Rate", " age_20-29_tested", " age_20-29_tested (/10K pop)", " age_20-29_Confirmed (%)", " age_30-39_count", " age_30-39_Infection_Rate", " age_30-39_tested", " age_30-39_tested (/10K pop)", " age_30-39_Confirmed (%)", " age_40-49_count", " age_40-49_Infection_Rate", " age_40-49_tested", " age_40-49_tested (/10K pop)", " age_40-49_Confirmed (%)", " age_50-59_count", " age_50-59_Infection_Rate", " age_50-59_tested", " age_50-59_tested (/10K pop)", " age_50-59_Confirmed (%)", " age_60-69_count", " age_60-69_Infection_Rate", " age_60-69_tested", " age_60-69_tested (/10K pop)", " age_60-69_Confirmed (%)", " age_70-79_count", " age_70-79_Infection_Rate", " age_70-79_tested", " age_70-79_tested (/10K pop)", " age_70-79_Confirmed (%)", " age_80+_count", " age_80+_Infection_Rate", " age_80+_tested", " age_80+_Confirmed (%)", " gender_male_count", " gender_male_tested", " gender_male_Confirmed (%)", " gender_female_count", " gender_female_tested", " gender_female_Confirmed (%)", " gender_unkown_count", " gender_unkown_tested", " gender_unkown_Confirmed (%)"],
   ["60004", 2, 393, 77.19, 8846, 1737.41, 4.44, 121, 28.09, 2726, 632.92, 4.44, 9, 204.55, 157, 3568.18, 5.73, 17, 33.99, 136, 271.89, 12.5, 71, 176.92, 322, 802.39, 22.05, 0, 10, 0.0, 0, 0, 0.0, 153, 5299, 2.89, 21, 193, 10.88, 0, 154, 0.0, 34, 27.58, 600, 486.62, 5.67, 62, 135.22, 970, 2115.59, 6.39, 56, 86.25, 1039, 1600.18, 5.39, 57, 82.85, 1058, 1537.79, 5.39, 61, 83.99, 1188, 1635.69, 5.13, 42, 62.79, 1180, 1764.09, 3.56, 27, 74.88, 825, 2287.85, 3.27, 50, 162.92, 1832, 2.73, 170, 3229, 5.26, 195, 4415, 4.42, 28, 1202, 2.33],
   ["60005", 4, 242, 81.93, 4374, 1480.75, 5.53, 66, 26.81, 742, 301.41, 8.89, 13, 176.87, 44, 598.64, 29.55, 10, 36.78, 51, 187.57, 19.61, 53, 167.56, 148, 467.91, 35.81, 0, 0, 0.0, 0, 0, 0.0, 89, 3306, 2.69, 10, 77, 12.99, 0, 0, 0.0, 16, 25.25, 317, 500.32, 5.05, 38, 125.79, 469, 1552.47, 8.1, 39, 98.78, 536, 1357.65, 7.28, 41, 95.08, 545, 1263.91, 7.52, 35, 91.43, 620, 1619.64, 5.65, 26, 65.97, 622, 1578.28, 4.18, 19, 92.1, 517, 2506.06, 3.68, 28, 133.97, 744, 3.76, 109, 1700, 6.41, 133, 2231, 5.96, 0, 443, 0.0],
   ["60007", 2, 381, 114.0, 3904, 1168.16, 9.76, 124, 44.96, 553, 200.51, 22.42, 0, 0.0, 17, 431.47, 0.0, 12, 35.66, 43, 127.79, 27.91, 59, 146.77, 131, 325.87, 45.04, 0, 0, 0.0, 0, 0, 0.0, 163, 3099, 5.26, 15, 59, 25.42, 0, 7, 0.0, 17, 25.72, 183, 276.85, 9.29, 38, 95.31, 475, 1191.37, 8.0, 36, 76.68, 467, 994.68, 7.71, 49, 117.85, 463, 1113.52, 10.58, 52, 99.71, 613, 1175.46, 8.48, 52, 114.44, 690, 1518.49, 7.54, 54, 216.69, 436, 1749.6, 12.39, 83, 482.84, 570, 14.56, 175, 1614, 10.84, 203, 2186, 9.29, 0, 104, 0.0],
@@ -228,82 +228,82 @@ var GEO_CLUSTER =
   "2018":
     [
       ["total_count", 21297, 27442, 13646, 9816, 29006],
-      ["total_count (/10K pop)", 200.83, 322.14, 92.47, 115.23, 179.05],
+      ["Infection_Rate", 200.83, 322.14, 92.47, 115.23, 179.05],
       ["total_tested", 192973, 140531, 193979, 130668, 248157],
       ["total_tested (/10K pop)", 1819.7, 1649.68, 1314.45, 1533.94, 1531.87],
       ["total_Confirmed (%)", 11.04, 19.53, 7.03, 7.51, 11.69],
-      ["race_White_count", 895, 1979, 5654, 2568, 5935],
-      ["race_White_count (/10K pop)", 59.92, 48.78, 46.82, 44.47, 52.83],
-      ["race_White_tested", 9745, 16732, 67809, 33970, 58454],
-      ["race_White_tested (/10K pop)", 652.44, 412.46, 561.52, 588.29, 520.37],
-      ["race_White_Confirmed (%)", 9.18, 11.83, 8.34, 7.56, 10.15],
-      ["race_Black_count", 12235, 2039, 1002, 1954, 1934],
-      ["race_Black_count (/10K pop)", 146.79, 176.89, 130.57, 175.64, 154.55],
-      ["race_Black_tested", 81176, 10803, 7099, 13121, 12136],
-      ["race_Black_tested (/10K pop)", 973.93, 937.2, 925.08, 1179.39, 969.79],
-      ["race_Black_Confirmed (%)", 15.07, 18.87, 14.11, 14.89, 15.94],
-      ["race_Asian_count", 31, 115, 670, 411, 1586],
-      ["race_Asian_count (/10K pop)", 35.74, 37.91, 52.44, 39.26, 102.23],
-      ["race_Asian_tested", 454, 1097, 4537, 3910, 7509],
-      ["race_Asian_tested (/10K pop)", 523.46, 361.62, 355.1, 373.49, 484.0],
-      ["race_Asian_Confirmed (%)", 6.83, 10.48, 14.77, 10.51, 21.12],
-      ["race_Hispanic_count", 2519, 16049, 1463, 2394, 9961],
-      ["race_Hispanic_count (/10K pop)", 199.57, 275.86, 119.77, 195.57, 219.11],
-      ["race_Hispanic_tested", 8169, 42982, 6945, 8649, 31409],
-      ["race_Hispanic_tested (/10K pop)", 647.21, 738.8, 568.56, 706.57, 690.91],
-      ["race_Hispanic_Confirmed (%)", 30.84, 37.34, 21.07, 27.68, 31.71],
-      ["race_NH/PI*_count", 0, 16, 0, 0, 116],
-      ["race_NH/PI*_tested", 20, 78, 260, 129, 1030],
-      ["race_NH/PI*_Confirmed (%)", 0.0, 20.51, 0.0, 0.0, 11.26],
-      ["race_AI/AN**_count", 0, 0, 0, 0, 39],
-      ["race_AI/AN**_tested", 127, 73, 109, 80, 259],
-      ["race_AI/AN**_Confirmed (%)", 0.0, 0.0, 0.0, 0.0, 15.06],
-      ["race_unkown_count", 4980, 6085, 3990, 2003, 7547],
-      ["race_unkown_tested", 89866, 61956, 99991, 66040, 125035],
-      ["race_unkown_Confirmed (%)", 5.54, 9.82, 3.99, 3.03, 6.04],
-      ["race_other_count", 503, 1109, 584, 363, 1700],
-      ["race_other_tested", 3299, 6761, 7056, 4691, 12205],
-      ["race_other_Confirmed (%)", 15.25, 16.4, 8.28, 7.74, 13.93],
+      ["White_count", 895, 1979, 5654, 2568, 5935],
+      ["White_Infection_Rate", 59.92, 48.78, 46.82, 44.47, 52.83],
+      ["White_tested", 9745, 16732, 67809, 33970, 58454],
+      ["White_tested (/10K pop)", 652.44, 412.46, 561.52, 588.29, 520.37],
+      ["White_Confirmed (%)", 9.18, 11.83, 8.34, 7.56, 10.15],
+      ["Black_count", 12235, 2039, 1002, 1954, 1934],
+      ["Black_Infection_Rate", 146.79, 176.89, 130.57, 175.64, 154.55],
+      ["Black_tested", 81176, 10803, 7099, 13121, 12136],
+      ["Black_tested (/10K pop)", 973.93, 937.2, 925.08, 1179.39, 969.79],
+      ["Black_Confirmed (%)", 15.07, 18.87, 14.11, 14.89, 15.94],
+      ["Asian_count", 31, 115, 670, 411, 1586],
+      ["Asian_Infection_Rate", 35.74, 37.91, 52.44, 39.26, 102.23],
+      ["Asian_tested", 454, 1097, 4537, 3910, 7509],
+      ["Asian_tested (/10K pop)", 523.46, 361.62, 355.1, 373.49, 484.0],
+      ["Asian_Confirmed (%)", 6.83, 10.48, 14.77, 10.51, 21.12],
+      ["Hispanic_count", 2519, 16049, 1463, 2394, 9961],
+      ["Hispanic_Infection_Rate", 199.57, 275.86, 119.77, 195.57, 219.11],
+      ["Hispanic_tested", 8169, 42982, 6945, 8649, 31409],
+      ["Hispanic_tested (/10K pop)", 647.21, 738.8, 568.56, 706.57, 690.91],
+      ["Hispanic_Confirmed (%)", 30.84, 37.34, 21.07, 27.68, 31.71],
+      ["NH/PI*_count", 0, 16, 0, 0, 116],
+      ["NH/PI*_tested", 20, 78, 260, 129, 1030],
+      ["NH/PI*_Confirmed (%)", 0.0, 20.51, 0.0, 0.0, 11.26],
+      ["AI/AN**_count", 0, 0, 0, 0, 39],
+      ["AI/AN**_tested", 127, 73, 109, 80, 259],
+      ["AI/AN**_Confirmed (%)", 0.0, 0.0, 0.0, 0.0, 15.06],
+      ["unkown_count", 4980, 6085, 3990, 2003, 7547],
+      ["unkown_tested", 89866, 61956, 99991, 66040, 125035],
+      ["unkown_Confirmed (%)", 5.54, 9.82, 3.99, 3.03, 6.04],
+      ["other_count", 503, 1109, 584, 363, 1700],
+      ["other_tested", 3299, 6761, 7056, 4691, 12205],
+      ["other_Confirmed (%)", 15.25, 16.4, 8.28, 7.74, 13.93],
       ["age_Unknown_count", 0, 13, 0, 0, 0],
       ["age_Unknown_tested", 160, 160, 269, 124, 204],
       ["age_Unknown_Confirmed (%)", 0.0, 8.12, 0.0, 0.0, 0.0],
       ["age_<20_count", 1408, 2507, 850, 391, 1906],
-      ["age_<20_count (/10K pop)", 48.38, 96.0, 22.88, 28.69, 48.44],
+      ["age_<20_Infection_Rate", 48.38, 96.0, 22.88, 28.69, 48.44],
       ["age_<20_tested", 12679, 12610, 13617, 5571, 15508],
       ["age_<20_tested (/10K pop)", 435.65, 482.87, 366.48, 408.78, 394.15],
       ["age_<20_Confirmed (%)", 11.1, 19.88, 6.24, 7.02, 12.29],
       ["age_20-29_count", 3110, 5236, 1814, 1778, 4741],
-      ["age_20-29_count (/10K pop)", 204.25, 378.77, 129.71, 82.67, 222.18],
+      ["age_20-29_Infection_Rate", 204.25, 378.77, 129.71, 82.67, 222.18],
       ["age_20-29_tested", 25048, 28155, 23179, 26434, 36416],
       ["age_20-29_tested (/10K pop)", 1644.99, 2036.72, 1657.45, 1229.06, 1706.62],
       ["age_20-29_Confirmed (%)", 12.42, 18.6, 7.83, 6.73, 13.02],
       ["age_30-39_count", 3391, 5122, 1762, 1759, 4888],
-      ["age_30-39_count (/10K pop)", 264.17, 402.11, 105.94, 94.15, 197.21],
+      ["age_30-39_Infection_Rate", 264.17, 402.11, 105.94, 94.15, 197.21],
       ["age_30-39_tested", 27271, 25754, 24732, 29895, 40712],
       ["age_30-39_tested (/10K pop)", 2124.52, 2021.86, 1487.02, 1600.13, 1642.59],
       ["age_30-39_Confirmed (%)", 12.43, 19.89, 7.12, 5.88, 12.01],
       ["age_40-49_count", 3622, 5675, 2000, 1351, 5120],
-      ["age_40-49_count (/10K pop)", 276.64, 509.07, 98.74, 134.96, 240.13],
+      ["age_40-49_Infection_Rate", 276.64, 509.07, 98.74, 134.96, 240.13],
       ["age_40-49_tested", 28819, 24786, 26568, 16395, 38230],
       ["age_40-49_tested (/10K pop)", 2201.15, 2223.4, 1311.7, 1637.85, 1793.03],
       ["age_40-49_Confirmed (%)", 12.57, 22.9, 7.53, 8.24, 13.39],
       ["age_50-59_count", 3717, 4658, 2239, 1506, 4935],
-      ["age_50-59_count (/10K pop)", 262.06, 506.15, 97.27, 178.17, 223.34],
+      ["age_50-59_Infection_Rate", 262.06, 506.15, 97.27, 178.17, 223.34],
       ["age_50-59_tested", 35050, 21902, 32221, 16799, 40487],
       ["age_50-59_tested (/10K pop)", 2471.11, 2379.93, 1399.81, 1987.46, 1832.33],
       ["age_50-59_Confirmed (%)", 10.6, 21.27, 6.95, 8.96, 12.19],
       ["age_60-69_count", 2965, 2602, 1739, 1260, 3564],
-      ["age_60-69_count (/10K pop)", 264.43, 380.44, 92.42, 181.89, 203.81],
+      ["age_60-69_Infection_Rate", 264.43, 380.44, 92.42, 181.89, 203.81],
       ["age_60-69_tested", 33096, 15239, 29803, 15835, 36355],
       ["age_60-69_tested (/10K pop)", 2951.65, 2228.09, 1583.96, 2285.92, 2078.96],
       ["age_60-69_Confirmed (%)", 8.96, 17.07, 5.83, 7.96, 9.8],
       ["age_70-79_count", 1807, 1067, 1249, 859, 1744],
-      ["age_70-79_count (/10K pop)", 277.68, 298.83, 117.67, 226.64, 186.59],
+      ["age_70-79_Infection_Rate", 277.68, 298.83, 117.67, 226.64, 186.59],
       ["age_70-79_tested", 19412, 7322, 20939, 10789, 20395],
       ["age_70-79_tested (/10K pop)", 2983.07, 2050.64, 1972.73, 2846.63, 2182.03],
       ["age_70-79_Confirmed (%)", 9.31, 14.57, 5.96, 7.96, 8.55],
       ["age_80+_count", 1264, 548, 1850, 805, 2036],
-      ["age_80+_count (/10K pop)", 325.5, 313.18, 260.61, 368.3, 324.39],
+      ["age_80+_Infection_Rate", 325.5, 313.18, 260.61, 368.3, 324.39],
       ["age_80+_tested", 11389, 4589, 22560, 8788, 19778],
       ["age_80+_Confirmed (%)", 11.1, 11.94, 8.2, 9.16, 10.29],
       ["gender_male_count", 9476, 13618, 6338, 4927, 13863],
@@ -344,7 +344,7 @@ var GEO_TUKEY =
         [2, 4, 0.005892, "** "],
         [3, 4, 0.625606, "   "],
     ],
-    "total_count (/10K pop)": [
+    "Infection_Rate": [
         [0, 1, 0.000000, "***"],
         [0, 2, 0.000000, "***"],
         [0, 3, 0.000000, "***"],
@@ -392,7 +392,7 @@ var GEO_TUKEY =
         [2, 4, 0.000000, "***"],
         [3, 4, 0.000000, "***"],
     ],
-    "race_White_count": [
+    "White_count": [
         [0, 1, 0.000373, "***"],
         [0, 2, 0.001370, "** "],
         [0, 3, 0.003748, "** "],
@@ -404,7 +404,7 @@ var GEO_TUKEY =
         [2, 4, 0.550301, "   "],
         [3, 4, 0.942881, "   "],
     ],
-    "race_White_count (/10K pop)": [
+    "White_Infection_Rate": [
         [0, 1, 0.004619, "** "],
         [0, 2, 0.000001, "***"],
         [0, 3, 0.000001, "***"],
@@ -416,7 +416,7 @@ var GEO_TUKEY =
         [2, 4, 0.915356, "   "],
         [3, 4, 0.428423, "   "],
     ],
-    "race_White_tested": [
+    "White_tested": [
         [0, 1, 0.020091, "*  "],
         [0, 2, 0.000080, "***"],
         [0, 3, 0.000028, "***"],
@@ -428,7 +428,7 @@ var GEO_TUKEY =
         [2, 4, 0.999996, "   "],
         [3, 4, 0.805437, "   "],
     ],
-    "race_White_tested (/10K pop)": [
+    "White_tested (/10K pop)": [
         [0, 1, 0.000002, "***"],
         [0, 2, 0.000282, "***"],
         [0, 3, 0.015656, "*  "],
@@ -440,7 +440,7 @@ var GEO_TUKEY =
         [2, 4, 0.428965, "   "],
         [3, 4, 0.397084, "   "],
     ],
-    "race_White_Confirmed (%)": [
+    "White_Confirmed (%)": [
         [0, 1, 0.705900, "   "],
         [0, 2, 0.123083, "   "],
         [0, 3, 0.001027, "** "],
@@ -452,7 +452,7 @@ var GEO_TUKEY =
         [2, 4, 0.140840, "   "],
         [3, 4, 0.000812, "***"],
     ],
-    "race_Black_count": [
+    "Black_count": [
         [0, 1, 0.000000, "***"],
         [0, 2, 0.000000, "***"],
         [0, 3, 0.000000, "***"],
@@ -464,7 +464,7 @@ var GEO_TUKEY =
         [2, 4, 0.875163, "   "],
         [3, 4, 0.617239, "   "],
     ],
-    "race_Black_count (/10K pop)": [
+    "Black_Infection_Rate": [
         [0, 1, 0.961787, "   "],
         [0, 2, 0.571635, "   "],
         [0, 3, 0.999923, "   "],
@@ -476,7 +476,7 @@ var GEO_TUKEY =
         [2, 4, 0.279867, "   "],
         [3, 4, 0.997391, "   "],
     ],
-    "race_Black_tested": [
+    "Black_tested": [
         [0, 1, 0.000000, "***"],
         [0, 2, 0.000000, "***"],
         [0, 3, 0.000000, "***"],
@@ -488,7 +488,7 @@ var GEO_TUKEY =
         [2, 4, 0.931539, "   "],
         [3, 4, 0.565512, "   "],
     ],
-    "race_Black_tested (/10K pop)": [
+    "Black_tested (/10K pop)": [
         [0, 1, 0.999859, "   "],
         [0, 2, 0.999999, "   "],
         [0, 3, 0.004009, "** "],
@@ -500,7 +500,7 @@ var GEO_TUKEY =
         [2, 4, 0.968974, "   "],
         [3, 4, 0.004896, "** "],
     ],
-    "race_Black_Confirmed (%)": [
+    "Black_Confirmed (%)": [
         [0, 1, 0.980014, "   "],
         [0, 2, 0.144918, "   "],
         [0, 3, 0.605711, "   "],
@@ -512,7 +512,7 @@ var GEO_TUKEY =
         [2, 4, 0.123687, "   "],
         [3, 4, 0.671515, "   "],
     ],
-    "race_Asian_count": [
+    "Asian_count": [
         [0, 1, 0.938617, "   "],
         [0, 2, 0.430310, "   "],
         [0, 3, 0.209446, "   "],
@@ -524,7 +524,7 @@ var GEO_TUKEY =
         [2, 4, 0.001169, "** "],
         [3, 4, 0.162286, "   "],
     ],
-    "race_Asian_count (/10K pop)": [
+    "Asian_Infection_Rate": [
         [0, 1, 0.999987, "   "],
         [0, 2, 0.996175, "   "],
         [0, 3, 0.999997, "   "],
@@ -536,7 +536,7 @@ var GEO_TUKEY =
         [2, 4, 0.148345, "   "],
         [3, 4, 0.237569, "   "],
     ],
-    "race_Asian_tested": [
+    "Asian_tested": [
         [0, 1, 0.609019, "   "],
         [0, 2, 0.194764, "   "],
         [0, 3, 0.000451, "***"],
@@ -548,7 +548,7 @@ var GEO_TUKEY =
         [2, 4, 0.026039, "*  "],
         [3, 4, 0.998294, "   "],
     ],
-    "race_Asian_tested (/10K pop)": [
+    "Asian_tested (/10K pop)": [
         [0, 1, 0.999295, "   "],
         [0, 2, 0.999919, "   "],
         [0, 3, 0.999891, "   "],
@@ -560,7 +560,7 @@ var GEO_TUKEY =
         [2, 4, 0.330579, "   "],
         [3, 4, 0.558020, "   "],
     ],
-    "race_Asian_Confirmed (%)": [
+    "Asian_Confirmed (%)": [
         [0, 1, 0.887789, "   "],
         [0, 2, 0.008874, "** "],
         [0, 3, 0.311503, "   "],
@@ -572,7 +572,7 @@ var GEO_TUKEY =
         [2, 4, 0.679273, "   "],
         [3, 4, 0.284926, "   "],
     ],
-    "race_Hispanic_count": [
+    "Hispanic_count": [
         [0, 1, 0.000000, "***"],
         [0, 2, 0.896159, "   "],
         [0, 3, 0.999913, "   "],
@@ -584,7 +584,7 @@ var GEO_TUKEY =
         [2, 4, 0.023850, "*  "],
         [3, 4, 0.643541, "   "],
     ],
-    "race_Hispanic_count (/10K pop)": [
+    "Hispanic_Infection_Rate": [
         [0, 1, 0.962890, "   "],
         [0, 2, 0.000022, "***"],
         [0, 3, 0.016369, "*  "],
@@ -596,7 +596,7 @@ var GEO_TUKEY =
         [2, 4, 0.000057, "***"],
         [3, 4, 0.064734, "   "],
     ],
-    "race_Hispanic_tested": [
+    "Hispanic_tested": [
         [0, 1, 0.000000, "***"],
         [0, 2, 0.930034, "   "],
         [0, 3, 0.998167, "   "],
@@ -608,7 +608,7 @@ var GEO_TUKEY =
         [2, 4, 0.026211, "*  "],
         [3, 4, 0.714363, "   "],
     ],
-    "race_Hispanic_tested (/10K pop)": [
+    "Hispanic_tested (/10K pop)": [
         [0, 1, 0.963478, "   "],
         [0, 2, 0.514262, "   "],
         [0, 3, 0.656224, "   "],
@@ -620,7 +620,7 @@ var GEO_TUKEY =
         [2, 4, 0.889684, "   "],
         [3, 4, 0.170578, "   "],
     ],
-    "race_Hispanic_Confirmed (%)": [
+    "Hispanic_Confirmed (%)": [
         [0, 1, 0.010674, "*  "],
         [0, 2, 0.041260, "*  "],
         [0, 3, 0.183210, "   "],
@@ -632,7 +632,7 @@ var GEO_TUKEY =
         [2, 4, 0.000001, "***"],
         [3, 4, 0.000430, "***"],
     ],
-    "race_NH/PI*_count": [
+    "NH/PI*_count": [
         [0, 1, 0.769694, "   "],
         [0, 2, 1.000000, "   "],
         [0, 3, 1.000000, "   "],
@@ -644,7 +644,7 @@ var GEO_TUKEY =
         [2, 4, 0.000388, "***"],
         [3, 4, 0.010571, "*  "],
     ],
-    "race_NH/PI*_tested": [
+    "NH/PI*_tested": [
         [0, 1, 0.933225, "   "],
         [0, 2, 0.885916, "   "],
         [0, 3, 0.883615, "   "],
@@ -656,7 +656,7 @@ var GEO_TUKEY =
         [2, 4, 0.000053, "***"],
         [3, 4, 0.005683, "** "],
     ],
-    "race_NH/PI*_Confirmed (%)": [
+    "NH/PI*_Confirmed (%)": [
         [0, 1, 1.000000, "   "],
         [0, 2, 1.000000, "   "],
         [0, 3, 1.000000, "   "],
@@ -668,7 +668,7 @@ var GEO_TUKEY =
         [2, 4, 0.012455, "*  "],
         [3, 4, 0.089157, "   "],
     ],
-    "race_AI/AN**_count": [
+    "AI/AN**_count": [
         [0, 1, 1.000000, "   "],
         [0, 2, 1.000000, "   "],
         [0, 3, 1.000000, "   "],
@@ -680,7 +680,7 @@ var GEO_TUKEY =
         [2, 4, 0.017549, "*  "],
         [3, 4, 0.109437, "   "],
     ],
-    "race_AI/AN**_tested": [
+    "AI/AN**_tested": [
         [0, 1, 0.999468, "   "],
         [0, 2, 0.530336, "   "],
         [0, 3, 0.980604, "   "],
@@ -692,7 +692,7 @@ var GEO_TUKEY =
         [2, 4, 0.109222, "   "],
         [3, 4, 0.804687, "   "],
     ],
-    "race_AI/AN**_Confirmed (%)": [
+    "AI/AN**_Confirmed (%)": [
         [0, 1, 1.000000, "   "],
         [0, 2, 1.000000, "   "],
         [0, 3, 1.000000, "   "],
@@ -704,7 +704,7 @@ var GEO_TUKEY =
         [2, 4, 0.182780, "   "],
         [3, 4, 0.422948, "   "],
     ],
-    "race_unkown_count": [
+    "unkown_count": [
         [0, 1, 0.000000, "***"],
         [0, 2, 0.001293, "** "],
         [0, 3, 0.044794, "*  "],
@@ -716,7 +716,7 @@ var GEO_TUKEY =
         [2, 4, 0.002519, "** "],
         [3, 4, 0.112580, "   "],
     ],
-    "race_unkown_tested": [
+    "unkown_tested": [
         [0, 1, 0.307128, "   "],
         [0, 2, 0.004235, "** "],
         [0, 3, 0.923507, "   "],
@@ -728,7 +728,7 @@ var GEO_TUKEY =
         [2, 4, 0.111834, "   "],
         [3, 4, 0.990710, "   "],
     ],
-    "race_unkown_Confirmed (%)": [
+    "unkown_Confirmed (%)": [
         [0, 1, 0.000000, "***"],
         [0, 2, 0.001527, "** "],
         [0, 3, 0.000015, "***"],
@@ -740,7 +740,7 @@ var GEO_TUKEY =
         [2, 4, 0.000000, "***"],
         [3, 4, 0.000000, "***"],
     ],
-    "race_other_count": [
+    "other_count": [
         [0, 1, 0.000000, "***"],
         [0, 2, 0.800507, "   "],
         [0, 3, 0.998085, "   "],
@@ -752,7 +752,7 @@ var GEO_TUKEY =
         [2, 4, 0.000218, "***"],
         [3, 4, 0.055331, "   "],
     ],
-    "race_other_tested": [
+    "other_tested": [
         [0, 1, 0.000001, "***"],
         [0, 2, 0.999755, "   "],
         [0, 3, 0.561178, "   "],
@@ -764,7 +764,7 @@ var GEO_TUKEY =
         [2, 4, 0.008191, "** "],
         [3, 4, 0.792889, "   "],
     ],
-    "race_other_Confirmed (%)": [
+    "other_Confirmed (%)": [
         [0, 1, 0.992387, "   "],
         [0, 2, 0.000123, "***"],
         [0, 3, 0.000403, "***"],
@@ -824,7 +824,7 @@ var GEO_TUKEY =
         [2, 4, 0.041021, "*  "],
         [3, 4, 0.234063, "   "],
     ],
-    "age_<20_count (/10K pop)": [
+    "age_<20_Infection_Rate": [
         [0, 1, 0.000000, "***"],
         [0, 2, 0.000000, "***"],
         [0, 3, 0.000000, "***"],
@@ -884,7 +884,7 @@ var GEO_TUKEY =
         [2, 4, 0.004384, "** "],
         [3, 4, 0.867768, "   "],
     ],
-    "age_20-29_count (/10K pop)": [
+    "age_20-29_Infection_Rate": [
         [0, 1, 0.000000, "***"],
         [0, 2, 0.000023, "***"],
         [0, 3, 0.000000, "***"],
@@ -944,7 +944,7 @@ var GEO_TUKEY =
         [2, 4, 0.003295, "** "],
         [3, 4, 0.809711, "   "],
     ],
-    "age_30-39_count (/10K pop)": [
+    "age_30-39_Infection_Rate": [
         [0, 1, 0.000013, "***"],
         [0, 2, 0.000000, "***"],
         [0, 3, 0.000000, "***"],
@@ -1004,7 +1004,7 @@ var GEO_TUKEY =
         [2, 4, 0.006467, "** "],
         [3, 4, 0.341086, "   "],
     ],
-    "age_40-49_count (/10K pop)": [
+    "age_40-49_Infection_Rate": [
         [0, 1, 0.001417, "** "],
         [0, 2, 0.000003, "***"],
         [0, 3, 0.076097, "   "],
@@ -1064,7 +1064,7 @@ var GEO_TUKEY =
         [2, 4, 0.005338, "** "],
         [3, 4, 0.445502, "   "],
     ],
-    "age_50-59_count (/10K pop)": [
+    "age_50-59_Infection_Rate": [
         [0, 1, 0.000000, "***"],
         [0, 2, 0.000000, "***"],
         [0, 3, 0.000001, "***"],
@@ -1124,7 +1124,7 @@ var GEO_TUKEY =
         [2, 4, 0.003127, "** "],
         [3, 4, 0.649956, "   "],
     ],
-    "age_60-69_count (/10K pop)": [
+    "age_60-69_Infection_Rate": [
         [0, 1, 0.044191, "*  "],
         [0, 2, 0.000000, "***"],
         [0, 3, 0.000047, "***"],
@@ -1184,7 +1184,7 @@ var GEO_TUKEY =
         [2, 4, 0.236745, "   "],
         [3, 4, 1.000000, "   "],
     ],
-    "age_70-79_count (/10K pop)": [
+    "age_70-79_Infection_Rate": [
         [0, 1, 0.712111, "   "],
         [0, 2, 0.000014, "***"],
         [0, 3, 0.034039, "*  "],
@@ -1244,7 +1244,7 @@ var GEO_TUKEY =
         [2, 4, 0.737005, "   "],
         [3, 4, 0.920508, "   "],
     ],
-    "age_80+_count (/10K pop)": [
+    "age_80+_Infection_Rate": [
         [0, 1, 0.936699, "   "],
         [0, 2, 0.275364, "   "],
         [0, 3, 0.936121, "   "],

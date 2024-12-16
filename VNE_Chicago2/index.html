@@ -4,9 +4,9 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 	<title>Vulnerable Neighborhood to COVID-19, Chicago</title>
 
-	<script src="data/GEO_CONFIG_Chicago2.js"></script>
+	<script src="data/CONFIG_Chicago2.js"></script>
 	<script src="data/GEO_JSON_Chicago2.js"></script>
-	<script src="data/GEO_VARIABLES_Chicago2.js"></script>
+	<script src="data/VARIABLES_Chicago2.js"></script>
 
 	<script
 		src="../template/Neighborhood_Analysis_Mapper/lib/jQuery/jquery-3.3.1.js"></script>
@@ -3724,10 +3724,10 @@ function drawSubjectBarchart(subjectBarchartD) {
 	app.tukeycolor[selectedText] = colors;
 	
 	// The subject barchart message that appears first time or when the mouse unhovers.
-	// "Click each of the bars to see Tukey's HSD post hoc Test."
+	// "Click each of the bars to see Tukey's HSD post hoe Test."
 	var html_message = "";
 	html_message += "<span style='color:#3b85f5;font-size: 80%;'><i>";
-	html_message += "Hover your mouse over each of the bars to see Tukey's HSD post hoc Test.";
+	html_message += "Hover your mouse over each of the bars to see Tukey's HSD post hoe Test.";
 	html_message += "</></span>";
 	$("#"+subjectBarchartD+"_legend").html(html_message);
 	
