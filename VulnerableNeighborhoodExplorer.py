@@ -102,9 +102,9 @@ def write_INDEX_html(param):
     
     #Replace variables based on the user's selection in each of four files below.
     contents = contents.replace("Vulnerable Neighborhood Explorer", param['title'])
-    contents = contents.replace("data/GEO_CONFIG.js", "data/GEO_CONFIG_"+param['filename_suffix']+".js")
+    contents = contents.replace("data/CONFIG.js", "data/CONFIG_"+param['filename_suffix']+".js")
     contents = contents.replace("data/GEO_JSON.js", "data/GEO_JSON_"+param['filename_suffix']+".js")
-    contents = contents.replace("data/GEO_VARIABLES.js", "data/GEO_VARIABLES_"+param['filename_suffix']+".js")
+    contents = contents.replace("data/VARIABLES.js", "data/VARIABLES_"+param['filename_suffix']+".js")
     
     #write new outfiles: GEO_CONFIG.js GEO_JSON.js VARIABLES.js
     ofile = open(oDir+"/index.html", "w", encoding="utf-8")
@@ -116,7 +116,7 @@ def write_INDEX_html(param):
 def write_GEO_CONFIG_js(param):
     
     # read ACM_GEO_CONFIG.js
-    ifile = open("template/GEO_CONFIG.js", "r")
+    ifile = open("template/CONFIG.js", "r")
     contents = ifile.read()
     
     SubjectName = "";
@@ -232,7 +232,7 @@ def write_GEO_CONFIG_js(param):
     oDir = 'VNE_' + param['filename_suffix']
  
     #Write output including the replacement above
-    filename_GEO_CONFIG = oDir + "/data/GEO_CONFIG_"+param['filename_suffix']+".js"
+    filename_GEO_CONFIG = oDir + "/data/CONFIG_"+param['filename_suffix']+".js"
     ofile = open(filename_GEO_CONFIG, 'w')
     ofile.write(contents)
     ofile.close()
@@ -554,7 +554,7 @@ def write_GEO_VARIABLES_js(community, param):
     
     
     # write df_pivot to GEO_VARIABLES.js
-    filename_GEO_VARIABLES = "VNE_" + param['filename_suffix'] + "/data/GEO_VARIABLES_"+param['filename_suffix']+".js"
+    filename_GEO_VARIABLES = "VNE_" + param['filename_suffix'] + "/data/VARIABLES_"+param['filename_suffix']+".js"
     geoVariablesList = []
     ofile = open(filename_GEO_VARIABLES, 'w')
     ofile.write('var GEO_VARIABLES =\n')
@@ -653,7 +653,7 @@ def write_GEO_VARIABLES_js(community, param):
         #print(df_geoVariables)
     '''
     filename_GEO_VARIABLES_CSV = "VNE_" + param['filename_suffix'] + "/data/CSV_VARIABLES_"+param['filename_suffix']+".csv"
-    df_geoVariables.to_csv(filename_GEO_VARIABLES_CSV, index=False)
+    #df_geoVariables.to_csv(filename_GEO_VARIABLES_CSV, index=False)
     #print(df_geoVariables)
     
     # write zscore to GEO_VARIABLES.js
@@ -691,7 +691,7 @@ def write_GEO_VARIABLES_js(community, param):
     #print(df_geoZscores)
     
     filename_GEO_ZSCORES_CSV = "VNE_" + param['filename_suffix'] + "/data/CSV_ZSCORES_"+param['filename_suffix']+".csv"
-    df_geoZscores.to_csv(filename_GEO_ZSCORES_CSV, index=False)
+    #df_geoZscores.to_csv(filename_GEO_ZSCORES_CSV, index=False)
     
     if (df_disease is not None):
         df_disease = df_disease.reset_index()
@@ -840,7 +840,7 @@ def write_GEO_VARIABLES_js(community, param):
                 df_geoCluster = df_geoCluster.reindex(sorted(df_geoCluster.columns), axis=1)
                 #print(df_geoCluster)
             filename_GEO_ZSCORES_CSV = "VNE_" + param['filename_suffix'] + "/data/CSV_CLUSTER_"+param['filename_suffix']+"_"+str(year)+".csv"
-            df_geoCluster.to_csv(filename_GEO_ZSCORES_CSV, index=False)
+            #df_geoCluster.to_csv(filename_GEO_ZSCORES_CSV, index=False)
             #print(df_geoCluster)
         ofile.write('}\n')
         
@@ -1110,7 +1110,7 @@ def Vulnerability_viz(param):
     print('To access all visualizations that you have created, click the URL below (or locate the files):')
     print(local_dir1 + 'log.html')    
     print('Advanced options are available in ')  
-    print(local_dir2 + 'VNE_' + param['filename_suffix']+'/data/GEO_CONFIG_' + param['filename_suffix']+'.js')
+    print(local_dir2 + 'VNE_' + param['filename_suffix']+'/data/CONFIG_' + param['filename_suffix']+'.js')
 
 
 if __name__ == '__main__':
