@@ -27,7 +27,7 @@ var Chord_Diagram_in_neighborhoods = true;					//chord diagram
 var Zscore_Means_across_Clusters = true;					//heatmap: Z Score Means across Clusters
 var Zscore_Means_of_Each_Cluster = true;					//barchart: Z Score Means of Each Cluster
 var Barchart_of_Subject_Clusters = 3;						//Number of subject barchart for cluster count
-var BoxPlot_of_Subject_Clusters = 3;						//Number of subject box plot for cluster count
+var BoxPlot_of_Subject_Clusters = 0;						//Number of subject box plot for cluster count
   
 
 var Num_Of_Decimal_Places = 2;                             // default = 2
