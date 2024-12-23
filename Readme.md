@@ -120,7 +120,7 @@ VNE is a cyberGIS-based visual analytics tool that allows users to (1) delineate
       <td>B in Fig2. Enter <code>True</code> to display or <code>False</code> not to display.</td>
     </tr>
     <tr>
-      <td><b>‘Number_of_Barcharts_for_Subject_Clusters’</b></td>
+      <td><b>‘Number_of_Column_Charts_for_Subject_Clusters’</b></td>
       <td>The number of column bar charts displayed in Fig1.</td>
     </tr>
     <tr>
