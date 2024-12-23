@@ -29,8 +29,8 @@ var BoxPlot_of_Subject_Clusters = 0;						//Number of subject box plot for clust
 
 var Num_Of_Decimal_Places = 2;                             // default = 2
 
-var Map_width  = "450px";                                  // min 350px
-var Map_height = "500px";                                  // min 300px
+var Map_width  = "350px";                                  // min 350px
+var Map_height = "430px";                                  // min 300px
 
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////
