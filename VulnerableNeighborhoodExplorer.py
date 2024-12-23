@@ -134,7 +134,7 @@ def write_GEO_CONFIG_js(param):
     Chord_Diagram_in_neighborhoods = True;
     Zscore_Means_across_Clusters = True;
     Zscore_Means_of_Each_Cluster = True;
-    Number_of_Barcharts_for_Subject_Clusters = 0;
+    Number_of_Column_Charts_for_Subject_Clusters = 0;
     Number_of_BoxPlots_for_Subject_Clusters = 0;
     
     if ('subject' in param): SubjectName =  param['subject']
@@ -149,7 +149,7 @@ def write_GEO_CONFIG_js(param):
     if ('Chord_Diagram_in_neighborhoods' in param): Chord_Diagram_in_neighborhoods =  param['Chord_Diagram_in_neighborhoods']
     if ('Zscore_Means_across_Clusters' in param): Zscore_Means_across_Clusters =  param['Zscore_Means_across_Clusters']
     if ('Zscore_Means_of_Each_Cluster' in param): Zscore_Means_of_Each_Cluster =  param['Zscore_Means_of_Each_Cluster']
-    if ('Number_of_Barcharts_for_Subject_Clusters' in param): Number_of_Barcharts_for_Subject_Clusters =  param['Number_of_Barcharts_for_Subject_Clusters']
+    if ('Number_of_Column_Charts_for_Subject_Clusters' in param): Number_of_Column_Charts_for_Subject_Clusters =  param['Number_of_Column_Charts_for_Subject_Clusters']
     if ('Number_of_BoxPlots_for_Subject_Clusters' in param): Number_of_BoxPlots_for_Subject_Clusters =  param['Number_of_BoxPlots_for_Subject_Clusters']
     
     # perpare parameters
@@ -207,7 +207,7 @@ def write_GEO_CONFIG_js(param):
     Chord_Diagram_in_neighborhoods = "var Chord_Diagram_in_neighborhoods = " + json.dumps(Chord_Diagram_in_neighborhoods)+ ";"
     Zscore_Means_across_Clusters = "var Zscore_Means_across_Clusters = " + json.dumps(Zscore_Means_across_Clusters)+ ";"
     Zscore_Means_of_Each_Cluster = "var Zscore_Means_of_Each_Cluster = " + json.dumps(Zscore_Means_of_Each_Cluster)+ ";"
-    Number_of_Barcharts_for_Subject_Clusters = "var Barchart_of_Subject_Clusters = " + str(Number_of_Barcharts_for_Subject_Clusters) + ";"
+    Number_of_Column_Charts_for_Subject_Clusters = "var Barchart_of_Subject_Clusters = " + str(Number_of_Column_Charts_for_Subject_Clusters) + ";"
     Number_of_BoxPlots_for_Subject_Clusters = "var BoxPlot_of_Subject_Clusters = " + str(Number_of_BoxPlots_for_Subject_Clusters) + ";"
     Map_width = 'var Map_width  = "' + Map_width + '";'
     Map_height = 'var Map_height = "' + Map_height + '";'
@@ -226,7 +226,7 @@ def write_GEO_CONFIG_js(param):
     contents = contents.replace("var Chord_Diagram_in_neighborhoods = true;", Chord_Diagram_in_neighborhoods)
     contents = contents.replace("var Zscore_Means_across_Clusters = true;", Zscore_Means_across_Clusters)
     contents = contents.replace("var Zscore_Means_of_Each_Cluster = true;", Zscore_Means_of_Each_Cluster)
-    contents = contents.replace("var Barchart_of_Subject_Clusters = 0;", Number_of_Barcharts_for_Subject_Clusters)
+    contents = contents.replace("var Barchart_of_Subject_Clusters = 0;", Number_of_Column_Charts_for_Subject_Clusters)
     contents = contents.replace("var BoxPlot_of_Subject_Clusters = 0;", Number_of_BoxPlots_for_Subject_Clusters)
     contents = contents.replace('var Map_width  = "400px";', Map_width)
     contents = contents.replace('var Map_height = "400px";', Map_height)
@@ -1220,8 +1220,7 @@ def VNE(attribute):
     
     # Dropdown for method selection
     method_dropdown = widgets.Dropdown(
-        options=['kmeans', 'affinity_propagation', 'gaussian_mixture', 'spectral', 'ward',
-                 'azp', 'max_p', 'skater', 'spenc', 'ward_spatial'],
+        options=['kmeans', 'affinity_propagation', 'gaussian_mixture', 'spectral', 'ward'],
         value='kmeans',
         description='Method:',
         style={'description_width': 'initial'},
@@ -1275,7 +1274,7 @@ def VNE(attribute):
     barcharts_dropdown = widgets.Dropdown(
         options=list(range(31)),  # 0 to 30
         value=3,
-        description='Bar Charts:',
+        description='Column Charts:',
         layout=widgets.Layout(width='400px'),
         style={'description_width': '160px'},
     )
@@ -1321,11 +1320,11 @@ def VNE(attribute):
             <li><b>Title:</b> Enter a descriptive title for the visualization. Texts will be placed at the top of the result visualization.</li>
             <li><b>Subject:</b> Specify the subject matter (e.g., COVID-19). Texts will be placed at the top of the maps, column bar charts, and box plots.</li> 
             <li><b>Filename Suffix:</b> Enter the name of the output folder where your result visualization is saved. It shouldn't contain spaces.</li>
-            <li><b>Input CSV:</b> Provide the path to your input CSV file. The user’s CSV file normally contains socioeconomic, demographic, and health status data.</li>
+            <li><b>Input CSV:</b> Provide the path to your input CSV file. The file should include socioeconomic, demographic, and health status data. Ensure that the first column is labeled geoid and the second column is labeled year. All subsequent columns will be available for selection in the Variables input box below.</li>
             <li><b>Shapefile:</b> Enter the path to the shapefile. A shapefile is used to visualize polygons on the map. The first column header must start with ‘geoid,’ and the code should match the 'geoid' column of another input CSV file that you enter for 'inputCSV' and 'disasterInputCSV’.</li>
-            <li><b>disasterInputCSV:</b> Enter the path to your input CSV file containing data representing the number of disaster-affected people. In the case of COVID-19, the file can contain the number of confirmed cases, COVID-19 testing cases, and deaths.</li>
+            <li><b>disasterInputCSV:</b> Enter the path to your input CSV file containing data representing the number of disaster-affected people. In the case of COVID-19, the file can contain the number of confirmed cases, COVID-19 testing cases, and deaths. Ensure that the first column is labeled geoid. </li>
             
-            <li><b>Years:</b> List the years for the analysis, separated by commas.</li>
+            <li><b>Years:</b> List the years for the analysis. This value should match the second column of the input CSV. It will be displayed at the top of the neighborhood map.</li>
             <li><b>normalizationCSV:</b> Enter the path to your input CSV file. The first column of the CSV should contain column headers in ‘disasterInputCSV’, and the second column should contain column headers in ‘inputCSV’. For example, if you enter ‘total_count’ in the first column and ‘Population’ in the second column of the same row, it will compute ‘total_count’/’Population’ multiplied by the value entered in the next parameter, ‘normalizationUnit’.</li>
             <li><b>Normalization Unit:</b> Set the normalization value (e.g., 10000). If you enter the value 10000 here, your cases will be represented per 10000.</li>
             <li><b>Rate Formula:</b> It can be used mostly for disease data. The purpose is to compute the percentage using two variables in ‘disasterInputCSV.’ For example, when the disasterInputCSV contains the columns such as ‘total_count’ (i.e., the number of confirmed cases of disease) and ‘total_test’ (i.e., the number of individuals being tested for the disease), you can pass 'Confirmed (%) =_count/_tested.' Then, confirmed cases (e.g., the number of confirmed cases/ the number of people who got COVID-19 testing *100) will be computed and shown as ‘total_Confirmed (%)’ in the result visualization.</li>
@@ -1333,8 +1332,10 @@ def VNE(attribute):
             <li><b>Method:</b> Choose a clustering method from the dropdown.</li>
             <li><b>Number of Clusters:</b> Enter the number of clusters/neighborhoods you want to create.</li>
             <li><b>Variables:</b> Select multiple variables by holding down the Ctrl key. They are inputs for your selected clustering method above.</li>
-            <li><b>Check Plots:</b> Choose the plots to visualize.</li>
-            <li><b>Bar Charts:</b> Enter the number of column bar charts to be visualized.</li>
+            <li><b>Distribution of Subject:</b> Distribution chart. A in the figure above. Check to visualize.</li>
+            <li><b>Z-score Means across Clusters:</b> Heatmap chart. K in the figure above. Check to visualize.</li>
+            <li><b>Z-score Means of Each Cluster:</b> Bar chart. L in the figure above. Check to visualize.</li>
+            <li><b>Column Charts:</b> Enter the number of column bar charts to be visualized.</li>
             <li><b>Box Plots:</b> Enter the number of box plots to be visualized.</li>
         </ul>
         <p>Click <b>Submit</b> to run the visualization with the configured parameters.</p>
@@ -1394,7 +1395,7 @@ def VNE(attribute):
             'Distribution_of_Subject': Distribution_of_Subject_checkbox.value,
             'Zscore_Means_across_Clusters': Zscore_Means_across_Clusters_checkbox.value,
             'Zscore_Means_of_Each_Cluster': Zscore_Means_of_Each_Cluster_checkbox.value,
-            'Number_of_Barcharts_for_Subject_Clusters': barcharts_dropdown.value,
+            'Number_of_Column_Charts_for_Subject_Clusters': barcharts_dropdown.value,
             'Number_of_BoxPlots_for_Subject_Clusters': boxplots_dropdown.value
         }    
 
@@ -1450,7 +1451,7 @@ if __name__ == '__main__':
         'Distribution_of_Subject_different_cluster': False,      # density chart: INC changes by different clusters 
         'Zscore_Means_across_Clusters': True,                   # heatmap: Z Score Means across Clusters
         'Zscore_Means_of_Each_Cluster': False,                  # barchart: Z Score Means of Each Cluster
-        'Number_of_Barcharts_for_Subject_Clusters': 1,
+        'Number_of_Column_Charts_for_Subject_Clusters': 1,
         'Number_of_BoxPlots_for_Subject_Clusters': 1,
     }
 
@@ -1493,7 +1494,7 @@ if __name__ == '__main__':
         'Distribution_of_Subject': True,                   #density chart: INC changes as the map extent changes 
         'Zscore_Means_across_Clusters': True,
         'Zscore_Means_of_Each_Cluster': True,
-        'Number_of_Barcharts_for_Subject_Clusters': 1,
+        'Number_of_Column_Charts_for_Subject_Clusters': 1,
         'Number_of_BoxPlots_for_Subject_Clusters': 1,
     }
 
@@ -1536,7 +1537,7 @@ if __name__ == '__main__':
          'Distribution_of_Subject': True,                   #density chart: INC changes as the map extent changes 
          'Zscore_Means_across_Clusters': True,
          'Zscore_Means_of_Each_Cluster': True,
-         'Number_of_Barcharts_for_Subject_Clusters': 1,
+         'Number_of_Column_Charts_for_Subject_Clusters': 1,
          'Number_of_BoxPlots_for_Subject_Clusters': 1,
     }
 
@@ -1579,7 +1580,7 @@ if __name__ == '__main__':
         'Distribution_of_Subject': True,                   #density chart: INC changes as the map extent changes 
         'Zscore_Means_across_Clusters': True,
         'Zscore_Means_of_Each_Cluster': True,
-        'Number_of_Barcharts_for_Subject_Clusters': 3,
+        'Number_of_Column_Charts_for_Subject_Clusters': 3,
         'Number_of_BoxPlots_for_Subject_Clusters': 3,
     }
 
@@ -1622,7 +1623,7 @@ if __name__ == '__main__':
         'Distribution_of_Subject': True,                   #density chart: INC changes as the map extent changes 
         'Zscore_Means_across_Clusters': True,
         'Zscore_Means_of_Each_Cluster': True,
-        'Number_of_Barcharts_for_Subject_Clusters':3,
+        'Number_of_Column_Charts_for_Subject_Clusters':3,
         'Number_of_BoxPlots_for_Subject_Clusters': 3,	
     }
 
@@ -1665,7 +1666,7 @@ if __name__ == '__main__':
         'Distribution_of_Subject': True,                   #density chart: INC changes as the map extent changes 
         'Zscore_Means_across_Clusters': True,
         'Zscore_Means_of_Each_Cluster': True,
-        'Number_of_Barcharts_for_Subject_Clusters': 3,
+        'Number_of_Column_Charts_for_Subject_Clusters': 3,
         'Number_of_BoxPlots_for_Subject_Clusters': 3,
     }
     
@@ -1708,7 +1709,7 @@ if __name__ == '__main__':
         'Distribution_of_Subject': True,                   #density chart: INC changes as the map extent changes 
         'Zscore_Means_across_Clusters': True,
         'Zscore_Means_of_Each_Cluster': True,
-        'Number_of_Barcharts_for_Subject_Clusters': 1,
+        'Number_of_Column_Charts_for_Subject_Clusters': 1,
         'Number_of_BoxPlots_for_Subject_Clusters': 1,    
     }
     
@@ -1753,7 +1754,7 @@ if __name__ == '__main__':
         'Distribution_of_Subject': True,                   #density chart: INC changes as the map extent changes 
         'Zscore_Means_across_Clusters': True,
         'Zscore_Means_of_Each_Cluster': True,
-        'Number_of_Barcharts_for_Subject_Clusters': 2,
+        'Number_of_Column_Charts_for_Subject_Clusters': 2,
         'Number_of_BoxPlots_for_Subject_Clusters': 2,
     }   
     
