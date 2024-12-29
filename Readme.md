@@ -69,7 +69,7 @@ VNE is a cyberGIS-based visual analytics tool that allows users to (1) delineate
     </tr>
     <tr>
       <td><b>‘variables’</b></td>
-      <td>Select variables to be computed from <code>inputCSV</code>. Below is the full description of eighteen variables:</td>
+      <td>Select variables to be computed from <code>inputCSV</code>. Below is the full description of eighteen variables used in the example:</td>
     </tr>
     <tr>
       <td colspan="2">
