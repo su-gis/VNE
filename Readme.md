@@ -7,18 +7,6 @@
 
 VNE is a cyberGIS-based visual analytics tool that allows users to (1) delineate neighborhoods based on their selection of variables describing socioeconomic and demographic profiles and (2) explore which neighborhoods are susceptible to the impacts of disasters based on specific socioeconomic and demographic characteristics. [Firefox](https://www.mozilla.org/en-US/firefox/new/) or [Google Chrome](https://www.google.com/chrome/download) is the recommended web browser for reaping the best performance of VNE.
 
-
-## QuickStart
-
-**Example visaulizations are available in the folders below:**<br/>
-*	VNE_Chicago_kmeans_C5 <br/>
-*	New_York_kmeans_C5<br/>
-*	Phoenix_kmeans_C5<br/>
-*	Miami_kmeans_C5<br/>
-*	US_kmeans_C5<br/>
-*	Chicago_extended_kmeans_C5<br/>
-*	Illinois_kmeans_C5 <br/>
-
 ## Getting Started
 **You can run VNE in your Jupyter Notebook/Lab installed on your PC as well as in CybearGISX. We recommend that you use CyberGISX because all the required packages have been integrated in CyberGISX.**<br/><br/>
 
@@ -130,6 +118,19 @@ VNE is a cyberGIS-based visual analytics tool that allows users to (1) delineate
   </tbody>
 </table>
 
+## Example Result Visualization
+
+**Example visaulizations are available in the folders below:**<br/>
+*	VNE_Chicago<br/>
+*	VNE_Chicago2<br/>
+*	VNE_Chicago_kmeans_C5 <br/>
+*	VNE_Chicago_kmeans_C5 <br/>
+*	New_York_kmeans_C5<br/>
+*	Phoenix_kmeans_C5<br/>
+*	Miami_kmeans_C5<br/>
+*	US_kmeans_C5<br/>
+*	Chicago_extended_kmeans_C5<br/>
+*	Illinois_kmeans_C5 <br/>
 
 ## A Case Study
 
@@ -141,10 +142,6 @@ Two images (Fig 1 and 2) below show the result visualization of VNE, which allow
 
 <li> American Community Survey (ACS) 5-year estimates from 2014 to 2018. From ACS, 18 variables representing different socioeconomic and demographic statuses were collected.</li>
 </ul>
-
- 
-
-
 
  <p align="center">Fig 1. The first part of the visualization of VNE.
 <img height=800 src="https://su-gis.org/VNE/images/Fig_S1.png" alt="CyberGIS_Vis.PNG"/>
