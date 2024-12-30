@@ -5,7 +5,7 @@
 
 VNE is a cyberGIS-based visual analytics tool that allows users to (1) delineate neighborhoods based on their selection of variables describing socioeconomic and demographic profiles and (2) explore which neighborhoods are susceptible to the impacts of disasters based on specific socioeconomic and demographic characteristics. [Firefox](https://www.mozilla.org/en-US/firefox/new/) or [Google Chrome](https://www.google.com/chrome/download) is the recommended web browser for reaping the best performance of VNE.
 
-<h2>Table of Contents</h2>h2>
+<h2>Table of Contents</h2>
 - [Getting Started](#Getting-Started)
 - [Input parameter description](#parameter)
 - [Example Result Visualization](#Example)
