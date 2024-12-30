@@ -100,7 +100,7 @@
 	<!--div id="global-message" style="margin: 0px 170px; width:1500px; color:blue; font-size: 12px; clear:both;"><i>The selections above are valid only after you click "Set Globally" button. To enable "Set Globally" button, make all maps have the same extents by clicking one of "Sync" buttons below.</i></div-->
 	</section>
 
-	<br><br>
+	
 	<section>
 	<div class='backLayer' style=''></div>
 	<div id="mapContainer">
@@ -2851,7 +2851,8 @@ function draw_all_maps() {
 			if (app.MapWidth.replace('px','') < 500) $("#"+graphC+" .map_nPolygon").hide();
 		}
 	}
-
+    
+    var Proportion_chart_width = 0.85
 	// change height and width for maps and stacked area chart
 	$("#mapContainer").css("height", app.MapHeight.replace('px','')*1+100+'px');
 	$(".mapArea").css("width", app.MapWidth);
@@ -2863,8 +2864,9 @@ function draw_all_maps() {
 	$(".chart").css("height", app.MapHeight.replace('px','')*1 + 'px');
 	$(".chartlegend").css("width", app.MapWidth.replace('px','')*1-10+'px');
 	//alert(app.m);	
-	$("#parcats0").css("width", app.MapWidth.replace('px','')*0.7+10+'px');  ///////////////////////////////////////////////////////////////
-	$("#parcats0 .chart").css("width", app.MapWidth.replace('px','')*0.9-10+'px');
+    $("#parcats0.mapArea").css("width", app.MapWidth.replace('px','')*Proportion_chart_width+10+'px'); ///////////////////////////////////////////////////////////////
+	$("#parcats0").css("width", app.MapWidth.replace('px','')*Proportion_chart_width+10+'px');  
+	$("#parcats0 .chart").css("width", app.MapWidth.replace('px','')*Proportion_chart_width-10+'px');
 	
 /**	
 	if (app.m < 3) {
@@ -3689,7 +3691,10 @@ function drawSubjectBarchart(subjectBarchartD) {
 		marker:{
 			color: app.colorGradient1
 		},
-		type: 'bar'
+		type: 'bar',
+		hovertext: '',
+		hoverinfo: "text+y"        
+        //hoverinfo: 'hide'
 	};
 	
 	//console.log(selectedIndex, '"'+selectedText+'"', trace1)
@@ -3739,7 +3744,7 @@ function drawSubjectBarchart(subjectBarchartD) {
 	html_legend += '  <tr>';
 	html_legend += '    <td style="width:75px;background:#00FFFF">&nbsp;Selected</td>';
 	html_legend += '    <td style="width:5px";></td>';
-	html_legend += '    <td style="width:85px;background:#ff4d00">&nbsp;P < 0.001</td>';
+	html_legend += '    <td style="width:75px;background:#ff4d00">&nbsp;P < 0.001</td>';
 	html_legend += '    <td style="width:5px";></td>';
 	html_legend += '    <td style="width:75px;background:#ff7400">&nbsp;P < 0.01</td>'; 
 	html_legend += '    <td style="width:5px";></td>';
