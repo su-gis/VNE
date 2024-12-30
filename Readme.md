@@ -3,11 +3,21 @@
 
 <h3 align="center" style="margin-top:-10px">Vulnerable Neighborhood Explorer (VNE) is an open-source visual analytics tool for exploring social vulnerability across different neighborhoods</h3> 
 
-
-
 VNE is a cyberGIS-based visual analytics tool that allows users to (1) delineate neighborhoods based on their selection of variables describing socioeconomic and demographic profiles and (2) explore which neighborhoods are susceptible to the impacts of disasters based on specific socioeconomic and demographic characteristics. [Firefox](https://www.mozilla.org/en-US/firefox/new/) or [Google Chrome](https://www.google.com/chrome/download) is the recommended web browser for reaping the best performance of VNE.
 
-## Getting Started
+## Table of Contents
+- [Getting Started](#Getting-Started)
+- [Input parameter description](#parameter)
+- [Example Result Visualization](#Example)
+- [A Case Study](#Case)
+- [Interactive Features of the Visual Interface](#Interactive)
+- [Data](#Data)
+- [Related Resources](#Resources)
+- [Contributors](#Contributors)
+- [References](#References)
+- [License](#License)
+
+<h2 id="Getting-Started"> Getting Started</h2>
 **You can run VNE in your Jupyter Notebook/Lab installed on your PC as well as in CybearGISX. We recommend that you use CyberGISX because all the required packages have been integrated in CyberGISX.**<br/><br/>
 
 **To use it in CyberGISX, follow steps below:**
@@ -18,10 +28,8 @@ VNE is a cyberGIS-based visual analytics tool that allows users to (1) delineate
 
 https://github.com/user-attachments/assets/ecac065e-9e07-4622-b243-ecd0bb946d66
 
-
-
-
-## Input parameter description
+<h2 id="parameter"> Input Parameter Description</h2>
+                                                       
 <table border="1" cellpadding="5" cellspacing="0">
   <thead>
     <tr>
@@ -125,7 +133,8 @@ https://github.com/user-attachments/assets/ecac065e-9e07-4622-b243-ecd0bb946d66
   </tbody>
 </table>
 
-## Example Result Visualization
+
+<h2 id="Example">Example Result Visualization</h2>
 
 **Example visaulizations are available in the folders below:**<br/>
 *	VNE_Chicago<br/>
@@ -139,7 +148,8 @@ https://github.com/user-attachments/assets/ecac065e-9e07-4622-b243-ecd0bb946d66
 *	Chicago_extended_kmeans_C5<br/>
 *	Illinois_kmeans_C5 <br/>
 
-## A Case Study
+
+<h2 id="Case">A Case Study</h2>
 
 Exploring Neighborhood-level Social Vulnerability to COVID-19 in Chicago. 
 
@@ -170,25 +180,36 @@ Below is a detailed description of each chart and map that can be visualized usi
 
 
  <p align="center">Fig 1. The first part of the visualization of VNE.
-<img height=800 src="https://su-gis.org/VNE/images/Fig_S1.png" alt="CyberGIS_Vis.PNG"/>
+<img height=800 src="images/Fig_S1.png" alt="CyberGIS_Vis.PNG"/>
 </p>
 
  <p align="center">Fig 2. The second part of the visualization of VNE. 
-<img height=600 src="https://su-gis.org/VNE/images/Fig_S2.png" alt="CyberGIS_Vis.PNG"/>
+<img height=600 src="images/Fig_S2.png" alt="CyberGIS_Vis.PNG"/>
 </p>
 
+
+<h2 id="Interactive">Interactive Features of the Visual Interface</h2>
+
  
-## Data
+
+<h2 id="Data">Data</h2>
+
 * [American Community Survey (ACS) 5-year estimates from 2014 to 2018](https://www.census.gov/data/developers/data-sets/acs-5year.2018.html#list-tab-Z8NDSX202E05P3SE5O)
 * [COVID-19 Zip Level Tests and Cases](https://dph.illinois.gov/covid19/data/data-portal/zip-level-tests-and-cases.html)
-## Related Resources
+
+  
+
+<h2 id="Related Resources">Related Resources</h2>
+
 * [CyberGISX](https://cybergisxhub.cigi.illinois.edu/) 
 * [Leaflet](https://leafletjs.com) 
 * [PlotlyJS](https://plot.ly/javascript/) 
 * [D3](https://d3js.org/) 
 * [GEOSNAP](https://github.com/spatialucr/geosnap) 
 
-## Contributors
+
+<h2 id="Contributors">Contributors</h2>
+
 
 Su Yeon Han<sup>1</sup>, Joon-Seok Kim<sup>2</sup>, Jooyoung Yoo<sup>3</sup>, Jeon-Young Kang<sup>4</sup>, Alexander Michels<sup>5</sup>, Fangzheng Lyu<sup>5</sup>, Furqan Baig<sup>5</sup>, Jinwoo Park<sup>5</sup>, Shaowen Wang<sup>5</sup>
 
@@ -198,11 +219,15 @@ Su Yeon Han<sup>1</sup>, Joon-Seok Kim<sup>2</sup>, Jooyoung Yoo<sup>3</sup>, Je
 <sup>4</sup> Department of Geography, Kyung Hee University, South Korea  
 <sup>5</sup>CyberGIS Center for Advanced Digital and Spatial Studies, University of Illinois at Urbana-Champaign, Urbana, IL, USA
 
-## References
+
+<h2 id="References">References</h2>
+
 
 Han, S. Y., Kang, J. Y., Lyu, F., Baig, F., Park, J., Smilovsky, D., & Wang, S. (2023). A cyberGIS approach to exploring neighborhood‐level social vulnerability for disaster risk management. Transactions in GIS, 27(7), 1942-1958.
 
-## License
+
+<h2 id="License">License</h2>
+
 This project is licensed under the Apache License 2.0 - see the [LICENSE](https://github.com/cybergis/VNE/blob/master/LICENSE) file for details.
 
 -------------
