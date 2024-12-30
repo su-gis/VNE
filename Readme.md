@@ -3,9 +3,13 @@
 
 <h3 align="center" style="margin-top:-10px">Vulnerable Neighborhood Explorer (VNE) is an open-source visual analytics tool for exploring social vulnerability across different neighborhoods</h3> 
 
-
-
 VNE is a cyberGIS-based visual analytics tool that allows users to (1) delineate neighborhoods based on their selection of variables describing socioeconomic and demographic profiles and (2) explore which neighborhoods are susceptible to the impacts of disasters based on specific socioeconomic and demographic characteristics. [Firefox](https://www.mozilla.org/en-US/firefox/new/) or [Google Chrome](https://www.google.com/chrome/download) is the recommended web browser for reaping the best performance of VNE.
+
+## Table of Contents
+- [Getting Started](#Getting Started)
+- [Input parameter description](#Input parameter description)
+- [Results](#section-3-results)
+- [Conclusion](#section-4-conclusion)
 
 ## Getting Started
 **You can run VNE in your Jupyter Notebook/Lab installed on your PC as well as in CybearGISX. We recommend that you use CyberGISX because all the required packages have been integrated in CyberGISX.**<br/><br/>
@@ -177,6 +181,7 @@ Below is a detailed description of each chart and map that can be visualized usi
 <img height=600 src="https://su-gis.org/VNE/images/Fig_S2.png" alt="CyberGIS_Vis.PNG"/>
 </p>
 
+## Interactive Features of the Visual Interface
  
 ## Data
 * [American Community Survey (ACS) 5-year estimates from 2014 to 2018](https://www.census.gov/data/developers/data-sets/acs-5year.2018.html#list-tab-Z8NDSX202E05P3SE5O)
