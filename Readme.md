@@ -187,7 +187,7 @@ Below is a detailed description of each chart and map that can be visualized usi
 
 
 
-
+<br></br>
 <h2 id="Interactive">Interactive Features of the Visual Interface</h2>
 VNE is a geovisual analytics tool that utilizes a Coordinated Multiple Views (CMV) approach, allowing users to interact with several interconnected visual representations simultaneously. This enhances the analysis of complex data relationships and facilitates the extraction of meaningful insights. 
 
