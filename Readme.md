@@ -194,21 +194,21 @@ VNE is a geovisual analytics tool that utilizes a Coordinated Multiple Views (CM
 
 A key feature of CMV is cross-filtering, where actions in one view—such as selecting a region in a chart—automatically update related views. For instance, consider three visualizations: a map showing COVID-19 infection rates by Zip Code (__Fig 3B__), a map displaying different neighborhood types (__Fig 6C__), and a proportion chart of Zip Code areas per neighborhood (__Fig 3D__). When a user hovers over a neighborhood category in the proportion chart, both maps update to reflect the selected area. Hovering over "C0 White Rich Owner" highlights the data in this neighborhood on both maps, showing a generally low infection rate (__Fig 1A, B and C__). Conversely, hovering over "C4 Black Poor" highlights that neighborhood, indicating a higher infection rate (__Fig 1D, E and F__). This interactive cross-filtering enables users to compare infection rates across neighborhoods, focus on specific areas to identify localized trends, and understand how different neighborhoods relate to infection rates. In summary, VNE's CMV and cross-filtering capabilities allow for dynamic exploration and analysis of disaster-related data, such as COVID-19 infection rates, across different neighborhoods.
 
-<p><img src="images/Fig3.jpg" alt="Visualization of VNE - Part 1" height="800"/></p>
+<p><img src="images/Fig3.jpg" alt="Visualization of VNE - Part 1" height="600"/></p>
 <p><strong>Figure 3:</strong> Partial visualization of the VNE output. Panels (A) and (B) show the map view when the C0: White Rich Owner neighborhood is selected in the proportion chart (C). Panels (D) and (E) show the map view when the C4: Black Poor neighborhood is selected in the proportion chart (F). </p>
  
 
 Another key feature of VNE is brushing, where highlighting a specific data point in one visualization, simultaneously highlighting the corresponding regions across all linked maps. On the right in __Fig 4__, the box plot depicts the distribution of COVID-19 infection rates across five neighborhoods, with each dot representing the infection rate of a specific Zip Code area. Users can lasso-select these dots (Zip Codes) on the chart, triggering the corresponding Zip Code areas to be highlighted on the two maps. In this example, the box plot focuses on the Hispanic laborer neighborhood, revealing a higher distribution of infection rates compared to other neighborhoods. By selecting areas above the 75th percentile within this neighborhood, the highlighted Zip Code areas represent the top 25% of infection rates in the Hispanic laborer neighborhood.
 
 
-<p><img src="images/Fig4.jpg" alt="Visualization of VNE - Part 1" height="800"/></p>
+<p><img src="images/Fig4.jpg" alt="Visualization of VNE - Part 1" height="200"/></p>
 <p><strong>Figure 4:</strong> The result visualization is created by setting only the box plots to 1 and leaving the other chart options unselected.</p>
 
 
 VNE integrates synchronized map views with cross-filtering capabilities to enhance data exploration. When a user pans or zooms one map, all linked maps automatically adjust to display the same geographic area. This synchronization enables simultaneous analysis of COVID-19 infection rates and neighborhood types within focused regions. Additionally, zooming into a sub-region on the maps triggers the distribution chart to dynamically display the infection rate distribution within the current map boundaries. Furthermore, the chart illustrated in __Fig 5D__ updates in real-time to show the proportion of polygons within each neighborhood. __Fig 5__ presents maps of a region that has been zoomed in from __Fig 1-A1, A2, and A3__. Please note that the distribution charts (__Fig 5A__ ) and the proportion chart (__Fig 5D__ ) appear differently in these figures, reflecting the views before and after zooming. Specifically, C2: Asian Elite Rent is not displayed in __Fig 5D__ because the zoomed-in map in __Fig 5  B and C__ no longer includes this neighborhood once zoomed from the view shown in __Fig1-A2 &A3__.
 
 
-<p><img src="images/Fig5.jpg" alt="Visualization of VNE - Part 1" height="800"/></p>
+<p><img src="images/Fig5.jpg" alt="Visualization of VNE - Part 1" height="200"/></p>
 <p><strong>Figure 5:</strong> Partial visualization of the VNE output. (A) illustrates the distribution of the variable selected in (B), where (B) represents the COVID-19 infection rate. (C) and (D) depict neighborhood types. These images are screen captures taken from the visualization featured in the accompanying video.</p>
 
  
