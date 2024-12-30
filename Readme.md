@@ -15,7 +15,7 @@ VNE is a cyberGIS-based visual analytics tool that allows users to (1) delineate
 2. Once you log in CyberGISX, go to [https://cybergisxhub.cigi.illinois.edu/notebook/vulnerable-neighborhood-explorer](https://cybergisxhub.cigi.illinois.edu/notebook/vulnerable-neighborhood-explorer), and click the button "Open with CyberGISX".  Wait for 3 to 5 seconds. All related source codes will be automatically copied, and the main notebook will be opened. Then, click the “play button” at the top to run.
 
 **A video tutorial on using VNE in CyberGISX**
-
+---
 https://github.com/user-attachments/assets/ecac065e-9e07-4622-b243-ecd0bb946d66
 
 
