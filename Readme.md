@@ -173,11 +173,11 @@ Two images (Fig 1 and 2) below show the result visualization of VNE, which allow
 
 Su Yeon Han<sup>1</sup>, Joon-Seok Kim<sup>2</sup>, Jooyoung Yoo<sup>3</sup>, Jeon-Young Kang<sup>4</sup>, Alexander Michels<sup>5</sup>, Fangzheng Lyu<sup>5</sup>, Furqan Baig<sup>5</sup>, Jinwoo Park<sup>5</sup>, Shaowen Wang<sup>5</sup>
 
-- <sup>1</sup> Geography and Environmental Studies, Texas State University, San Marcos, TX, USA
-- <sup>2</sup>Spatial Sciences Institute, University of Southern California
-<sup>3</sup> Computer Science, Emory University
-<sup>4</sup> Department of Geography, Kyung Hee University, South Korea
-<sup>5</sup>CyberGIS Center for Advanced Digital and Spatial Studies, University of Illinois at Urbana-Champaign, Urbana, IL, USA
+<sup>1</sup> Geography and Environmental Studies, Texas State University, San Marcos, TX, USA  
+<sup>2</sup>Spatial Sciences Institute, University of Southern California  
+<sup>3</sup> Computer Science, Emory University  
+<sup>4</sup> Department of Geography, Kyung Hee University, South Korea  
+<sup>5</sup>CyberGIS Center for Advanced Digital and Spatial Studies, University of Illinois at Urbana-Champaign, Urbana, IL, USA  
 
 ## License
 This project is licensed under the Apache License 2.0 - see the [LICENSE](https://github.com/cybergis/VNE/blob/master/LICENSE) file for details.
