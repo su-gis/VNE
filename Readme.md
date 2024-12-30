@@ -179,19 +179,11 @@ Below is a detailed description of each chart and map that can be visualized usi
   - __Fig 2B__ shows the sorted mean z-score for a selected neighborhood which can be chosen using the dropdown box at the top of this chart. In this case, five horizontal bar charts representing the mean z-score of each of the eighteen variables can be created on the interface of the interactive map.
 
 
-<p>
-  <img src="images/Fig_S1.png" alt="Visualization of VNE - Part 1" height="800"/>
-</p>
-<p>
-  **Figure 1:** The initial part of the Vulnerable Neighborhood Explorer (VNE) visualization.
-</p>
+<p><img src="images/Fig_S1.png" alt="Visualization of VNE - Part 1" height="800"/></p>
+<p><strong>Figure 1:</strong> The initial part of the Vulnerable Neighborhood Explorer (VNE) visualization.</p>
 
-<p>
-  <img src="images/Fig_S2.png" alt="Visualization of VNE - Part 2" height="600"/>
-</p>
-<p>
-  **Figure 2:** The subsequent part of the Vulnerable Neighborhood Explorer (VNE) visualization.
-</p>
+<p><img src="images/Fig_S2.png" alt="Visualization of VNE - Part 2" height="600"/></p>
+<p><strong>Figure 2:</strong> The subsequent part of the Vulnerable Neighborhood Explorer (VNE) visualization.</p>
 
 
 
