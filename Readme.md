@@ -180,7 +180,7 @@ Below is a detailed description of each chart and map that can be visualized usi
 
 
 <img height=800 src="images/Fig_S1.png" alt="CyberGIS_Vis.PNG"/>
- Fig 1. The first part of the visualization of VNE.  
+Fig 1. The first part of the visualization of VNE.  
 
 
 <img height=600 src="images/Fig_S2.png" alt="CyberGIS_Vis.PNG"/>
