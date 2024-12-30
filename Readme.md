@@ -179,18 +179,19 @@ Below is a detailed description of each chart and map that can be visualized usi
   - __Fig 2B__ shows the sorted mean z-score for a selected neighborhood which can be chosen using the dropdown box at the top of this chart. In this case, five horizontal bar charts representing the mean z-score of each of the eighteen variables can be created on the interface of the interactive map.
 
 
- <p align="center"><img height=800 src="images/Fig_S1.png" alt="CyberGIS_Vis.PNG"/>
+<img height=800 src="images/Fig_S1.png" alt="CyberGIS_Vis.PNG"/>
  Fig 1. The first part of the visualization of VNE.  
-</p>
 
- <p align="center"><img height=600 src="images/Fig_S2.png" alt="CyberGIS_Vis.PNG"/>
+
+<img height=600 src="images/Fig_S2.png" alt="CyberGIS_Vis.PNG"/>
 Fig 2. The second part of the visualization of VNE. 
-</p>
+
 
 
 <h2 id="Interactive">Interactive Features of the Visual Interface</h2>
 VNE is a geovisual analytics tool that utilizes a Coordinated Multiple Views (CMV) approach, allowing users to interact with several interconnected visual representations simultaneously. This enhances the analysis of complex data relationships and facilitates the extraction of meaningful insights. 
-A key feature of CMV is cross-filtering, where actions in one view—such as selecting a region in a chart—automatically update related views. For instance, consider three visualizations: a map showing COVID-19 infection rates by Zip Code (__Fig 3B__), a map displaying different neighborhood types (__Fig 6C), and a proportion chart of Zip Code areas per neighborhood (__Fig 3D__). When a user hovers over a neighborhood category in the proportion chart, both maps update to reflect the selected area. Hovering over "C0 White Rich Owner" highlights the data in this neighborhood on both maps, showing a generally low infection rate (__Fig 1A, B and C__). Conversely, hovering over "C4 Black Poor" highlights that neighborhood, indicating a higher infection rate (__Fig 1D, E and F__). This interactive cross-filtering enables users to compare infection rates across neighborhoods, focus on specific areas to identify localized trends, and understand how different neighborhoods relate to infection rates. In summary, VNE's CMV and cross-filtering capabilities allow for dynamic exploration and analysis of disaster-related data, such as COVID-19 infection rates, across different neighborhoods.
+
+A key feature of CMV is cross-filtering, where actions in one view—such as selecting a region in a chart—automatically update related views. For instance, consider three visualizations: a map showing COVID-19 infection rates by Zip Code (__Fig 3B__), a map displaying different neighborhood types (__Fig 6C__), and a proportion chart of Zip Code areas per neighborhood (__Fig 3D__). When a user hovers over a neighborhood category in the proportion chart, both maps update to reflect the selected area. Hovering over "C0 White Rich Owner" highlights the data in this neighborhood on both maps, showing a generally low infection rate (__Fig 1A, B and C__). Conversely, hovering over "C4 Black Poor" highlights that neighborhood, indicating a higher infection rate (__Fig 1D, E and F__). This interactive cross-filtering enables users to compare infection rates across neighborhoods, focus on specific areas to identify localized trends, and understand how different neighborhoods relate to infection rates. In summary, VNE's CMV and cross-filtering capabilities allow for dynamic exploration and analysis of disaster-related data, such as COVID-19 infection rates, across different neighborhoods.
 
 Figure 3. Partial visualization of the VNE output. Panels (A) and (B) show the map view when the C0: White Rich Owner neighborhood is selected in the proportion chart (C). Panels (D) and (E) show the map view when the C4: Black Poor neighborhood is selected in the proportion chart (F). 
 
