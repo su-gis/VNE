@@ -182,6 +182,7 @@ Below is a detailed description of each chart and map that can be visualized usi
 <p><img src="images/Fig_S1.png" alt="Visualization of VNE - Part 1" height="800"/></p>
 <p><strong>Figure 1:</strong> The initial part of the Vulnerable Neighborhood Explorer (VNE) visualization.</p>
 
+<br></br>
 <p><img src="images/Fig_S2.png" alt="Visualization of VNE - Part 2" height="600"/></p>
 <p><strong>Figure 2:</strong> The subsequent part of the Vulnerable Neighborhood Explorer (VNE) visualization.</p>
 
