@@ -199,7 +199,7 @@ Below is a detailed description of each chart and map that can be visualized usi
 
   
 
-<h2 id="Related Resources">Resources</h2>
+<h2 id="Related Resources">Related Resources</h2>
 
 * [CyberGISX](https://cybergisxhub.cigi.illinois.edu/) 
 * [Leaflet](https://leafletjs.com) 
