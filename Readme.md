@@ -6,12 +6,12 @@
 VNE is a cyberGIS-based visual analytics tool that allows users to (1) delineate neighborhoods based on their selection of variables describing socioeconomic and demographic profiles and (2) explore which neighborhoods are susceptible to the impacts of disasters based on specific socioeconomic and demographic characteristics. [Firefox](https://www.mozilla.org/en-US/firefox/new/) or [Google Chrome](https://www.google.com/chrome/download) is the recommended web browser for reaping the best performance of VNE.
 
 ## Table of Contents
-- [Getting Started](#Getting Started)
-- [Input parameter description](#Input parameter description)
+- [Getting Started](#Getting-Started)
+- [Input parameter description](#Input-parameter)
 - [Results](#section-3-results)
 - [Conclusion](#section-4-conclusion)
 
-# Getting Started
+<h2 id="Getting-Started"> Getting Started</h2>
 **You can run VNE in your Jupyter Notebook/Lab installed on your PC as well as in CybearGISX. We recommend that you use CyberGISX because all the required packages have been integrated in CyberGISX.**<br/><br/>
 
 **To use it in CyberGISX, follow steps below:**
@@ -25,7 +25,7 @@ https://github.com/user-attachments/assets/ecac065e-9e07-4622-b243-ecd0bb946d66
 
 
 
-# Input parameter description
+<h2 id="Input-parameter"> Input parameter description</h2>
 <table border="1" cellpadding="5" cellspacing="0">
   <thead>
     <tr>
