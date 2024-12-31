@@ -15,17 +15,13 @@ var QualitativeMap_Labels = {};
 
 var Maps_of_Subject = true;									//choropleth map: Maps representing subject
 var Maps_of_neighborhood = true;							//choropleth map: Maps representing clustering result  
-var Distribution_of_Subject = false;							//density chart: INC changes as the map extent changes 
-var Distribution_of_Subject_different_period = false;		//density chart: INC changes by different years
-var Distribution_of_Subject_different_cluster = false;		//density chart: INC changes by different clusters
-var Temporal_change_in_neighborhoods = false;				//stacked chart: Temporal Change in Neighborhoods over years
-var Parallel_Categories_Diagram_in_neighborhoods = true;	//parallel categories diagram
-var Chord_Diagram_in_neighborhoods = true;					//chord diagram
+var Distribution_of_Subject = false;						//density chart: Distribution of Subject
+var Parallel_Categories_Diagram_in_neighborhoods = true;	//Proportion Chart
 var Zscore_Means_across_Clusters = true;					//heatmap: Z Score Means across Clusters
 var Zscore_Means_of_Each_Cluster = true;					//barchart: Z Score Means of Each Cluster
-var Barchart_of_Subject_Clusters = 0;						//Number of subject barchart for cluster count
-var BoxPlot_of_Subject_Clusters = 0;						//Number of subject box plot for cluster count
-  
+var Barchart_of_Subject_Clusters = 0;						//Column chart
+var BoxPlot_of_Subject_Clusters = 0;						//Box Plots
+    
 
 var Num_Of_Decimal_Places = 2;                             // default = 2
 
