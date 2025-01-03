@@ -194,9 +194,15 @@ VNE is a geovisual analytics tool that utilizes a Coordinated Multiple Views (CM
 Here is a video showcasing the visual features of the Vulnerable Neighborhood Explorer (VNE).
 
 
-https://github.com/user-attachments/assets/a96070ea-a168-4a01-9813-f951c788b8b0
+<div style="width: 640px;">
+  <video controls>
+    <source src="https://github.com/user-attachments/assets/a96070ea-a168-4a01-9813-f951c788b8b0" type="video/mp4">
+  </video>
+</div>
 
 
+<br>
+To jump to specific functionalities, click the links below:
 <a href="https://github.com/user-attachments/assets/a96070ea-a168-4a01-9813-f951c788b8b0#t=0" target="_blank">
   Overview & Cross-Filtering for Maps
 </a>
@@ -228,7 +234,7 @@ https://github.com/user-attachments/assets/a96070ea-a168-4a01-9813-f951c788b8b0
 <a href="https://github.com/user-attachments/assets/a96070ea-a168-4a01-9813-f951c788b8b0#t=605" target="_blank">
   Where Results Are Saved & Sharing Your Visualizations
 </a>
-
+<br>
 
 A key feature of CMV is cross-filtering, where actions in one view—such as selecting a region in a chart—automatically update related views. For instance, consider three visualizations: a map showing COVID-19 infection rates by Zip Code (__Fig 3A__), a map displaying different neighborhood types (__Fig 3B__), and a proportion chart of Zip Code areas per neighborhood (__Fig 3C__). When a user hovers over a neighborhood category in the proportion chart, both maps update to reflect the selected area. Hovering over "C0 White Rich Owner" highlights the data in this neighborhood on both maps, showing a generally low infection rate (__Fig 3D, E and F__). Conversely, hovering over "C4 Black Poor" highlights that neighborhood, indicating a higher infection rate (__Fig 3G, H and I__). This interactive cross-filtering enables users to compare infection rates across neighborhoods, focus on specific areas to identify localized trends, and understand how different neighborhoods relate to infection rates. In summary, VNE's CMV and cross-filtering capabilities allow for dynamic exploration and analysis of disaster-related data, such as COVID-19 infection rates, across different neighborhoods.
 
