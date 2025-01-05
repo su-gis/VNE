@@ -194,7 +194,10 @@ Below is a detailed description of each chart and map that can be visualized usi
 
 VNE is a geovisual analytics tool that utilizes a Coordinated Multiple Views (CMV) approach, allowing users to interact with several interconnected visual representations simultaneously. This enhances the analysis of complex data relationships and facilitates the extraction of meaningful insights. 
 Here is a video showcasing the visual features of the Vulnerable Neighborhood Explorer (VNE).
+
 Note: The video is currently muted by default. Please unmute the video before playing to hear the audio.
+
+
 https://github.com/user-attachments/assets/a96070ea-a168-4a01-9813-f951c788b8b0
 
 
