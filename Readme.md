@@ -26,7 +26,7 @@ VNE is a cyberGIS-based visual analytics tool that allows users to (1) delineate
 
 **A video tutorial on using VNE in CyberGISX**
 
-https://github.com/user-attachments/assets/ecac065e-9e07-4622-b243-ecd0bb946d66
+<video src= "https://github.com/user-attachments/assets/ecac065e-9e07-4622-b243-ecd0bb946d66" controls></video> 
 
 <h2 id="parameter"> Input Parameter Description</h2>
                                                        
