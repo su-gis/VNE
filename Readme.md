@@ -10,7 +10,7 @@ VNE is a cyberGIS-based visual analytics tool that allows users to (1) delineate
 - [Input parameter description](#parameter)
 - [Example Result Visualization](#Example)
 - [A Case Study](#Case)
-- [Interactive Features of the Visual Interface (Tutorial Videos are included](#Interactive)
+- [Interactive Features of the Visual Interface (Tutorial Videos are included)](#Interactive)
 - [Data](#Data)
 - [Related Resources](#Resources)
 - [Contributors](#Contributors)
