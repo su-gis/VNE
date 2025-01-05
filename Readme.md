@@ -279,7 +279,7 @@ VNE integrates synchronized map views with cross-filtering capabilities to enhan
 
   
 
-<h2 id="Related Resources">Related Resources</h2>
+<h2 id="Resources">Related Resources</h2>
 
 * [CyberGISX](https://cybergisxhub.cigi.illinois.edu/) 
 * [Leaflet](https://leafletjs.com) 
