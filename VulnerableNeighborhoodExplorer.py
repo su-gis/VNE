@@ -1,3 +1,6 @@
+# Suppress all warnings
+import warnings
+warnings.filterwarnings("ignore")
 import json, math, copy, sys, re
 from geosnap import Community
 import pandas as pd
@@ -22,7 +25,7 @@ import ipywidgets as widgets
 from IPython.display import display, HTML
 #This is for CyberGISX. Uncomment two command lines below when you run in CyberGIX Environment
 from jupyter_server  import serverapp
-
+warnings.filterwarnings("ignore")
 
 #Create directory for Visualization. This is for CyberGISX. Uncomment two command lines below when you run in CyberGIX Environment    
 servers = list(serverapp.list_running_servers())
@@ -955,8 +958,9 @@ def Vulnerability_log(param):
         #print(param)
         #logs.append({'indexfile': os.path.join(subname, 'index.html'), 'create_at': create_at, 'param': param})
         #logs.append({'indexfile': subname+'/'+'index.html', 'create_at': create_at, 'param': param})
-        logs.append({'indexfile': local_dir1+subname+'/'+'index.html', 'create_at': create_at.isoformat(), 'out_dir': out_dir, 'param': param})
-    logs = sorted(logs, key=lambda k: k['create_at']) 
+        #logs.append({'indexfile': local_dir1+subname+'/'+'index.html', 'create_at': create_at.isoformat(), 'out_dir': out_dir, 'param': param})
+        logs.insert(0, {'indexfile': local_dir1+subname+'/'+'index.html', 'create_at': create_at.isoformat(), 'out_dir': out_dir, 'param': param})
+    logs = sorted(logs, key=lambda k: k['create_at'], reverse=True) 
     #print(logs)
     
     #Write output to log.html
@@ -970,18 +974,18 @@ def Vulnerability_log(param):
     ofile.write('</head>\n')
     ofile.write('<body>\n')
     ofile.write('  <header>\n')
-    ofile.write('    <h1>Logging</h1><p style="color:#6495ED;"><i>*Copy the URL using the button and paste it to your browser to see visualizations you created before.</i></p>\n')
+    ofile.write('    <h1>Logging</h1><p style="color:#6495ED;"><i>*Use the button to copy the URL and paste it into your browser to view the visualizations you created. If the button does not work, you can manually copy the URL from the text box.</i></p>\n')
     ofile.write('  </header>\n')
     
     for idx, val in enumerate(logs):
         params = val['param'].split('\n')
         html = '\n'
-        html += '<div style="margin:10px; float:left; border: 1px solid #99CCFF; border-radius: 5px;">\n'
+        html += '<div style="height:500px; margin:10px; float:left; border: 1px solid #99CCFF; border-radius: 5px;overflow-y: auto;">\n'
         html += '  <table>\n'
         html += '    <tr>\n'
         html += '      <td>\n'
         html += '      <span style="color:#CD5C5C;"><strong>' + str(idx+1) + '. ' + val['out_dir'] + '</strong></span>'
-        html += '        <span style="display: inline-block; width:380px; text-align: right;">' + '<span class="utcToLocal">'+ val['create_at'] + '</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'
+        html += '        <span style="display: inline-block; width:400px; text-align:left; margin-left: 100px;">' + '<span class="utcToLocal">'+ val['create_at'] + '</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'
         html += '        <input type="text" value=' + val['indexfile']+ ' id="myInput' + str(idx+1) + '">'
         html += '        <button onclick="myFunction' + str(idx+1) + '()">Copy</button></span>\n'  
         html += '      </td>\n'
@@ -1106,7 +1110,8 @@ def Vulnerability_viz(param):
     fname =urllib.parse.quote('index.html')
     template_dir = os.path.join(local_dir1, 'VNE_' + param['filename_suffix'])
     #url = 'file:' + os.path.join(template_dir, fname)
-    url = os.path.join(template_dir, fname)    
+    url = os.path.join(template_dir, fname)
+    Vulnerability_log(param)
     webbrowser.open(url)
     print('To see your visualization, click the URL below (or locate the files):')
     print(url)
@@ -1327,7 +1332,7 @@ def VNE(attribute):
             <li><b>Years:</b> List the years for the analysis. This value should match the second column of the input CSV. It will be displayed at the top of the neighborhood map.</li>
             <li><b>normalizationCSV:</b> Enter the path to your input CSV file. The first column of the CSV should contain column headers in ‘disasterInputCSV’, and the second column should contain column headers in ‘inputCSV’. For example, if you enter ‘total_count’ in the first column and ‘Population’ in the second column of the same row, it will compute ‘total_count’/’Population’ multiplied by the value entered in the next parameter, ‘normalizationUnit’.</li>
             <li><b>Normalization Unit:</b> Set the normalization value (e.g., 10000). If you enter the value 10000 here, your cases will be represented per 10000.</li>
-            <li><b>Rate Formula:</b> It can be used mostly for disease data. The purpose is to compute the percentage using two variables in ‘disasterInputCSV.’ For example, when the disasterInputCSV contains the columns such as ‘total_count’ (i.e., the number of confirmed cases of disease) and ‘total_test’ (i.e., the number of individuals being tested for the disease), you can pass 'Confirmed (%) =_count/_tested.' Then, confirmed cases (e.g., the number of confirmed cases/ the number of people who got COVID-19 testing *100) will be computed and shown as ‘total_Confirmed (%)’ in the result visualization.</li>
+            <li><b>Rate Formula:</b> This feature is primarily designed for analyzing disease-related data. It calculates percentages by utilizing two variables from the 'disasterInputCSV' file. For instance, if the 'disasterInputCSV' contains columns such as 'total_count' (representing the number of confirmed cases of a disease) and 'total_test' (representing the number of individuals tested for the disease), you can specify a formula like 'Confirmed (%) = _count / _test'. This formula will compute the percentage of confirmed cases (e.g., the number of confirmed cases divided by the number of tests conducted, multiplied by 100) and display the result as a new column named 'total_Confirmed (%)' in the visualization. To ensure this computation functions correctly, the column names in the input CSV file assigned to 'disasterInputCSV' must include underscore (_). When you define it like above case, the program identifies variables ending with '_count' and divides them by variables ending with '_test' for the calculation.</li>
             
             <li><b>Method:</b> Choose a clustering method from the dropdown.</li>
             <li><b>Number of Clusters:</b> Enter the number of clusters/neighborhoods you want to create.</li>
